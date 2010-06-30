@@ -1,0 +1,12 @@
+<h1>Editing claim</h1>
+
+<% form_for(@claim) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @claim %> |
+<%= link_to 'Back', claims_path %>

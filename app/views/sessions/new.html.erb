@@ -1,0 +1,11 @@
+<h1>Pick Your Username</h1>
+<p>Choose your name and signin</p>
+<% form_for(:session, :url=> '/sessions/create') do |f| %>
+  <div class='field'>
+    <%= f.select("user_id",@users.map {|u| [u.UserName,u.ID]}) %>
+  </div>
+  <div class='actions'>
+    <%= f.submit('sign in') %>
+  </div>
+<% end %>
+

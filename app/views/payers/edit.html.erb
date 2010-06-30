@@ -1,0 +1,12 @@
+<h1>Editing payer</h1>
+
+<% form_for(@payer) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @payer %> |
+<%= link_to 'Back', payers_path %>

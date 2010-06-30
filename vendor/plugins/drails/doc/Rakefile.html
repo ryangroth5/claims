@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>File: Rakefile [RDoc Documentation]</title>
+
+	<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet" />
+
+	<script src="./js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+</head>
+
+<body class="file">
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="./index.html">Home</a>
+          <a href="./index.html#classes">Classes</a>
+          <a href="./index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="./CHANGES.html">CHANGES</a></li>
+				
+					<li class="file"><a href="./CONTRIB.html">CONTRIB</a></li>
+				
+					<li class="file"><a href="./MIT-LICENSE.html">MIT-LICENSE</a></li>
+				
+					<li class="file"><a href="./README.html">README</a></li>
+				
+					<li class="file"><a href="./Rakefile.html">Rakefile</a></li>
+				
+					<li class="file"><a href="./TODO.html">TODO</a></li>
+				
+					<li class="file"><a href="./generators/dojo/USAGE.html">USAGE</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="./images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="./Drails.html">Drails</a></li>
+				
+					<li><a href="./Drails/DojoHelper.html">Drails::DojoHelper</a></li>
+				
+					<li><a href="./Drails/IncompatibilityError.html">Drails::IncompatibilityError</a></li>
+				
+					<li><a href="./Drails/Installer.html">Drails::Installer</a></li>
+				
+					<li><a href="./Drails/PrototypeHelper.html">Drails::PrototypeHelper</a></li>
+				
+					<li><a href="./Drails/PrototypeOverride.html">Drails::PrototypeOverride</a></li>
+				
+					<li><a href="./Drails/ScriptaculousHelper.html">Drails::ScriptaculousHelper</a></li>
+				
+					<li><a href="./Drails/ScriptaculousOverride.html">Drails::ScriptaculousOverride</a></li>
+				
+					<li><a href="./CustomMatchers.html">CustomMatchers</a></li>
+				
+					<li><a href="./CustomMatchers/IncludeOptions.html">CustomMatchers::IncludeOptions</a></li>
+				
+					<li><a href="./Rails.html">Rails</a></li>
+				
+					<li><a href="./Rails/VERSION.html">Rails::VERSION</a></li>
+				
+					<li><a href="./ApplicationController.html">ApplicationController</a></li>
+				
+					<li><a href="./DojoGenerator.html">DojoGenerator</a></li>
+				
+					<li><a href="./DrailsDriver.html">DrailsDriver</a></li>
+				
+					<li><a href="./FormObserversController.html">FormObserversController</a></li>
+				
+					<li><a href="./Object.html">Object</a></li>
+				
+					<li><a href="./SeleniumSuite.html">SeleniumSuite</a></li>
+				
+					<li><a href="./TestView.html">TestView</a></li>
+				
+					<li><a href="./UpdaterController.html">UpdaterController</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<p>
+require &#8216;rake&#8217; require &#8216;spec/rake/spectask&#8217; require
+&#8216;rake/rdoctask&#8217; require &#8216;installer&#8217; require
+&#8216;fileutils&#8217;
+</p>
+<p>
+DRAILS_PATH = File.dirname(<em>FILE</em>)
+</p>
+<p>
+desc &#8216;Default: run specs.&#8217; task :default =>
+&#8220;spec:drails&#8220;
+</p>
+<p>
+desc &#8216;Runs the drails ruby specs.&#8217;
+Spec::Rake::SpecTask.new(:runspec) do |t|
+</p>
+<pre>
+  t.libs &lt;&lt; 'lib'
+  t.libs &lt;&lt; File.dirname(__FILE__)
+  t.spec_files = []
+  t.spec_files += FileList['spec/helpers/*_spec.rb']
+  t.spec_files += FileList['spec/*_spec.rb']
+</pre>
+<p>
+end
+</p>
+<p>
+desc &#8216;Test the drails ruby specs&#8217; namespace :spec do
+</p>
+<pre>
+  desc &quot;Runs the drails tests, the selenium tests, and the javascript tests&quot;
+  task :all =&gt; [:drails, :selenium, :testjs] do
+  end
+
+  desc &quot;Runs the drails spec suite&quot;
+  task :drails  =&gt; ['dev:setup:rails:testapp', 'dev:teardown:all', 'runspec'] do
+  end
+
+  desc 'Fire up a web browser and run the drails javascript tests'
+  task :testjs =&gt; [ &quot;dev:setup:linked&quot;, &quot;server:restart&quot; ] do
+    `open http://localhost:3000/javascripts/dojo/drails/tests/runTests.html`
+  end
+
+  desc &quot;Runs Selenium tests&quot;
+  task :selenium =&gt; [&quot;dev:setup:linked&quot;, &quot;server:start&quot;] do
+    system(&quot;RAILS_ENV=development ruby -Ilib -e 'require \&quot;spec/selenium/selenium_suite\&quot;'&quot;)
+  end
+</pre>
+<p>
+end
+</p>
+<p>
+desc &#8216;Generate documentation for the drails plugin.&#8217;
+Rake::RDocTask.new(:rdoc) do |rdoc|
+</p>
+<pre>
+  rdoc.rdoc_dir = 'rdoc'
+  rdoc.title    = 'Drails'
+  rdoc.options &lt;&lt; '--line-numbers' &lt;&lt; '--inline-source'
+  rdoc.rdoc_files.include('README')
+  rdoc.rdoc_files.include('lib/**/*.rb')
+</pre>
+<p>
+end
+</p>
+<p>
+namespace :dev do
+</p>
+<pre>
+  namespace :setup do
+    desc &quot;Sets up the toolkit that will be used by the installed drails version.  Pass TOOLKIT=prototype on the command line to setup drails with the prototype tookkit.&quot;
+    task :toolkit =&gt; &quot;dev:setup:rails:testapp&quot; do
+      testapp_path = &quot;testapps/rails-#{ENV['RAILS_VERSION']}&quot;
+
+      toolkit = ENV[&quot;TOOLKIT&quot;] == &quot;prototype&quot; ? &quot;prototype&quot; : &quot;dojo&quot;
+      puts &quot;Setting up application using the #{toolkit} toolkit&quot;
+      File.open(&quot;#{testapp_path}/vendor/plugins/drails/config/drails.yml&quot;, &quot;w&quot;) do |f|
+        f &lt;&lt; &quot;drails:\n  toolkit: #{toolkit}\n&quot;
+      end
+    end
+
+    desc &quot;Sets up drails within a testapp&quot;
+    task :full =&gt; [&quot;dev:teardown:all&quot;, &quot;dev:setup:rails:testapp&quot;] do |t|
+      testapp_path = File.join(DRAILS_PATH, &quot;testapps/rails-#{ENV['RAILS_VERSION']}&quot;)
+
+      cp_r &quot;.&quot;, &quot;/tmp/drails&quot;
+      mkdir_p &quot;#{testapp_path}/vendor/plugins&quot;
+      cp_r &quot;/tmp/drails&quot;, &quot;#{testapp_path}/vendor/plugins&quot;
+
+      puts &quot;Executing drails install...&quot;
+      cmd = &quot;cd #{testapp_path}/vendor/plugins/drails; chmod 755 install.rb; RAILS_ROOT=#{testapp_path} ./install.rb&quot;
+      puts cmd
+      `#{cmd}`
+      puts &quot;done&quot;
+      Rake::Task[&quot;dev:setup:toolkit&quot;].invoke
+    end
+
+    desc &quot;Sets up drails within testapp with symlinks to important source files so that development can be done while testapp is running&quot;
+    task :linked =&gt; :full  do
+      testapp_path = &quot;testapps/rails-#{ENV['RAILS_VERSION']}&quot;
+
+      chdir &quot;#{testapp_path}/vendor/plugins/drails&quot; do
+        rm_rf  &quot;generators&quot;
+        ln_s(DRAILS_PATH + &quot;/generators&quot;, &quot;generators&quot;, :verbose =&gt; true)
+        rm_rf  &quot;tasks&quot;
+        ln_s(DRAILS_PATH + &quot;/tasks&quot;, &quot;tasks&quot;, :verbose =&gt; true)
+      end
+      rm_rf &quot;#{testapp_path}/public/javascripts/dojo/drails&quot;
+      ln_s(DRAILS_PATH + &quot;/javascripts/drails&quot;, &quot;#{File.join(DRAILS_PATH, testapp_path)}/public/javascripts/dojo/drails&quot;)
+    end
+
+    namespace :rails do
+      desc &quot;Finds the versions of the installed rails gems on your system&quot;
+      task :find_versions do
+        @rails_versions = nil
+        `gem list rails`.split(&quot;\n&quot;).each do |line|
+          if line =~ /^rails\s+\((.*?)\)/
+            @rails_versions = $1.split(/,\s*/)
+          end
+        end
+        puts &quot;Found rails versions: #{@rails_versions.join(', ')}&quot;
+      end
+
+      task :validate_args =&gt; :find_versions do
+        raise &quot;A RAILS_VERSION number was expected&quot; unless ENV[&quot;RAILS_VERSION&quot;]
+        unless File.directory?(&quot;testapps/generate/rails-#{ENV['RAILS_VERSION']}&quot;)
+          warn &quot;RAILS_VERSION (#{ENV['RAILS_VERSION']}) is not an officially supported version, but drails may still work&quot;
+        end
+        unless @rails_versions &amp;&amp; @rails_versions.find { |v| v == ENV['RAILS_VERSION'] }
+          raise &quot;RAILS_VERSION (#{ENV['RAILS_VERSION']}) was not found in your installed rails versions&quot;
+        end
+      end
+
+      desc &quot;Sets up a rails testapp with files layered in from the generate directory&quot;
+      task :testapp =&gt; [ :validate_args, &quot;dev:teardown:rails&quot; ] do
+        app_generate_command = &quot;rails _#{ENV['RAILS_VERSION']}_ rails-#{ENV['RAILS_VERSION']}&quot;
+        Dir.chdir &quot;testapps&quot; do
+          puts &quot;Execing: #{app_generate_command}&quot;
+          system app_generate_command
+        end
+
+        Rake::Task[&quot;dev:setup:rails:layer_shared&quot;].invoke
+        Rake::Task[&quot;dev:setup:rails:layer_version_specific&quot;].invoke
+      end
+
+      task :layer_shared =&gt; :testapp do
+        cp_r Dir[&quot;testapps/generate/shared/*&quot;], &quot;testapps/rails-#{ENV['RAILS_VERSION']}&quot;
+      end
+
+      task :layer_version_specific =&gt; :testapp do
+        if File.directory?(&quot;testapps/generate/rails-#{ENV['RAILS_VERSION']}&quot;)
+          cp_r Dir[&quot;testapps/generate/rails-#{ENV['RAILS_VERSION']}/*&quot;], &quot;testapps/rails-#{ENV['RAILS_VERSION']}&quot;
+        end
+      end
+    end
+  end
+
+  namespace :teardown do
+    desc &quot;Tears down the entire development environment&quot;
+    task :all =&gt; [ :rails ] do
+      rm_rf &quot;/tmp/drails&quot;
+    end
+
+    desc &quot;Cleans previously generated testapps&quot;
+    task :rails do
+      rm_rf Dir[&quot;testapps/rails-*&quot;]
+    end
+  end
+</pre>
+<p>
+end
+</p>
+<p>
+namespace :server do
+</p>
+<pre>
+  desc &quot;Starts the server&quot;
+  task :start =&gt; [:stop, &quot;dev:setup:rails:testapp&quot;] do
+    testapp_path = &quot;testapps/rails-#{ENV['RAILS_VERSION']}&quot;
+
+    rails_env = ENV['RAILS_ENV'] || 'development'
+    puts &quot;starting #{rails_env} server&quot;
+    puts &quot;cd #{testapp_path}; script/server -e #{rails_env} -d &gt; /dev/null&quot;
+    `cd #{testapp_path}; script/server -e #{rails_env} -d &gt; /dev/null`
+  end
+
+  desc &quot;Restarts the server&quot;
+  task :restart =&gt; [ :stop, :start ] do
+  end
+
+  desc &quot;Stops the server&quot;
+  task :stop do
+    puts &quot;stopping server&quot;
+    `ps aux | grep &quot;p 3000&quot; | grep -v grep | awk '{ print $2 }' | xargs kill`
+  end
+</pre>
+<p>
+end
+</p>
+
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+</body>
+</html>
+

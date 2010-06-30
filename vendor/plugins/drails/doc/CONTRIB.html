@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>File: CONTRIB [RDoc Documentation]</title>
+
+	<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet" />
+
+	<script src="./js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+</head>
+
+<body class="file">
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="./index.html">Home</a>
+          <a href="./index.html#classes">Classes</a>
+          <a href="./index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="./CHANGES.html">CHANGES</a></li>
+				
+					<li class="file"><a href="./CONTRIB.html">CONTRIB</a></li>
+				
+					<li class="file"><a href="./MIT-LICENSE.html">MIT-LICENSE</a></li>
+				
+					<li class="file"><a href="./README.html">README</a></li>
+				
+					<li class="file"><a href="./Rakefile.html">Rakefile</a></li>
+				
+					<li class="file"><a href="./TODO.html">TODO</a></li>
+				
+					<li class="file"><a href="./generators/dojo/USAGE.html">USAGE</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="./images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="./Drails.html">Drails</a></li>
+				
+					<li><a href="./Drails/DojoHelper.html">Drails::DojoHelper</a></li>
+				
+					<li><a href="./Drails/IncompatibilityError.html">Drails::IncompatibilityError</a></li>
+				
+					<li><a href="./Drails/Installer.html">Drails::Installer</a></li>
+				
+					<li><a href="./Drails/PrototypeHelper.html">Drails::PrototypeHelper</a></li>
+				
+					<li><a href="./Drails/PrototypeOverride.html">Drails::PrototypeOverride</a></li>
+				
+					<li><a href="./Drails/ScriptaculousHelper.html">Drails::ScriptaculousHelper</a></li>
+				
+					<li><a href="./Drails/ScriptaculousOverride.html">Drails::ScriptaculousOverride</a></li>
+				
+					<li><a href="./CustomMatchers.html">CustomMatchers</a></li>
+				
+					<li><a href="./CustomMatchers/IncludeOptions.html">CustomMatchers::IncludeOptions</a></li>
+				
+					<li><a href="./Rails.html">Rails</a></li>
+				
+					<li><a href="./Rails/VERSION.html">Rails::VERSION</a></li>
+				
+					<li><a href="./ApplicationController.html">ApplicationController</a></li>
+				
+					<li><a href="./DojoGenerator.html">DojoGenerator</a></li>
+				
+					<li><a href="./DrailsDriver.html">DrailsDriver</a></li>
+				
+					<li><a href="./FormObserversController.html">FormObserversController</a></li>
+				
+					<li><a href="./Object.html">Object</a></li>
+				
+					<li><a href="./SeleniumSuite.html">SeleniumSuite</a></li>
+				
+					<li><a href="./TestView.html">TestView</a></li>
+				
+					<li><a href="./UpdaterController.html">UpdaterController</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<p>
+Things I don&#8217;t like about the current Rails/Prototype Integration:
+</p>
+<h6>- Prototype does too much in it&#8217;s constructors, making things very hard to test (e.g. PeriodicalExecuter start&#8217;s off it&#8217;s timers by newing up an instance).  Although this is concise, testing is harder.  Maybe we can find a happy medium in <a href="Rails.html">Rails</a> 3.</h6>
+<ul>
+<li><p>
+There&#8217;s a lot of inline JS.  Maybe we can minimize this by doing some
+builder-like things and include the JS at the end of the document in <a
+href="Rails.html">Rails</a> 3?
+</p>
+</li>
+</ul>
+<p>
+Dojo Break:
+</p>
+<h6>- Implement subclass that can call a superclass constructor with different argument arity</h6>
+<p>
+Possible Contributions:
+</p>
+<h6>- dojox.math needs an average function for an array of numbers</h6>
+<ul>
+<li><p>
+dojox.math needs a sum function for an array of numbers
+</p>
+</li>
+<li><p>
+dojox.drails
+</p>
+</li>
+<li><p>
+toggle function for dojo.fx.Toggler
+</p>
+</li>
+</ul>
+<p>
+DOH Contributions:
+</p>
+<h6>- RSpec style test declarations</h6>
+<ul>
+<li><p>
+Nested specs
+</p>
+</li>
+<li><p>
+Pending specs
+</p>
+</li>
+<li><p>
+doh.t() and doh.f() does more than test for === true and === false... so
+doh.t(1) works and doh.f(null) works.  Might have to create new
+&#8220;matchers&#8220;
+</p>
+</li>
+<li><p>
+Can&#8217;t use tests like doh.is() within a deferred test
+</p>
+</li>
+<li><p>
+When a test fails, it&#8217;s hard to distinguish between a syntax error
+and a legit test failure
+</p>
+</li>
+<li><p>
+Baked in support for regenerating a view state: see
+Form.EventObserver.html&#8230; pauseOnDestroy flag for debugging for an
+individual test?
+</p>
+</li>
+<li><p>
+Make single test running possible from within doh
+</p>
+</li>
+<li><p>
+Allow doh to run only the previously failed tests
+</p>
+</li>
+<li><p>
+Pause/Resume and/or Cancel suite run
+</p>
+</li>
+<li><p>
+doh.mock
+</p>
+</li>
+</ul>
+<p>
+Dojo Bug Fixes:
+</p>
+<h6>- dojo build does not appear to work properly when dojo is build from an external profileFile</h6>
+<ul>
+<li><p>
+does dojo XHR really put params in the URL if you are doing an HTTP Post?
+(adding only to content)
+</p>
+</li>
+</ul>
+<p>
+DOH Bug Fixes:
+</p>
+<h6>Setting timeout above 1000 results in weird errors:</h6>
+<p>
+spec(&#8220;it makes fucking dojo.Deferred work&#8221;, function(){
+</p>
+<pre>
+  before(function(t){
+    
+  });
+  
+  it(&quot;works&quot;, function(t){
+    //var foo = false;
+    var d = new doh.Deferred();
+    setTimeout(function() { d.callback(true); }, 2000);
+    return d;
+  });
+</pre>
+<p>
+})
+</p>
+<p>
+Results in
+</p>
+<p>
+1 tests to run in 1 groups
+</p>
+<pre>
+ ------------------------------------------------------------
+ GROUP &quot;drails.tests.PeriodicalExecuter&quot; has 1 test to run
+ 1 tests to run in 1 groups
+ ------------------------------------------------------------
+ GROUP &quot;it makes fucking dojo.Deferred work&quot; has 1 test to run
+ Error: test timeout in /javascripts/dojo/drails/tests/PeriodicalExecuter.html::it makes fucking dojo.Deferred work::works
+     ERROR IN:
+  (function (t) {var d = new (doh.Deferred);setTimeout(function () {d.callback(true);}, 2000);return d;})
+ FAILED test: /javascripts/dojo/drails/tests/PeriodicalExecuter.html::it makes fucking dojo.Deferred work::works 0 ms
+ PASSED test: /javascripts/dojo/drails/tests/PeriodicalExecuter.html 0 ms
+ WOOHOO!!
+ ------------------------------------------------------------
+ | TEST SUMMARY:
+ ------------------------------------------------------------
+      2 tests in 2 groups
+      1 errors
+      0 failures</pre>
+
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+</body>
+</html>
+

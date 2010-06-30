@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Module: Drails::PrototypeHelper</title>
+
+	<link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+
+	<script src="../js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+
+</head>
+<body class="module">
+
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="../lib/drails/prototype_helper_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/drails/prototype_helper.rb">lib/drails/prototype_helper.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+
+			<!-- Namespace Contents -->
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#method-i-observe_field_with_dojo">#observe_field_with_dojo</a></li>
+					
+					<li><a href="#method-i-observe_form_with_dojo">#observe_form_with_dojo</a></li>
+					
+					<li><a href="#method-i-options_for_ajax_with_dojo">#options_for_ajax_with_dojo</a></li>
+					
+					<li><a href="#method-i-periodically_call_remote_with_dojo">#periodically_call_remote_with_dojo</a></li>
+					
+					<li><a href="#method-i-remote_function_with_dojo">#remote_function_with_dojo</a></li>
+					
+					<li><a href="#method-i-submit_to_remote_with_dojo">#submit_to_remote_with_dojo</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="../CHANGES.html">CHANGES</a></li>
+				
+					<li class="file"><a href="../CONTRIB.html">CONTRIB</a></li>
+				
+					<li class="file"><a href="../MIT-LICENSE.html">MIT-LICENSE</a></li>
+				
+					<li class="file"><a href="../README.html">README</a></li>
+				
+					<li class="file"><a href="../Rakefile.html">Rakefile</a></li>
+				
+					<li class="file"><a href="../TODO.html">TODO</a></li>
+				
+					<li class="file"><a href="../generators/dojo/USAGE.html">USAGE</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="../images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="../Drails.html">Drails</a></li>
+				
+					<li><a href="../Drails/DojoHelper.html">Drails::DojoHelper</a></li>
+				
+					<li><a href="../Drails/IncompatibilityError.html">Drails::IncompatibilityError</a></li>
+				
+					<li><a href="../Drails/Installer.html">Drails::Installer</a></li>
+				
+					<li><a href="../Drails/PrototypeHelper.html">Drails::PrototypeHelper</a></li>
+				
+					<li><a href="../Drails/PrototypeOverride.html">Drails::PrototypeOverride</a></li>
+				
+					<li><a href="../Drails/ScriptaculousHelper.html">Drails::ScriptaculousHelper</a></li>
+				
+					<li><a href="../Drails/ScriptaculousOverride.html">Drails::ScriptaculousOverride</a></li>
+				
+					<li><a href="../CustomMatchers.html">CustomMatchers</a></li>
+				
+					<li><a href="../CustomMatchers/IncludeOptions.html">CustomMatchers::IncludeOptions</a></li>
+				
+					<li><a href="../Rails.html">Rails</a></li>
+				
+					<li><a href="../Rails/VERSION.html">Rails::VERSION</a></li>
+				
+					<li><a href="../ApplicationController.html">ApplicationController</a></li>
+				
+					<li><a href="../DojoGenerator.html">DojoGenerator</a></li>
+				
+					<li><a href="../DrailsDriver.html">DrailsDriver</a></li>
+				
+					<li><a href="../FormObserversController.html">FormObserversController</a></li>
+				
+					<li><a href="../Object.html">Object</a></li>
+				
+					<li><a href="../SeleniumSuite.html">SeleniumSuite</a></li>
+				
+					<li><a href="../TestView.html">TestView</a></li>
+				
+					<li><a href="../UpdaterController.html">UpdaterController</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1 class="module">Drails::PrototypeHelper</h1>
+
+		<div id="description">
+			
+		</div>
+
+		<!-- Constants -->
+		
+		<div id="constants-list" class="section">
+			<h3 class="section-header">Constants</h3>
+			<dl>
+			
+				<dt><a name="CALLBACKS">CALLBACKS</a></dt>
+				
+				<dd class="description"></dd>
+				
+			
+				<dt><a name="CALLBACKS">CALLBACKS</a></dt>
+				
+				<dd class="description"></dd>
+				
+			
+				<dt><a name="AJAX_OPTIONS">AJAX_OPTIONS</a></dt>
+				
+				<dd class="description"></dd>
+				
+			
+			</dl>
+		</div>
+		
+
+		<!-- Attributes -->
+		
+
+		<!-- Methods -->
+		
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+			<div id="observe-field-with-dojo-method" class="method-detail ">
+				<a name="method-i-observe_field_with_dojo"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">observe_field_with_dojo</span><span
+						class="method-args">(field_id, options = {})</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="observe-field-with-dojo-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/drails/prototype_helper.rb, line 79</span>
+79:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">observe_field_with_dojo</span>(<span class="ruby-identifier">field_id</span>, <span class="ruby-identifier">options</span> = {})
+80:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:frequency</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:frequency</span>] <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+81:         <span class="ruby-identifier">build_observer</span>(<span class="ruby-value str">'drails.Form.Element.Observer'</span>, <span class="ruby-identifier">field_id</span>, <span class="ruby-identifier">options</span>)
+82:       <span class="ruby-keyword kw">else</span>
+83:         <span class="ruby-identifier">build_observer</span>(<span class="ruby-value str">'drails.Form.Element.EventObserver'</span>, <span class="ruby-identifier">field_id</span>, <span class="ruby-identifier">options</span>)
+84:       <span class="ruby-keyword kw">end</span>
+85:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="observe-form-with-dojo-method" class="method-detail ">
+				<a name="method-i-observe_form_with_dojo"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">observe_form_with_dojo</span><span
+						class="method-args">(form_id, options = {})</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="observe-form-with-dojo-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/drails/prototype_helper.rb, line 87</span>
+87:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">observe_form_with_dojo</span>(<span class="ruby-identifier">form_id</span>, <span class="ruby-identifier">options</span> = {})
+88:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:frequency</span>]
+89:         <span class="ruby-identifier">build_observer</span>(<span class="ruby-value str">'drails.Form.Observer'</span>, <span class="ruby-identifier">form_id</span>, <span class="ruby-identifier">options</span>)
+90:       <span class="ruby-keyword kw">else</span>
+91:         <span class="ruby-identifier">build_observer</span>(<span class="ruby-value str">'drails.Form.EventObserver'</span>, <span class="ruby-identifier">form_id</span>, <span class="ruby-identifier">options</span>)
+92:       <span class="ruby-keyword kw">end</span>
+93:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="periodically-call-remote-with-dojo-method" class="method-detail ">
+				<a name="method-i-periodically_call_remote_with_dojo"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">periodically_call_remote_with_dojo</span><span
+						class="method-args">(options = {})</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="periodically-call-remote-with-dojo-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/drails/prototype_helper.rb, line 34</span>
+34:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">periodically_call_remote_with_dojo</span>(<span class="ruby-identifier">options</span> = {})
+35:      <span class="ruby-identifier">frequency</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:frequency</span>] <span class="ruby-operator">||</span> <span class="ruby-value">10</span> <span class="ruby-comment cmt"># every ten seconds by default</span>
+36:      <span class="ruby-identifier">code</span> = <span class="ruby-node">&quot;new drails.PeriodicalExecuter(function() {#{remote_function(options)}}, #{frequency})&quot;</span>
+37:      <span class="ruby-identifier">javascript_tag</span>(<span class="ruby-identifier">code</span>)
+38:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="remote-function-with-dojo-method" class="method-detail ">
+				<a name="method-i-remote_function_with_dojo"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">remote_function_with_dojo</span><span
+						class="method-args">(options)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="remote-function-with-dojo-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/drails/prototype_helper.rb, line 40</span>
+40:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">remote_function_with_dojo</span>(<span class="ruby-identifier">options</span>)
+41:       <span class="ruby-identifier">javascript_options</span> = <span class="ruby-identifier">options_for_ajax</span>(<span class="ruby-identifier">options</span>)
+42: 
+43:       <span class="ruby-identifier">update</span> = <span class="ruby-value str">''</span>
+44:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:update</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:update</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>)
+45:         <span class="ruby-identifier">update</span>  = []
+46:         <span class="ruby-identifier">update</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;success:'#{options[:update][:success]}'&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:update</span>][<span class="ruby-value">:success</span>]
+47:         <span class="ruby-identifier">update</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;failure:'#{options[:update][:failure]}'&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:update</span>][<span class="ruby-value">:failure</span>]
+48:         <span class="ruby-identifier">update</span>  = <span class="ruby-value str">'{'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">update</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">','</span>) <span class="ruby-operator">+</span> <span class="ruby-value str">'}'</span>
+49:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:update</span>]
+50:         <span class="ruby-identifier">update</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;'#{options[:update]}'&quot;</span>
+51:       <span class="ruby-keyword kw">end</span>
+52: 
+53:       <span class="ruby-identifier">function</span> = <span class="ruby-identifier">update</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">?</span>
+54:         <span class="ruby-value str">&quot;new drails.Request(&quot;</span> <span class="ruby-operator">:</span>
+55:         <span class="ruby-node">&quot;new drails.Updater(#{update}, &quot;</span>
+56: 
+57:       <span class="ruby-identifier">url_options</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:url</span>]
+58:       <span class="ruby-identifier">url_options</span> = <span class="ruby-identifier">url_options</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-value">:escape</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">url_options</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>)
+59:       <span class="ruby-identifier">function</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;'#{escape_javascript(url_for(url_options))}'&quot;</span>
+60:       <span class="ruby-identifier">function</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;, #{javascript_options})&quot;</span>
+61: 
+62:       <span class="ruby-identifier">function</span> = <span class="ruby-node">&quot;#{options[:before]}; #{function}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:before</span>]
+63:       <span class="ruby-identifier">function</span> = <span class="ruby-node">&quot;#{function}; #{options[:after]}&quot;</span>  <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:after</span>]
+64:       <span class="ruby-identifier">function</span> = <span class="ruby-node">&quot;if (#{options[:condition]}) { #{function}; }&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:condition</span>]
+65:       <span class="ruby-identifier">function</span> = <span class="ruby-node">&quot;if (confirm('#{escape_javascript(options[:confirm])}')) { #{function}; }&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:confirm</span>]
+66: 
+67:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">function</span>
+68:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="submit-to-remote-with-dojo-method" class="method-detail ">
+				<a name="method-i-submit_to_remote_with_dojo"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">submit_to_remote_with_dojo</span><span
+						class="method-args">(name, value, options = {})</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="submit-to-remote-with-dojo-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/drails/prototype_helper.rb, line 70</span>
+70:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">submit_to_remote_with_dojo</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span>, <span class="ruby-identifier">options</span> = {})
+71:       <span class="ruby-identifier">options</span>[<span class="ruby-value">:with</span>] <span class="ruby-operator">||=</span> <span class="ruby-value str">'dojo.formToQuery(this.form)'</span>
+72: 
+73:       <span class="ruby-identifier">html_options</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:html</span>) <span class="ruby-operator">||</span> {}
+74:       <span class="ruby-identifier">html_options</span>[<span class="ruby-value">:name</span>] = <span class="ruby-identifier">name</span>
+75: 
+76:       <span class="ruby-identifier">button_to_remote</span>(<span class="ruby-identifier">value</span>, <span class="ruby-identifier">options</span>, <span class="ruby-identifier">html_options</span>)
+77:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+		<div id="protected-instance-method-details" class="method-section section">
+			<h3 class="section-header">Protected Instance Methods</h3>
+
+		
+			<div id="options-for-ajax-with-dojo-method" class="method-detail ">
+				<a name="method-i-options_for_ajax_with_dojo"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">options_for_ajax_with_dojo</span><span
+						class="method-args">(options)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="options-for-ajax-with-dojo-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/drails/prototype_helper.rb, line 97</span>
+ 97:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">options_for_ajax_with_dojo</span>(<span class="ruby-identifier">options</span>)
+ 98:       <span class="ruby-identifier">js_options</span> = <span class="ruby-identifier">build_callbacks</span>(<span class="ruby-identifier">options</span>)
+ 99: 
+100:       <span class="ruby-identifier">js_options</span>[<span class="ruby-value str">'asynchronous'</span>] = <span class="ruby-identifier">options</span>[<span class="ruby-value">:type</span>] <span class="ruby-operator">!=</span> <span class="ruby-value">:synchronous</span>
+101:       <span class="ruby-identifier">js_options</span>[<span class="ruby-value str">'method'</span>]       = <span class="ruby-identifier">method_option_to_s</span>(<span class="ruby-identifier">options</span>[<span class="ruby-value">:method</span>]) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:method</span>]
+102:       <span class="ruby-identifier">js_options</span>[<span class="ruby-value str">'insertion'</span>]    = <span class="ruby-node">&quot;'#{options[:position].to_s.downcase}'&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:position</span>]
+103:       <span class="ruby-identifier">js_options</span>[<span class="ruby-value str">'evalScripts'</span>]  = <span class="ruby-identifier">options</span>[<span class="ruby-value">:script</span>].<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:script</span>]
+104: 
+105:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:form</span>]
+106:         <span class="ruby-identifier">js_options</span>[<span class="ruby-value str">'parameters'</span>] = <span class="ruby-value str">'dojo.formToQuery(this)'</span>
+107:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:submit</span>]
+108:         <span class="ruby-identifier">js_options</span>[<span class="ruby-value str">'parameters'</span>] = <span class="ruby-node">&quot;dojo.formToQuery('#{options[:submit]}')&quot;</span>
+109:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:with</span>]
+110:         <span class="ruby-identifier">js_options</span>[<span class="ruby-value str">'parameters'</span>] = <span class="ruby-identifier">options</span>[<span class="ruby-value">:with</span>]
+111:       <span class="ruby-keyword kw">end</span>
+112: 
+113:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">protect_against_forgery?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">options</span>[<span class="ruby-value">:form</span>]
+114:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">js_options</span>[<span class="ruby-value str">'parameters'</span>]
+115:           <span class="ruby-identifier">js_options</span>[<span class="ruby-value str">'parameters'</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot; + '&amp;&quot;</span>
+116:         <span class="ruby-keyword kw">else</span>
+117:           <span class="ruby-identifier">js_options</span>[<span class="ruby-value str">'parameters'</span>] = <span class="ruby-value str">&quot;'&quot;</span>
+118:         <span class="ruby-keyword kw">end</span>
+119:         <span class="ruby-identifier">js_options</span>[<span class="ruby-value str">'parameters'</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{request_forgery_protection_token}=' + encodeURIComponent('#{escape_javascript form_authenticity_token}')&quot;</span>
+120:       <span class="ruby-keyword kw">end</span>
+121: 
+122:       <span class="ruby-identifier">options_for_javascript</span>(<span class="ruby-identifier">js_options</span>)
+123:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with --debug to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+

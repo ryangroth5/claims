@@ -1,0 +1,761 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Class: DojoGenerator</title>
+
+	<link rel="stylesheet" href="./rdoc.css" type="text/css" media="screen" />
+
+	<script src="./js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+
+</head>
+<body class="class">
+
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="./index.html">Home</a>
+          <a href="./index.html#classes">Classes</a>
+          <a href="./index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="./generators/dojo/dojo_generator_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="generators/dojo/dojo_generator.rb">generators/dojo/dojo_generator.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+			<div id="parent-class-section" class="section">
+				<h3 class="section-header">Parent</h3>
+				
+				<p class="link">Rails::Generator::Base</p>
+				
+			</div>
+			
+
+			<!-- Namespace Contents -->
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#method-c-new">::new</a></li>
+					
+					<li><a href="#method-i-build_manifest">#build_manifest</a></li>
+					
+					<li><a href="#method-i-manifest">#manifest</a></li>
+					
+					<li><a href="#method-i-module_manifest">#module_manifest</a></li>
+					
+					<li><a href="#method-i-setup_build_instance_vars">#setup_build_instance_vars</a></li>
+					
+					<li><a href="#method-i-setup_generated_prefixes">#setup_generated_prefixes</a></li>
+					
+					<li><a href="#method-i-setup_instance_vars">#setup_instance_vars</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="./CHANGES.html">CHANGES</a></li>
+				
+					<li class="file"><a href="./CONTRIB.html">CONTRIB</a></li>
+				
+					<li class="file"><a href="./MIT-LICENSE.html">MIT-LICENSE</a></li>
+				
+					<li class="file"><a href="./README.html">README</a></li>
+				
+					<li class="file"><a href="./Rakefile.html">Rakefile</a></li>
+				
+					<li class="file"><a href="./TODO.html">TODO</a></li>
+				
+					<li class="file"><a href="./generators/dojo/USAGE.html">USAGE</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="./images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="./Drails.html">Drails</a></li>
+				
+					<li><a href="./Drails/DojoHelper.html">Drails::DojoHelper</a></li>
+				
+					<li><a href="./Drails/IncompatibilityError.html">Drails::IncompatibilityError</a></li>
+				
+					<li><a href="./Drails/Installer.html">Drails::Installer</a></li>
+				
+					<li><a href="./Drails/PrototypeHelper.html">Drails::PrototypeHelper</a></li>
+				
+					<li><a href="./Drails/PrototypeOverride.html">Drails::PrototypeOverride</a></li>
+				
+					<li><a href="./Drails/ScriptaculousHelper.html">Drails::ScriptaculousHelper</a></li>
+				
+					<li><a href="./Drails/ScriptaculousOverride.html">Drails::ScriptaculousOverride</a></li>
+				
+					<li><a href="./CustomMatchers.html">CustomMatchers</a></li>
+				
+					<li><a href="./CustomMatchers/IncludeOptions.html">CustomMatchers::IncludeOptions</a></li>
+				
+					<li><a href="./Rails.html">Rails</a></li>
+				
+					<li><a href="./Rails/VERSION.html">Rails::VERSION</a></li>
+				
+					<li><a href="./ApplicationController.html">ApplicationController</a></li>
+				
+					<li><a href="./DojoGenerator.html">DojoGenerator</a></li>
+				
+					<li><a href="./DrailsDriver.html">DrailsDriver</a></li>
+				
+					<li><a href="./FormObserversController.html">FormObserversController</a></li>
+				
+					<li><a href="./Object.html">Object</a></li>
+				
+					<li><a href="./SeleniumSuite.html">SeleniumSuite</a></li>
+				
+					<li><a href="./TestView.html">TestView</a></li>
+				
+					<li><a href="./UpdaterController.html">UpdaterController</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1 class="class">DojoGenerator</h1>
+
+		<div id="description">
+			
+		</div>
+
+		<!-- Constants -->
+		
+		<div id="constants-list" class="section">
+			<h3 class="section-header">Constants</h3>
+			<dl>
+			
+				<dt><a name="JS_PATH">JS_PATH</a></dt>
+				
+				<dd class="description"></dd>
+				
+			
+			</dl>
+		</div>
+		
+
+		<!-- Attributes -->
+		
+		<div id="attribute-method-details" class="method-section section">
+			<h3 class="section-header">Attributes</h3>
+
+			
+			<div id="type-attribute-method" class="method-detail">
+				<a name="type"></a>
+				
+				<a name="type="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">type</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+Shared instance vars
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="name-attribute-method" class="method-detail">
+				<a name="name"></a>
+				
+				<a name="name="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">name</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+Shared instance vars
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="generated-prefixes-attribute-method" class="method-detail">
+				<a name="generated_prefixes"></a>
+				
+				<a name="generated_prefixes="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">generated_prefixes</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+Build instance vars
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="build-file-attribute-method" class="method-detail">
+				<a name="build_file"></a>
+				
+				<a name="build_file="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">build_file</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+Build instance vars
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="split-name-attribute-method" class="method-detail">
+				<a name="split_name"></a>
+				
+				<a name="split_name="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">split_name</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+Module instance vars
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="module-name-attribute-method" class="method-detail">
+				<a name="module_name"></a>
+				
+				<a name="module_name="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">module_name</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+Module instance vars
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="module-namespace-attribute-method" class="method-detail">
+				<a name="module_namespace"></a>
+				
+				<a name="module_namespace="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">module_namespace</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+Module instance vars
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="module-prefix-attribute-method" class="method-detail">
+				<a name="module_prefix"></a>
+				
+				<a name="module_prefix="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">module_prefix</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+Module instance vars
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="module-public-dir-attribute-method" class="method-detail">
+				<a name="module_public_dir"></a>
+				
+				<a name="module_public_dir="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">module_public_dir</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+Module instance vars
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="module-rails-dir-attribute-method" class="method-detail">
+				<a name="module_rails_dir"></a>
+				
+				<a name="module_rails_dir="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">module_rails_dir</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+Module instance vars
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="module-js-rails-path-attribute-method" class="method-detail">
+				<a name="module_js_rails_path"></a>
+				
+				<a name="module_js_rails_path="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">module_js_rails_path</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+Module instance vars
+</p>
+				
+				</div>
+			</div>
+			
+		</div>
+		
+
+		<!-- Methods -->
+		
+		<div id="public-class-method-details" class="method-section section">
+			<h3 class="section-header">Public Class Methods</h3>
+
+		
+			<div id="new-method" class="method-detail ">
+				<a name="method-c-new"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">new</span><span
+						class="method-args">(runtime_args, runtime_options = {})</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="new-source">
+<pre>
+    <span class="ruby-comment cmt"># File generators/dojo/dojo_generator.rb, line 14</span>
+14:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">runtime_args</span>, <span class="ruby-identifier">runtime_options</span> = {})
+15:     <span class="ruby-keyword kw">super</span>
+16:     <span class="ruby-ivar">@type</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">shift</span>
+17:     <span class="ruby-ivar">@name</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">shift</span>
+18:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+			<div id="manifest-method" class="method-detail ">
+				<a name="method-i-manifest"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">manifest</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="manifest-source">
+<pre>
+    <span class="ruby-comment cmt"># File generators/dojo/dojo_generator.rb, line 20</span>
+20:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">manifest</span>
+21:     <span class="ruby-identifier">m</span> = <span class="ruby-keyword kw">nil</span>
+22:     
+23:     <span class="ruby-comment cmt"># TODO: Figure out the right way to throw errors.  There's probably a more</span>
+24:     <span class="ruby-comment cmt"># &quot;railsy&quot; way to do this.</span>
+25:     <span class="ruby-keyword kw">begin</span>
+26:       <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;TYPE and NAME must be passed as arguments&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">name</span>
+27:       
+28:       <span class="ruby-identifier">m</span> = <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">type</span>
+29:       <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;build&quot;</span><span class="ruby-operator">:</span> <span class="ruby-identifier">build_manifest</span>
+30:       <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;dijit&quot;</span><span class="ruby-operator">:</span> <span class="ruby-identifier">module_manifest</span>
+31:       <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;module&quot;</span><span class="ruby-operator">:</span> <span class="ruby-identifier">module_manifest</span>
+32:       <span class="ruby-keyword kw">end</span>
+33:     <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+34:       <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;USAGE ERROR: &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;\n\n&quot;</span>
+35:       <span class="ruby-identifier">puts</span> <span class="ruby-identifier">usage</span>()
+36:     <span class="ruby-keyword kw">end</span>
+37:     <span class="ruby-identifier">m</span>
+38:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+		<div id="private-instance-method-details" class="method-section section">
+			<h3 class="section-header">Private Instance Methods</h3>
+
+		
+			<div id="build-manifest-method" class="method-detail ">
+				<a name="method-i-build_manifest"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">build_manifest</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="build-manifest-source">
+<pre>
+    <span class="ruby-comment cmt"># File generators/dojo/dojo_generator.rb, line 70</span>
+70:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">build_manifest</span>
+71:     <span class="ruby-identifier">setup_build_instance_vars</span>
+72:     
+73:     <span class="ruby-identifier">record</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span>
+74:       <span class="ruby-identifier">m</span>.<span class="ruby-identifier">template</span> <span class="ruby-value str">&quot;build/profile.js&quot;</span>, <span class="ruby-node">&quot;#{JS_PATH}/#{build_file}&quot;</span>
+75:       <span class="ruby-identifier">m</span>.<span class="ruby-identifier">template</span> <span class="ruby-value str">&quot;build/README&quot;</span>, <span class="ruby-node">&quot;#{JS_PATH}/README&quot;</span>
+76:     <span class="ruby-keyword kw">end</span>
+77:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="module-manifest-method" class="method-detail ">
+				<a name="method-i-module_manifest"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">module_manifest</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="module-manifest-source">
+<pre>
+     <span class="ruby-comment cmt"># File generators/dojo/dojo_generator.rb, line 79</span>
+ 79:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">module_manifest</span>
+ 80:     <span class="ruby-identifier">setup_instance_vars</span>
+ 81:     
+ 82:     <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;Module TYPE must be in the format namespace.module&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">split_name</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+ 83:     <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">type</span>
+ 84:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;module&quot;</span><span class="ruby-operator">:</span>
+ 85:       <span class="ruby-identifier">source_js</span> = <span class="ruby-value str">&quot;module/module.js&quot;</span>
+ 86:       <span class="ruby-identifier">source_test_html</span> = <span class="ruby-value str">&quot;module/tests/test_module.html&quot;</span>
+ 87:       <span class="ruby-identifier">source_readme</span> = <span class="ruby-value str">&quot;module/README&quot;</span>
+ 88:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;dijit&quot;</span><span class="ruby-operator">:</span>
+ 89:       <span class="ruby-identifier">source_js</span> = <span class="ruby-value str">&quot;dijit/Dijit.js&quot;</span>
+ 90:       <span class="ruby-identifier">source_test_html</span> = <span class="ruby-value str">&quot;dijit/tests/test_Dijit.html&quot;</span>
+ 91:       <span class="ruby-identifier">source_readme</span> = <span class="ruby-value str">&quot;dijit/README&quot;</span>
+ 92:     <span class="ruby-keyword kw">end</span>
+ 93:     <span class="ruby-identifier">record</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span>
+ 94:       <span class="ruby-identifier">m</span>.<span class="ruby-identifier">directory</span> <span class="ruby-identifier">module_rails_dir</span>
+ 95:       <span class="ruby-identifier">m</span>.<span class="ruby-identifier">template</span> <span class="ruby-identifier">source_js</span>, <span class="ruby-identifier">module_js_rails_path</span>
+ 96:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;dijit&quot;</span>
+ 97:         <span class="ruby-identifier">m</span>.<span class="ruby-identifier">directory</span> <span class="ruby-node">&quot;#{module_rails_dir}/templates&quot;</span>
+ 98:         <span class="ruby-identifier">m</span>.<span class="ruby-identifier">template</span> <span class="ruby-value str">&quot;dijit/templates/Dijit.html&quot;</span>, <span class="ruby-node">&quot;#{module_rails_dir}/templates/#{module_name}.html&quot;</span>
+ 99:       <span class="ruby-keyword kw">end</span>
+100:       <span class="ruby-identifier">m</span>.<span class="ruby-identifier">directory</span> <span class="ruby-node">&quot;#{module_rails_dir}/tests&quot;</span>
+101:       <span class="ruby-identifier">m</span>.<span class="ruby-identifier">template</span> <span class="ruby-value str">&quot;shared/tests/all.js&quot;</span>, <span class="ruby-node">&quot;#{module_rails_dir}/tests/all.js&quot;</span>
+102:       <span class="ruby-identifier">m</span>.<span class="ruby-identifier">template</span> <span class="ruby-identifier">source_test_html</span>, <span class="ruby-node">&quot;#{module_rails_dir}/tests/test_#{module_name}.html&quot;</span>
+103:       <span class="ruby-identifier">m</span>.<span class="ruby-identifier">template</span> <span class="ruby-value str">&quot;shared/tests/runTests.html&quot;</span>, <span class="ruby-node">&quot;#{module_rails_dir}/tests/runTests.html&quot;</span>
+104:       <span class="ruby-identifier">m</span>.<span class="ruby-identifier">template</span> <span class="ruby-identifier">source_readme</span>, <span class="ruby-node">&quot;#{module_rails_dir}/README&quot;</span>
+105:     <span class="ruby-keyword kw">end</span>
+106:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="setup-build-instance-vars-method" class="method-detail ">
+				<a name="method-i-setup_build_instance_vars"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">setup_build_instance_vars</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="setup-build-instance-vars-source">
+<pre>
+    <span class="ruby-comment cmt"># File generators/dojo/dojo_generator.rb, line 54</span>
+54:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">setup_build_instance_vars</span>
+55:     <span class="ruby-ivar">@build_file</span> = <span class="ruby-node">&quot;#{name}.profile.js&quot;</span>
+56:     <span class="ruby-identifier">setup_generated_prefixes</span>
+57:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="setup-generated-prefixes-method" class="method-detail ">
+				<a name="method-i-setup_generated_prefixes"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">setup_generated_prefixes</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="setup-generated-prefixes-source">
+<pre>
+    <span class="ruby-comment cmt"># File generators/dojo/dojo_generator.rb, line 59</span>
+59:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">setup_generated_prefixes</span>
+60:     <span class="ruby-identifier">js_dirs</span> = <span class="ruby-constant">Dir</span>[<span class="ruby-node">&quot;#{RAILS_ROOT}/public/javascripts/*&quot;</span>].<span class="ruby-identifier">select</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">directory?</span>(<span class="ruby-identifier">f</span>) }
+61:     <span class="ruby-identifier">modules</span> = <span class="ruby-identifier">js_dirs</span>.<span class="ruby-identifier">select</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">d</span><span class="ruby-operator">|</span> <span class="ruby-identifier">dirname</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;/&quot;</span>).<span class="ruby-identifier">pop</span>; <span class="ruby-identifier">dirname</span> <span class="ruby-operator">!=</span> <span class="ruby-value str">&quot;dojo&quot;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">dirname</span> <span class="ruby-operator">!=</span> <span class="ruby-value str">&quot;.&quot;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">dirname</span> <span class="ruby-operator">!=</span> <span class="ruby-value str">&quot;..&quot;</span> }
+62:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">modules</span>
+63:       <span class="ruby-ivar">@generated_prefixes</span> = <span class="ruby-identifier">modules</span>.<span class="ruby-identifier">collect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">dir</span><span class="ruby-operator">|</span>
+64:         <span class="ruby-identifier">dirname</span> = <span class="ruby-identifier">dir</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;/&quot;</span>).<span class="ruby-identifier">pop</span>
+65:         <span class="ruby-node">&quot;[ '#{dirname}', '../../#{dirname}' ]&quot;</span>
+66:       }
+67:     <span class="ruby-keyword kw">end</span>
+68:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="setup-instance-vars-method" class="method-detail ">
+				<a name="method-i-setup_instance_vars"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">setup_instance_vars</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="setup-instance-vars-source">
+<pre>
+    <span class="ruby-comment cmt"># File generators/dojo/dojo_generator.rb, line 43</span>
+43:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">setup_instance_vars</span>
+44:     <span class="ruby-identifier">tmp_module_array</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;.&quot;</span>)
+45:     <span class="ruby-ivar">@split_name</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">tmp_module_array</span>)
+46:         <span class="ruby-ivar">@module_name</span> = <span class="ruby-identifier">tmp_module_array</span>.<span class="ruby-identifier">pop</span>
+47:         <span class="ruby-ivar">@module_namespace</span> = <span class="ruby-identifier">tmp_module_array</span>.<span class="ruby-identifier">first</span>
+48:         <span class="ruby-ivar">@module_prefix</span> = <span class="ruby-identifier">tmp_module_array</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;.&quot;</span>)
+49:         <span class="ruby-ivar">@module_public_dir</span> = <span class="ruby-identifier">tmp_module_array</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">'.'</span>).<span class="ruby-identifier">join</span>(<span class="ruby-value str">'/'</span>)
+50:         <span class="ruby-ivar">@module_rails_dir</span> = <span class="ruby-node">&quot;#{JS_PATH}/#{module_public_dir}&quot;</span>
+51:         <span class="ruby-ivar">@module_js_rails_path</span> = <span class="ruby-node">&quot;#{module_rails_dir}/#{module_name}.js&quot;</span>
+52:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with --debug to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+

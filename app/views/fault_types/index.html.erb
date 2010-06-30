@@ -1,0 +1,18 @@
+<h1>Listing fault_types</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% @fault_types.each do |fault_type| %>
+  <tr>
+    <td><%= link_to 'Show', fault_type %></td>
+    <td><%= link_to 'Edit', edit_fault_type_path(fault_type) %></td>
+    <td><%= link_to 'Destroy', fault_type, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New fault_type', new_fault_type_path %>

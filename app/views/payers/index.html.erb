@@ -1,0 +1,18 @@
+<h1>Listing payers</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% @payers.each do |payer| %>
+  <tr>
+    <td><%= link_to 'Show', payer %></td>
+    <td><%= link_to 'Edit', edit_payer_path(payer) %></td>
+    <td><%= link_to 'Destroy', payer, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New payer', new_payer_path %>

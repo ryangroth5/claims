@@ -1,0 +1,3239 @@
+Script started on Tue 29 Jun 2010 08:57:43 PM EDT
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ /etc/init.d/postgresql-8.4 restart^C
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ 
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ /etc/init.d/postgresql-8.4 restart[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[18Pjoe pg_hba.conf [K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kscript/console 
+Loading development environment (Rails 2.3.8)
+sh: irb: not found
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ script/console [K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kapt-get install irb
+E: Could not open lock file /var/lib/dpkg/lock - open (13: Permission denied)
+E: Unable to lock the administration directory (/var/lib/dpkg/), are you root?
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ apt-get install irb[1@s[1@u[1@d[1@o[1@ 
+[sudo] password for dev: 
+Reading package lists... 0%Reading package lists... 0%Reading package lists... 22%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree       
+Reading state information... 0%Reading state information... 1%Reading state information... Done
+The following NEW packages will be installed:
+  irb
+0 upgraded, 1 newly installed, 0 to remove and 27 not upgraded.
+Need to get 5,138B of archives.
+After this operation, 45.1kB of additional disk space will be used.
+0% [Working]            Get:1 http://us.archive.ubuntu.com/ubuntu/ lucid/universe irb 4.2 [5,138B]
+            0% [1 irb 0B/5,138B 0%]                       100% [Working]              Fetched 5,138B in 0s (12.8kB/s)
+Selecting previously deselected package irb.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 50601 files and directories currently installed.)
+Unpacking irb (from .../apt/archives/irb_4.2_all.deb) ...
+Processing triggers for man-db ...
+Setting up irb (4.2) ...
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ sudo apt-get install irb[5P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[4Pscript/console 
+Loading development environment (Rails 2.3.8)
+>> User.find_all;
+?> 
+?> 
+?> 
+?> ;
+?> \
+?> ^C
+>> \[KIUs[K[K[KUser.
+?> User.mthods[K[K[K[K[Kethods
+NoMethodError: undefined method `User' for #<Class:0x7fa32526abe0>
+	from /var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/base.rb:1994:in `method_missing'
+	from (irb):7
+>> User.methods
+=> ["const_missing_without_dependencies", "const_get", "sanitize_conditions", "calculate", "class_inheritable_hash", "inspect", "lock_optimistically=", "before_destroy", "transaction", "require", "acts_like?", "update_counters_without_lock", "logger", "__id__", "local_constant_names", "validates_exclusion_of", "before_create", "protected_attributes", "after_destroy_callback_chain", "private_class_method", "timestamped_migrations", "locking_column", "subclasses", "after_find", "logger=", "attr_internal_reader", "validates_uniqueness_of", "scoped?", "sum", "encode_quoted_value", "const_set", "after_update_callback_chain", "construct_count_options_from_args", "methods", "inheritable_attributes", "timestamped_migrations=", "locking_column=", "after_destroy", "reset_subclasses", "autoload", "inheritance_column", "partial_updates", "descends_from_active_record?", "validates_confirmation_of", "__send__", "as_load_path", "after_create", "debugger", "require_association", "attr_accessible", "inheritance_column=", "partial_updates=", "subclasses_of", "module_eval", "set_locking_column", "method", "content_columns", "nested_attributes_options", "has_many", "const_missing_with_dependencies", "reset_counters", "average", "singleton_methods", "nil?", "finder_needs_type_condition?", "nested_attributes_options=", "expand_hash_conditions_for_aggregates", "try", "included_modules", "time_zone_aware_attributes", "sanitize_sql_for_conditions", "valid_keys_for_belongs_to_association", "alias_method_chain", "validates_associated", "breakpoint", "with_scope", "accessible_attributes", "module_exec", "const_defined?", "remove_class", "time_zone_aware_attributes=", "valid_keys_for_belongs_to_association=", "store_full_sti_class", "attr_internal_writer", "display", "daemonize", "metaclass", "autoload?", "changed?", "before_validation_callback_chain", "create", "protected_methods", "model_name", "store_full_sti_class=", "equal?", "sequence_name", "after_find_callback_chain", "default_timezone", "cattr_reader", "validates_numericality_of", "locking_enabled?", "load_with_new_constant_marking", "cache", "attr_readonly", "sequence_name=", "class_eval", "default_scoping", "default_timezone=", "attr_internal_accessor", "accepts_nested_attributes_for", "column_methods_hash", "deprecate", "const_missing", "private_methods", "send", "encode64", "include?", "write_inheritable_attribute", "primary_key_prefix_type", "default_scoping=", "eql?", "validates_acceptance_of", "first", "reset_sequence_name", "changed", "name", "delete_all", "id", "has_and_belongs_to_many", "primary_key_prefix_type=", "before_update", "deprecation_horizon", "readonly_attributes", "taguri", "class_exec", "valid_keys_for_has_many_association", "validate_find_options", "superclass_delegating_reader", "instance_method", "attr_internal", "singleton_class", "unloadable", "class_variables", "connection", "after_validation_callback_chain", "instance_eval", "public_methods", "decode64", "taguri=", "present?", "write_inheritable_array", "valid_keys_for_has_many_association=", "notify_observers", "metaclass_with_deprecation", "delete", "presence", "ancestors", "after_initialize_callback_chain", "valid_keys_for_has_and_belongs_to_many_association", "attribute_method_suffix", "type", "after_update", "minimum", "serialize", "partial_updates?", "current_scoped_methods", "to_yaml_style", "valid_keys_for_has_and_belongs_to_many_association=", "synchronize", "attr_internal_naming_format", "reset_column_information", "sqlite_connection", "enable_warnings", "reflect_on_association", "define_read_methods", "connection_handler", "instance_exec", "instance_variables", "decode_b", "table_name_prefix", "add_observer", "metaclass_without_deprecation", "attr_internal_naming_format=", "set_sequence_name", "replace_bind_variables", "update_all", "attribute_types_cached_by_default", "connection_handler=", "class", "cattr_writer", "table_name_prefix=", "set_readonly_option!", "sanitize", "maximum", "serialized_attributes", "scoped_methods", "to_yaml_properties", "superclass_delegating_writer", "attribute_types_cached_by_default=", "find_hidden_method", "generated_methods", "silence_stderr", "cache_attributes", "named_scope", "before_validation_on_create_callback_chain", "execute_grouped_calculation", "instance_variable_get", "read_inheritable_attribute", "with_options", "<=>", "validates_presence_of", "expand_range_bind_variables", "==", "skip_time_zone_conversion_for_attributes", "before_save_callback_chain", "clone", "<", "===", "count", "with_exclusive_scope", ">", ">=", "superclass_delegating_accessor", "skip_time_zone_conversion_for_attributes=", "<=", "attr_accessor_with_default", "alias_attribute_with_dirty", "to_yaml", "has_one", "silence_stream", "cached_attributes", "scoped", "verification_timeout", "execute_simple_calculation", "instance_variable_set", "yaml_as", "write_inheritable_hash", "table_name_suffix", "clear_active_connections!", "=~", "validates_length_of", "set_inheritance_column", "sanitize_sql_hash", "exists?", "extended_by", "sanitize_sql_for_assignment", "verification_timeout=", "dup", "blank?", "table_name_suffix=", "cattr_accessor", "update", "alias_attribute", "before_validation", "find", "reset_table_name", "record_timestamps", "silence_warnings", "delegate", "allocate", "reset_column_information_and_inheritable_attributes_for_all_subclasses", "alias_attribute_without_dirty", "superclass", "quote_value", "scopes", "connection_pool", "reflect_on_aggregation", "after_validation_on_create_callback_chain", "construct_calculation_sql", "b64encode", "reset_inheritable_attributes", "class_name", "clear_all_connections!", "delete_observer", "record_timestamps=", "mattr_reader", "create!", "respond_to?", "quote_bound_value", "extend_with_included_modules_from", "retrieve_connection", "include_root_in_json", "after_save_callback_chain", "taint", "validate_on_create", "class_of_active_record_descendant", "after_validation", "reflect_on_all_aggregations", "all", "default_scope", "set_primary_key", "to_json", "find_by_sql", "include_root_in_json=", "instance_variable_defined?", "self_and_descendants_from_active_record", "update_counters", "table_exists?", "aggregate_mapping", "yaml_tag_class_name", "preload_associations", "delete_observers", "pluralize_table_names", "table_name", "mattr_writer", "columns", "reflect_on_all_autosave_associations", "allow_concurrency", "sqlite3_connection", "replace_named_bind_variables", "instance_methods", "abstract_class?", "class_inheritable_reader", "connected?", "abstract_class", "before_validation_on_create", "composed_of", "pluralize_table_names=", "validate_on_update", "table_name=", "yaml_tag_read_class", "allow_concurrency=", "extend", "new", "cache_attribute?", "quoted_locking_column", "human_attribute_name", "abstract_class=", "inherited", "suppress", "before_validation_on_update_callback_chain", "count_observers", "validate_callback_chain", "match_attribute_method?", "tainted?", "returning", "public_instance_methods", "remove_connection", "before_create_callback_chain", "find_each", "untaint", "require_dependency", "parent", "class_inheritable_writer", "clear_reloadable_connections!", "after_validation_on_create", "class_name_of_active_record_descendant", "full_table_name_prefix", "connection_handler?", "instance_of?", "to_param", "parent_name", "`", "html_safe?", "store_full_sti_class?", "colorize_logging", "raise_if_bind_arity_mismatch", "destroy", "protected_instance_methods", "yaml_tag_subclasses?", "find_in_batches", "uncached", "freeze", "class_inheritable_array_writer", "before_validation_on_update", "colorize_logging=", "configurations", "verify_active_connections!", "sanitize_sql_array", "last", "silence", "sanitize_sql", "kind_of?", "to_query", "method_defined?", "configurations=", "benchmark", "before_save", "require_library_or_gem", "after_validation_on_update_callback_chain", "object_id", "validate_on_create_callback_chain", "generated_methods?", "observers", "instance_values", "private_instance_methods", "after_create_callback_chain", "reflections", "define_attribute_methods", "class_inheritable_hash_writer", "sti_name", "after_validation_on_update", "observers=", "sanitize_sql_hash_for_conditions", "set_table_name", "as_json", "is_a?", "parents", "public_method_defined?", "belongs_to", "validates_format_of", "after_save", "primary_key", "increment_counter", "to_enum", "tap", "frozen?", "included_in_classes", "columns_hash", "instance_variable_names", "destroy_all", "primary_key=", "to_a", "class_inheritable_accessor", "establish_connection", "merge_conditions", "after_initialize", "reset_primary_key", "reflect_on_all_associations", "create_reflection", "validate", "reset_locking_column", "local_constants", "private_method_defined?", "duplicable?", "method_added", "validates_inclusion_of", "human_name", "mattr_accessor", "scope", "decrement_counter", "before_destroy_callback_chain", "enum_for", "class_variable_defined?", "remove_subclasses", "schema_format", "validate_on_update_callback_chain", "instance_method_already_implemented?", "copy_instance_variables_from", "constants", "count_by_sql", "base_class", "before_update_callback_chain", "to_s", "schema_format=", "class_inheritable_array", "validates_each", "get_primary_key", "sanitize_sql_hash_for_assignment", "hash", "deprecated_method_warning", "valid_keys_for_has_one_association", "quoted_table_name", "update_counters_with_lock", "protected_method_defined?", "instantiate_observers", "require_or_load", "define_callbacks", "attr_protected", "remove_subclasses_of", "public_class_method", "valid_keys_for_has_one_association=", "lock_optimistically", "compute_type", "validates_size_of", "column_names"]
+>> User.methods[K[K[K[K[K[K[Kdin[K[K[Kfidn[K[K[K[K[K.methods.sort
+=> ["<", "<=", "<=>", "==", "===", "=~", ">", ">=", "__id__", "__send__", "`", "abstract_class", "abstract_class=", "abstract_class?", "accepts_nested_attributes_for", "accessible_attributes", "acts_like?", "add_observer", "after_create", "after_create_callback_chain", "after_destroy", "after_destroy_callback_chain", "after_find", "after_find_callback_chain", "after_initialize", "after_initialize_callback_chain", "after_save", "after_save_callback_chain", "after_update", "after_update_callback_chain", "after_validation", "after_validation_callback_chain", "after_validation_on_create", "after_validation_on_create_callback_chain", "after_validation_on_update", "after_validation_on_update_callback_chain", "aggregate_mapping", "alias_attribute", "alias_attribute_with_dirty", "alias_attribute_without_dirty", "alias_method_chain", "all", "allocate", "allow_concurrency", "allow_concurrency=", "ancestors", "as_json", "as_load_path", "attr_accessible", "attr_accessor_with_default", "attr_internal", "attr_internal_accessor", "attr_internal_naming_format", "attr_internal_naming_format=", "attr_internal_reader", "attr_internal_writer", "attr_protected", "attr_readonly", "attribute_method_suffix", "attribute_types_cached_by_default", "attribute_types_cached_by_default=", "autoload", "autoload?", "average", "b64encode", "base_class", "before_create", "before_create_callback_chain", "before_destroy", "before_destroy_callback_chain", "before_save", "before_save_callback_chain", "before_update", "before_update_callback_chain", "before_validation", "before_validation_callback_chain", "before_validation_on_create", "before_validation_on_create_callback_chain", "before_validation_on_update", "before_validation_on_update_callback_chain", "belongs_to", "benchmark", "blank?", "breakpoint", "cache", "cache_attribute?", "cache_attributes", "cached_attributes", "calculate", "cattr_accessor", "cattr_reader", "cattr_writer", "changed", "changed?", "class", "class_eval", "class_exec", "class_inheritable_accessor", "class_inheritable_array", "class_inheritable_array_writer", "class_inheritable_hash", "class_inheritable_hash_writer", "class_inheritable_reader", "class_inheritable_writer", "class_name", "class_name_of_active_record_descendant", "class_of_active_record_descendant", "class_variable_defined?", "class_variables", "clear_active_connections!", "clear_all_connections!", "clear_reloadable_connections!", "clone", "colorize_logging", "colorize_logging=", "column_methods_hash", "column_names", "columns", "columns_hash", "composed_of", "compute_type", "configurations", "configurations=", "connected?", "connection", "connection_handler", "connection_handler=", "connection_handler?", "connection_pool", "const_defined?", "const_get", "const_missing", "const_missing_with_dependencies", "const_missing_without_dependencies", "const_set", "constants", "construct_calculation_sql", "construct_count_options_from_args", "content_columns", "copy_instance_variables_from", "count", "count_by_sql", "count_observers", "create", "create!", "create_reflection", "current_scoped_methods", "daemonize", "debugger", "decode64", "decode_b", "decrement_counter", "default_scope", "default_scoping", "default_scoping=", "default_timezone", "default_timezone=", "define_attribute_methods", "define_callbacks", "define_read_methods", "delegate", "delete", "delete_all", "delete_observer", "delete_observers", "deprecate", "deprecated_method_warning", "deprecation_horizon", "descends_from_active_record?", "destroy", "destroy_all", "display", "dup", "duplicable?", "enable_warnings", "encode64", "encode_quoted_value", "enum_for", "eql?", "equal?", "establish_connection", "execute_grouped_calculation", "execute_simple_calculation", "exists?", "expand_hash_conditions_for_aggregates", "expand_range_bind_variables", "extend", "extend_with_included_modules_from", "extended_by", "find", "find_by_sql", "find_each", "find_hidden_method", "find_in_batches", "finder_needs_type_condition?", "first", "freeze", "frozen?", "full_table_name_prefix", "generated_methods", "generated_methods?", "get_primary_key", "has_and_belongs_to_many", "has_many", "has_one", "hash", "html_safe?", "human_attribute_name", "human_name", "id", "include?", "include_root_in_json", "include_root_in_json=", "included_in_classes", "included_modules", "increment_counter", "inheritable_attributes", "inheritance_column", "inheritance_column=", "inherited", "inspect", "instance_eval", "instance_exec", "instance_method", "instance_method_already_implemented?", "instance_methods", "instance_of?", "instance_values", "instance_variable_defined?", "instance_variable_get", "instance_variable_names", "instance_variable_set", "instance_variables", "instantiate_observers", "is_a?", "kind_of?", "last", "load_with_new_constant_marking", "local_constant_names", "local_constants", "lock_optimistically", "lock_optimistically=", "locking_column", "locking_column=", "locking_enabled?", "logger", "logger=", "match_attribute_method?", "mattr_accessor", "mattr_reader", "mattr_writer", "maximum", "merge_conditions", "metaclass", "metaclass_with_deprecation", "metaclass_without_deprecation", "method", "method_added", "method_defined?", "methods", "minimum", "model_name", "module_eval", "module_exec", "name", "named_scope", "nested_attributes_options", "nested_attributes_options=", "new", "nil?", "notify_observers", "object_id", "observers", "observers=", "parent", "parent_name", "parents", "partial_updates", "partial_updates=", "partial_updates?", "pluralize_table_names", "pluralize_table_names=", "preload_associations", "presence", "present?", "primary_key", "primary_key=", "primary_key_prefix_type", "primary_key_prefix_type=", "private_class_method", "private_instance_methods", "private_method_defined?", "private_methods", "protected_attributes", "protected_instance_methods", "protected_method_defined?", "protected_methods", "public_class_method", "public_instance_methods", "public_method_defined?", "public_methods", "quote_bound_value", "quote_value", "quoted_locking_column", "quoted_table_name", "raise_if_bind_arity_mismatch", "read_inheritable_attribute", "readonly_attributes", "record_timestamps", "record_timestamps=", "reflect_on_aggregation", "reflect_on_all_aggregations", "reflect_on_all_associations", "reflect_on_all_autosave_associations", "reflect_on_association", "reflections", "remove_class", "remove_connection", "remove_subclasses", "remove_subclasses_of", "replace_bind_variables", "replace_named_bind_variables", "require", "require_association", "require_dependency", "require_library_or_gem", "require_or_load", "reset_column_information", "reset_column_information_and_inheritable_attributes_for_all_subclasses", "reset_counters", "reset_inheritable_attributes", "reset_locking_column", "reset_primary_key", "reset_sequence_name", "reset_subclasses", "reset_table_name", "respond_to?", "retrieve_connection", "returning", "sanitize", "sanitize_conditions", "sanitize_sql", "sanitize_sql_array", "sanitize_sql_for_assignment", "sanitize_sql_for_conditions", "sanitize_sql_hash", "sanitize_sql_hash_for_assignment", "sanitize_sql_hash_for_conditions", "schema_format", "schema_format=", "scope", "scoped", "scoped?", "scoped_methods", "scopes", "self_and_descendants_from_active_record", "send", "sequence_name", "sequence_name=", "serialize", "serialized_attributes", "set_inheritance_column", "set_locking_column", "set_primary_key", "set_readonly_option!", "set_sequence_name", "set_table_name", "silence", "silence_stderr", "silence_stream", "silence_warnings", "singleton_class", "singleton_methods", "skip_time_zone_conversion_for_attributes", "skip_time_zone_conversion_for_attributes=", "sqlite3_connection", "sqlite_connection", "sti_name", "store_full_sti_class", "store_full_sti_class=", "store_full_sti_class?", "subclasses", "subclasses_of", "sum", "superclass", "superclass_delegating_accessor", "superclass_delegating_reader", "superclass_delegating_writer", "suppress", "synchronize", "table_exists?", "table_name", "table_name=", "table_name_prefix", "table_name_prefix=", "table_name_suffix", "table_name_suffix=", "taguri", "taguri=", "taint", "tainted?", "tap", "time_zone_aware_attributes", "time_zone_aware_attributes=", "timestamped_migrations", "timestamped_migrations=", "to_a", "to_enum", "to_json", "to_param", "to_query", "to_s", "to_yaml", "to_yaml_properties", "to_yaml_style", "transaction", "try", "type", "uncached", "unloadable", "untaint", "update", "update_all", "update_counters", "update_counters_with_lock", "update_counters_without_lock", "valid_keys_for_belongs_to_association", "valid_keys_for_belongs_to_association=", "valid_keys_for_has_and_belongs_to_many_association", "valid_keys_for_has_and_belongs_to_many_association=", "valid_keys_for_has_many_association", "valid_keys_for_has_many_association=", "valid_keys_for_has_one_association", "valid_keys_for_has_one_association=", "validate", "validate_callback_chain", "validate_find_options", "validate_on_create", "validate_on_create_callback_chain", "validate_on_update", "validate_on_update_callback_chain", "validates_acceptance_of", "validates_associated", "validates_confirmation_of", "validates_each", "validates_exclusion_of", "validates_format_of", "validates_inclusion_of", "validates_length_of", "validates_numericality_of", "validates_presence_of", "validates_size_of", "validates_uniqueness_of", "verification_timeout", "verification_timeout=", "verify_active_connections!", "with_exclusive_scope", "with_options", "with_scope", "write_inheritable_array", "write_inheritable_attribute", "write_inheritable_hash", "yaml_as", "yaml_tag_class_name", "yaml_tag_read_class", "yaml_tag_subclasses?"]
+>> User.find(0)
+MissingSourceFile: no such file to load -- sqlite3
+	from /usr/lib/ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+	from /usr/lib/ruby/1.8/rubygems/custom_require.rb:31:in `require'
+	from /var/lib/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:156:in `require'
+	from /var/lib/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:521:in `new_constants_in'
+	from /var/lib/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:156:in `require'
+	from /var/lib/gems/1.8/gems/activesupport-2.3.8/lib/active_support/core_ext/kernel/requires.rb:7:in `require_library_or_gem'
+	from /var/lib/gems/1.8/gems/activesupport-2.3.8/lib/active_support/core_ext/kernel/reporting.rb:11:in `silence_warnings'
+	from /var/lib/gems/1.8/gems/activesupport-2.3.8/lib/active_support/core_ext/kernel/requires.rb:5:in `require_library_or_gem'
+	from /var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/connection_adapters/sqlite3_adapter.rb:10:in `sqlite3_connection'
+	from /var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:223:in `send'
+	from /var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:223:in `new_connection'
+	from /var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:245:in `checkout_new_connection'
+	from /var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:188:in `checkout'
+	from /var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `loop'
+	from /var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `checkout'
+	from /usr/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+	from /var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:183:in `checkout'
+	from /var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:98:in `connection'
+	from /var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:326:in `retrieve_connection'
+	from /var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_specification.rb:123:in `retrieve_connection'
+	from /var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_specification.rb:115:in `connection'
+	from /var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/base.rb:3154:in `quoted_table_name'
+	from /var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/base.rb:1608:in `find_one'
+	from /var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/base.rb:1599:in `find_from_ids'
+	from /var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/base.rb:619:in `find'
+	from (irb):11>> \[Kq
+NameError: undefined local variable or method `q' for #<Object:0x7fa32a62f2a8>
+	from (irb):12
+>> \q
+SyntaxError: compile error
+(irb):13: syntax error, unexpected $undefined
+	from (irb):13
+>> exit
+
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ joe y[K
+app/        db/         .gitignore  public/     script/     vendor/
+config/     doc/        lib/        Rakefile    test/       
+console     .git/       log/        README      tmp/        
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ joe 
+app/        db/         .gitignore  public/     script/     vendor/
+config/     doc/        lib/        Rakefile    test/       
+console     .git/       log/        README      tmp/        
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ joe 
+app/        db/         .gitignore  public/     script/     vendor/
+config/     doc/        lib/        Rakefile    test/       
+console     .git/       log/        README      tmp/        
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ joe con
+config/  console  
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ joe con
+config/  console  
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ joe config/
+boot.rb         database.yml~   environments/   locales/
+database.yml    environment.rb  initializers/   routes.rb
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ joe config/
+boot.rb         database.yml~   environments/   locales/
+database.yml    environment.rb  initializers/   routes.rb
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ joe config/
+boot.rb         database.yml~   environments/   locales/
+database.yml    environment.rb  initializers/   routes.rb
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ joe config/a[Kday[Ktabase.yml
+Processing '/etc/joe/joerc'...Processing '/etc/joe/ftyperc'...done
+done
+[H[2J[0m[1;24r[H[2J[7m    I    config/database.yml          Row 1    Col 1    8:59  Ctrl-K H for help
+[0m# SQLite version 3.x
+#   gem install sqlite3-ruby (not necessary on OS X Leopard)
+development:
+[2Cadapter: sqlite3
+[2Cdatabase: db/development.sqlite3
+[2Cpool: 5
+[2Ctimeout: 5000
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+adapter: postgresql[5G
+host: localhost[5G
+port: 5432[5G
+username: dev[5G
+password: dev[5G
+database: claims[5G
+schema_search_path: public[5G
+encoding: utf8[5G
+template: template0
+
+production:[7m** Joe's Own Editor v3.7 ** (utf-8) ** Copyright © 2008 **[H
+[A^[
+[A  [40C2[23B[0mproduction:[K[H
+
+[1;43H[7m3
+
+
+[1;43H4
+
+
+
+[H^[
+
+
+
+[H  [40C5[5B[1;43H6[6B[1;43H7[7B[1;43H8[8B[1;43H9[9B[1;43H10[10B[1;44H1[11B[1;44H2[12B[1;44H3[13B[1;44H4[14B[1;44H3[13B[H^[[13B[H  [41C2[12B[1;44H1[11B[1;44H0[10B[1;43H9 [9B[1;43H8[8B[1;43H7[7B[1;43H6[6B[H^[[6B[H  [40C5[5B[1;43H4
+
+
+
+[1;43H3
+
+
+[1;43H2
+
+[1;43H1
+[A^[
+[A  [40C2
+
+[1;43H3
+
+
+[1;43H4
+
+
+
+[1;30H(Modifi[5;3H[0mdatabase: db/development.sqlite3
+[2Cpool: 5[K
+[2Ctimeout: 5000
+[K
+# Warning: The database defined as "test" will be erased and
+[2Cre-generated from your development database when you run "rake".
+[2CDo not set this db to the same as development or production.[K
+test:[K
+    adapter: postgresql[5G
+host: localhost[K[5G
+port: 5432[K[5G
+username: dev[5G
+password
+[8Ddatabase: claims[5G
+schema_search_path: public[5G
+encoding: utf8[K[5G
+template: template0
+[K
+production:
+    adapter: postgresql[5d  pool: 5[K
+[2Ctimeout: 5000
+[K
+# Warning: The database defined as "test" will be erased and
+[2Cre-generated from your development database when you run "rake".
+[2CDo not set this db to the same as development or production.[K
+test:[K
+    adapter: postgresql[5G
+host: localhost[K[5G
+port: 5432[K[5G
+username: dev[5G
+password
+[8Ddatabase: claims[5G
+schema_search_path: public[5G
+encoding: utf8[K[5G
+template: template0
+[K
+production:
+    adapter: postgresql[5G
+host: localhost[K[5d  timeout: 5000
+[K
+# Warning: The database defined as "test" will be erased and
+[2Cre-generated from your development database when you run "rake".
+[2CDo not set this db to the same as development or production.[K
+test:[K
+    adapter: postgresql[5G
+host: localhost[K[5G
+port: 5432[K[5G
+username: dev[5G
+password
+[8Ddatabase: claims[5G
+schema_search_path: public[5G
+encoding: utf8[K[5G
+template: template0
+[K
+production:
+    adapter: postgresql[5G
+host: localhost[K[5G
+port: 5432[K[5d[K
+# Warning: The database defined as "test" will be erased and
+[2Cre-generated from your development database when you run "rake".
+[2CDo not set this db to the same as development or production.[K
+test:[K
+    adapter: postgresql[5G
+host: localhost[K[5G
+port: 5432[K[5G
+username: dev[5G
+password
+[8Ddatabase: claims[5G
+schema_search_path: public[5G
+encoding: utf8[K[5G
+template: template0
+[K
+production:
+    adapter: postgresql[5G
+host: localhost[K[5G
+port: 5432[K[5G
+username: dev[5d[1;43H[7m5[5B[1;43H6[6B[H^[[6B[H  [40C7[7B[1;43H8[8B[1;43H9[9B[H^K[9B[H  [40C10[10B[H^[[10B[H  [41C1[11B[1;44H2[12B[1;44H3[13B[1;44H4[14B[1;44H5[15B[1;44H6[16B[1;44H7[17B[1;44H8[18B[H^K[18B[9A    adapter: postgresql
+    host: localhost
+    port: 5432
+    username: dev
+    password: dev
+    database: claims
+    schema_search_path: public
+    encoding: utf8
+    template: template0
+[H[C[[18B[H  [41C7[17B[1;44H6[16B[1;44H5[15B[1;44H4[14B[1;44H3[13B[1;44H2[12B[1;44H1[11B[1;44H0[10B[1;43H9 [9B[1;43H8[8B[1;43H7[7B[1;43H6[6B[1;43H5[5B[H^[[5B[H  [40C4
+
+
+
+    adapter: postgresql
+    host: localhost[0m[K
+[7m    port: 5432[0m[K
+[7m    username: dev[0m[K
+[7m    password: dev[5G
+database: claims[0m   [5G
+[7mschema_search_path: public[5G
+encoding: utf8[5G
+template: template0
+[0m[K
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:[K
+adapter: postgresql
+    host: localhost[5G
+port: 5432[K[5G
+username: dev  [6G
+assword: dev[5G
+database: claims[5d[19B
+File config/database.yml saved
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ joe config/database.yml[8Pscript/console 
+Loading development environment (Rails 2.3.8)
+>> User.find(0)
+ActiveRecord::StatementInvalid: PGError: ERROR:  column users.id does not exist
+LINE 1: SELECT * FROM "users" WHERE ("users"."id" = 0) 
+                                     ^
+: SELECT * FROM "users" WHERE ("users"."id" = 0) 
+	from /var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract_adapter.rb:221:in `log'
+	from /var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/connection_adapters/postgresql_adapter.rb:520:in `execute'
+	from /var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/connection_adapters/postgresql_adapter.rb:1002:in `select_raw'
+	from /var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/connection_adapters/postgresql_adapter.rb:989:in `select'
+	from /var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/database_statements.rb:7:in `select_all_without_query_cache'
+	from /var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/query_cache.rb:62:in `select_all'
+	from /var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/base.rb:664:in `find_by_sql'
+	from /var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/base.rb:1578:in `find_every'
+	from /var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/base.rb:1613:in `find_one'
+	from /var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/base.rb:1599:in `find_from_ids'
+	from /var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/base.rb:619:in `find'
+	from (irb):1
+>> q[Kexit
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ cd mo[K[K[K[K[Kls
+[0m[01;34mapp[0m     console  [01;34mdoc[0m  [01;34mlog[0m     Rakefile  [01;34mscript[0m  [01;34mtmp[0m
+[01;34mconfig[0m  [01;34mdb[0m       [01;34mlib[0m  [01;34mpublic[0m  README    [01;34mtest[0m    [01;34mvendor[0m
+[m]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ cd app/models/
+]0;dev@LPGWEB: ~/dev/claims/app/modelsdev@LPGWEB:~/dev/claims/app/models$ joe user.rb 
+Processing '/etc/joe/joerc'...Processing '/etc/joe/ftyperc'...done
+done
+[H[2J[0m[1;24r[H[2J[7m    I A  user.rb (ruby)  class User   Row 1    Col 1    9:10  Ctrl-K H for help
+[0m[1mclass[0m User < ActiveRecord::Base
+[1mend[21B[0m[7m** Joe's Own Editor v3.7 ** (utf-8) ** Copyright © 2008 **[H
+[1;26Hend       [7C2[23B[0m[K[3ds[1;19H[7mModified)(ruby)  s[15C2
+
+[C[0m[1mnd[0m                        [Cet_primary_key [36m"entity_id"[0m [1mend[1;36H[0m[7me[6C3[8C1
+
+
+[0m[1mend[3;29H[0m   
+[1;43H[7m4
+
+
+
+[0m[1mend[A[0m   
+[1;36H[7ms[6C3
+
+
+[H^[
+
+
+[H  [40C2
+
+[1;43H3
+
+
+[1;43H2[8C29
+
+[25D[H^[
+
+[26C[0m[36m"[0m [36m"[0m [36m"[0m [36m"[0m [36m"[0m [H[7m  [50C2
+
+[32D[0m[36m"[0m [36m"[0m [36m"[0m [36m"[0m [1;52H[7m18
+
+[36D[0m[36mI"D"[H[0m[7m^[[49C20
+
+[34D[H  [40C3[8C1 [4;20H[H^K[4;20H[0m[20B
+File user.rb saved
+]0;dev@LPGWEB: ~/dev/claims/app/modelsdev@LPGWEB:~/dev/claims/app/models$ ../../sci[K[Kcript/console 
+Loading development environment (Rails 2.3.8)
+>> User.find(0)
+ActiveRecord::RecordNotFound: Couldn't find User with ID=0
+	from /var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/base.rb:1616:in `find_one'
+	from /var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/base.rb:1599:in `find_from_ids'
+	from /var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/base.rb:619:in `find'
+	from (irb):1
+>> User.find(0)[K[K1)
+=> #<User ID: 1, UserName: "Ryan">
+>> \q
+SyntaxError: compile error
+(irb):3: syntax error, unexpected $undefined
+	from (irb):3
+>> exit
+]0;dev@LPGWEB: ~/dev/claims/app/modelsdev@LPGWEB:~/dev/claims/app/models$ cd
+]0;dev@LPGWEB: ~dev@LPGWEB:~$ cd app
+bash: cd: app: No such file or directory
+]0;dev@LPGWEB: ~dev@LPGWEB:~$ cd [K[K[Kcd dev/claims/
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ script[K[K[K[K[K[Kscripts/gener[K[K[Kr[Knerate[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ ls
+[0m[01;34mapp[0m     console  [01;34mdoc[0m  [01;34mlog[0m     Rakefile  [01;34mscript[0m  [01;34mtmp[0m
+[01;34mconfig[0m  [01;34mdb[0m       [01;34mlib[0m  [01;34mpublic[0m  README    [01;34mtest[0m    [01;34mvendor[0m
+[m]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ script[K[K[K[K[K[Kscripts[K/
+about        dbconsole    generate     plugin       server       
+console      destroy      performance/ runner       
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ script/
+about        dbconsole    generate     plugin       server       
+console      destroy      performance/ runner       
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ script/
+about        dbconsole    generate     plugin       server       
+console      destroy      performance/ runner       
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ script/server 
+=> Booting WEBrick
+=> Rails 2.3.8 application starting on http://0.0.0.0:3000
+=> Call with -d to detach
+=> Ctrl-C to shutdown server
+[2010-06-29 21:12:07] INFO  WEBrick 1.3.1
+[2010-06-29 21:12:07] INFO  ruby 1.8.7 (2010-01-10) [x86_64-linux]
+[2010-06-29 21:12:07] INFO  WEBrick::HTTPServer#start: pid=11338 port=3000
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET search_path TO public[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET standard_conforming_strings = on[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing ApplicationController#index (for 192.168.147.117 at 2010-06-29 21:12:23) [GET]
+
+ActionController::RoutingError (No route matches "/user/1" with {:method=>:get}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET search_path TO public[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET standard_conforming_strings = on[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing UsersController#show (for 192.168.147.117 at 2010-06-29 21:12:30) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mUser Load (0.9ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."ID" = 1) [0m
+Rendering template within layouts/users
+Rendering users/show
+Completed in 72ms (View: 59, DB: 2) | 200 OK [http://lpgweb/users/1]
+  [4;35;1mSQL (0.5ms)[0m   [0mSET search_path TO public[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSET standard_conforming_strings = on[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UsersController#edit (for 192.168.147.117 at 2010-06-29 21:12:34) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mUser Load (0.8ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."ID" = 1) [0m
+Rendering template within layouts/users
+Rendering users/edit
+Completed in 27ms (View: 13, DB: 2) | 200 OK [http://lpgweb/users/1/edit]
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET search_path TO public[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET standard_conforming_strings = on[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing UsersController#index (for 192.168.147.117 at 2010-06-29 21:12:38) [GET]
+  [4;36;1mUser Load (2.3ms)[0m   [0;1mSELECT * FROM "users" [0m
+Rendering template within layouts/users
+Rendering users/index
+Completed in 170ms (View: 160, DB: 4) | 200 OK [http://lpgweb/users]
+  [4;35;1mSQL (0.3ms)[0m   [0mSET search_path TO public[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET standard_conforming_strings = on[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UsersController#show (for 192.168.147.117 at 2010-06-29 21:12:40) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mUser Load (1.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."ID" = 1) [0m
+Rendering template within layouts/users
+Rendering users/show
+Completed in 18ms (View: 3, DB: 2) | 200 OK [http://lpgweb/users/1]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET search_path TO public[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET standard_conforming_strings = on[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing UsersController#index (for 192.168.147.117 at 2010-06-29 21:12:44) [GET]
+  [4;36;1mUser Load (2.3ms)[0m   [0;1mSELECT * FROM "users" [0m
+Rendering template within layouts/users
+Rendering users/index
+Completed in 72ms (View: 64, DB: 3) | 200 OK [http://lpgweb/users]
+  [4;35;1mSQL (0.3ms)[0m   [0mSET search_path TO public[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET standard_conforming_strings = on[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UsersController#new (for 192.168.147.117 at 2010-06-29 21:12:48) [GET]
+Rendering template within layouts/users
+Rendering users/new
+Completed in 17ms (View: 7, DB: 1) | 200 OK [http://lpgweb/users/new]
+
+
+^Z
+[1]+  Stopped                 script/server
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ script/console
+Loading development environment (Rails 2.3.8)
+>> User.find(1)
+=> #<User ID: 1, UserName: "Ryan">
+>> User.find(1)uUser.find(1)[C[C[C[C User.find(1)[C[C[C[C[C=User.find(1)[C[C[C[C[C[C User.find(1)[C[C[C[C[C[C[C
+=> #<User ID: 1, UserName: "Ryan">
+>> u [K.UserName
+=> "Ryan"
+>> u.User[K[K[K[K[K[Kexit
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ cd ..
+]0;dev@LPGWEB: ~/devdev@LPGWEB:~/dev$ ls
+[0m[01;34mclaims[0m
+[m]0;dev@LPGWEB: ~/devdev@LPGWEB:~/dev$ c[Kcd claims/
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ scriptg[K/generate scaffold c[Kactions
+     warning  Plural version of the model detected, using singularized version.  Override with --force-plural.
+      exists  app/models/
+      exists  app/controllers/
+      exists  app/helpers/
+      create  app/views/actions
+      exists  app/views/layouts/
+      exists  test/functional/
+      exists  test/unit/
+      exists  test/unit/helpers/
+      exists  public/stylesheets/
+      create  app/views/actions/index.html.erb
+      create  app/views/actions/show.html.erb
+      create  app/views/actions/new.html.erb
+      create  app/views/actions/edit.html.erb
+      create  app/views/layouts/actions.html.erb
+   identical  public/stylesheets/scaffold.css
+      create  app/controllers/actions_controller.rb
+      create  test/functional/actions_controller_test.rb
+      create  app/helpers/actions_helper.rb
+      create  test/unit/helpers/actions_helper_test.rb
+       route  map.resources :actions
+  dependency  model
+      exists    app/models/
+      exists    test/unit/
+      exists    test/fixtures/
+      create    app/models/action.rb
+      create    test/unit/action_test.rb
+      create    test/fixtures/actions.yml
+      exists    db/migrate
+      create    db/migrate/20100630012851_create_actions.rb
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ script/generate scaffold actions[K[K[K[K[K[K[K[K action_types
+     warning  Plural version of the model detected, using singularized version.  Override with --force-plural.
+      exists  app/models/
+      exists  app/controllers/
+      exists  app/helpers/
+      create  app/views/action_types
+      exists  app/views/layouts/
+      exists  test/functional/
+      exists  test/unit/
+      exists  test/unit/helpers/
+      exists  public/stylesheets/
+      create  app/views/action_types/index.html.erb
+      create  app/views/action_types/show.html.erb
+      create  app/views/action_types/new.html.erb
+      create  app/views/action_types/edit.html.erb
+      create  app/views/layouts/action_types.html.erb
+   identical  public/stylesheets/scaffold.css
+      create  app/controllers/action_types_controller.rb
+      create  test/functional/action_types_controller_test.rb
+      create  app/helpers/action_types_helper.rb
+      create  test/unit/helpers/action_types_helper_test.rb
+       route  map.resources :action_types
+  dependency  model
+      exists    app/models/
+      exists    test/unit/
+      exists    test/fixtures/
+      create    app/models/action_type.rb
+      create    test/unit/action_type_test.rb
+      create    test/fixtures/action_types.yml
+      exists    db/migrate
+      create    db/migrate/20100630012859_create_action_types.rb
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ script/generate scaffold action_types[K[K[K[K[K[K[K[K[K[K[K[Kclaims[K
+      exists  app/models/
+      exists  app/controllers/
+      exists  app/helpers/
+      create  app/views/claims
+      exists  app/views/layouts/
+      exists  test/functional/
+      exists  test/unit/
+      exists  test/unit/helpers/
+      exists  public/stylesheets/
+      create  app/views/claims/index.html.erb
+      create  app/views/claims/show.html.erb
+      create  app/views/claims/new.html.erb
+      create  app/views/claims/edit.html.erb
+      create  app/views/layouts/claims.html.erb
+   identical  public/stylesheets/scaffold.css
+      create  app/controllers/claims_controller.rb
+      create  test/functional/claims_controller_test.rb
+      create  app/helpers/claims_helper.rb
+      create  test/unit/helpers/claims_helper_test.rb
+       route  map.resources :claims
+  dependency  model
+      exists    app/models/
+      exists    test/unit/
+      exists    test/fixtures/
+      create    app/models/claim.rb
+      create    test/unit/claim_test.rb
+      create    test/fixtures/claims.yml
+      exists    db/migrate
+      create    db/migrate/20100630012912_create_claims.rb
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ script/generate scaffold claim[K[K[K[K[Kcontact_types
+     warning  Plural version of the model detected, using singularized version.  Override with --force-plural.
+      exists  app/models/
+      exists  app/controllers/
+      exists  app/helpers/
+      create  app/views/contact_types
+      exists  app/views/layouts/
+      exists  test/functional/
+      exists  test/unit/
+      exists  test/unit/helpers/
+      exists  public/stylesheets/
+      create  app/views/contact_types/index.html.erb
+      create  app/views/contact_types/show.html.erb
+      create  app/views/contact_types/new.html.erb
+      create  app/views/contact_types/edit.html.erb
+      create  app/views/layouts/contact_types.html.erb
+   identical  public/stylesheets/scaffold.css
+      create  app/controllers/contact_types_controller.rb
+      create  test/functional/contact_types_controller_test.rb
+      create  app/helpers/contact_types_helper.rb
+      create  test/unit/helpers/contact_types_helper_test.rb
+       route  map.resources :contact_types
+  dependency  model
+      exists    app/models/
+      exists    test/unit/
+      exists    test/fixtures/
+      create    app/models/contact_type.rb
+      create    test/unit/contact_type_test.rb
+      create    test/fixtures/contact_types.yml
+      exists    db/migrate
+      create    db/migrate/20100630012920_create_contact_types.rb
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ script/generate scaffold contact_types[K[K[K[K[K[K[K[K[K[K[K[K[Kfault_tyopes[K[K[K[Kpes[K
+      exists  app/models/
+      exists  app/controllers/
+      exists  app/helpers/
+      create  app/views/fault_types
+      exists  app/views/layouts/
+      exists  test/functional/
+      exists  test/unit/
+      exists  test/unit/helpers/
+      exists  public/stylesheets/
+      create  app/views/fault_types/index.html.erb
+      create  app/views/fault_types/show.html.erb
+      create  app/views/fault_types/new.html.erb
+      create  app/views/fault_types/edit.html.erb
+      create  app/views/layouts/fault_types.html.erb
+   identical  public/stylesheets/scaffold.css
+      create  app/controllers/fault_types_controller.rb
+      create  test/functional/fault_types_controller_test.rb
+      create  app/helpers/fault_types_helper.rb
+      create  test/unit/helpers/fault_types_helper_test.rb
+       route  map.resources :fault_types
+  dependency  model
+      exists    app/models/
+      exists    test/unit/
+      exists    test/fixtures/
+      create    app/models/fault_type.rb
+      create    test/unit/fault_type_test.rb
+      create    test/fixtures/fault_types.yml
+      exists    db/migrate
+      create    db/migrate/20100630012930_create_fault_types.rb
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ script/generate scaffold fault_type[K[K[K[K[K[K[K[K[K[Kpatient
+      exists  app/models/
+      exists  app/controllers/
+      exists  app/helpers/
+      create  app/views/patients
+      exists  app/views/layouts/
+      exists  test/functional/
+      exists  test/unit/
+      exists  test/unit/helpers/
+      exists  public/stylesheets/
+      create  app/views/patients/index.html.erb
+      create  app/views/patients/show.html.erb
+      create  app/views/patients/new.html.erb
+      create  app/views/patients/edit.html.erb
+      create  app/views/layouts/patients.html.erb
+   identical  public/stylesheets/scaffold.css
+      create  app/controllers/patients_controller.rb
+      create  test/functional/patients_controller_test.rb
+      create  app/helpers/patients_helper.rb
+      create  test/unit/helpers/patients_helper_test.rb
+       route  map.resources :patients
+  dependency  model
+      exists    app/models/
+      exists    test/unit/
+      exists    test/fixtures/
+      create    app/models/patient.rb
+      create    test/unit/patient_test.rb
+      create    test/fixtures/patients.yml
+      exists    db/migrate
+      create    db/migrate/20100630012936_create_patients.rb
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ script/generate scaffold patient[K[K[K[K[K[K[Kpayer
+      exists  app/models/
+      exists  app/controllers/
+      exists  app/helpers/
+      create  app/views/payers
+      exists  app/views/layouts/
+      exists  test/functional/
+      exists  test/unit/
+      exists  test/unit/helpers/
+      exists  public/stylesheets/
+      create  app/views/payers/index.html.erb
+      create  app/views/payers/show.html.erb
+      create  app/views/payers/new.html.erb
+      create  app/views/payers/edit.html.erb
+      create  app/views/layouts/payers.html.erb
+   identical  public/stylesheets/scaffold.css
+      create  app/controllers/payers_controller.rb
+      create  test/functional/payers_controller_test.rb
+      create  app/helpers/payers_helper.rb
+      create  test/unit/helpers/payers_helper_test.rb
+       route  map.resources :payers
+  dependency  model
+      exists    app/models/
+      exists    test/unit/
+      exists    test/fixtures/
+      create    app/models/payer.rb
+      create    test/unit/payer_test.rb
+      create    test/fixtures/payers.yml
+      exists    db/migrate
+      create    db/migrate/20100630012942_create_payers.rb
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ script/generate scaffold payer[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kjoe config/reou[K[K[Koutes.rb 
+Processing '/etc/joe/joerc'...Processing '/etc/joe/ftyperc'...done
+done
+[H[2J[0m[1;24r[H[2J[7m    I A  config/routes.rb (ruby)  Ac  Row 1    Col 1    9:31  Ctrl-K H for help
+[0mActionController::Routing::Routes.draw [1mdo[0m |map|
+[2Cmap.resources :payers
+
+[2Cmap.resources :patients
+
+[2Cmap.resources :fault_types
+
+[2Cmap.resources :contact_types
+
+[2Cmap.resources :claims
+
+[2Cmap.resources :action_types
+
+[2Cmap.resources :actions
+
+[2Cmap.resources :users
+
+[2C[32m# The priority is based upon order of creation: first created -> highest prio
+
+[2C# Sample of regular route:
+[2C#   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
+[2C# Keep in mind you can assign values other than :controller and :action
+[0m[7m** Joe's Own Editor v3.7 ** (utf-8) ** Copyright © 2008 **[H
+[22B[0m[K[H
+[A[7m^[
+[A  [40C2
+
+[1;43H3
+
+
+[1;43H4
+
+
+
+[1;43H5[5B[H^[[5B[H  [40C6[6B[1;43H7[7B[1;43H8[8B[1;43H9[9B[1;43H10[10B[1;44H1[11B[1;44H2[12B[1;44H3[13B[1;44H4[14B[1;44H5[15B[1;44H6[16B[1;44H7[17B[1;44H8[18B[1;44H9[19B[1;43H20[20B[1;44H1[21B[1;44H2[22B[1;44H3[23B[1;44H4[24;3H[0m[32m# Sample of named route:[H
+[0m  map.resources :payers[K
+[K
+[2Cmap.resources :patients
+[K
+[2Cmap.resources :fault_types
+[K
+[2Cmap.resources :contact_types
+[K
+[2Cmap.resources :claims
+[K
+[2Cmap.resources :action_types
+[K
+[2Cmap.resources :actions
+[K
+[2Cmap.resources :users
+[K
+[2C[32m# The priority is based upon order of creation: first created -> highest prio
+[0m[K
+[2C[32m# Sample of regular route:[5G
+  map.connect 'products/:id', :controller => 'catalog', :action => 'view'[5G
+Keep in mind you can assign values other than :controller and :action[0m[K
+[K
+[1;44H[7m5[24;5H[0m[32m  map.purchase 'products/:id/purchase', :controller => 'catalog', :action =[H
+[0m[K
+[2Cmap.resources :patients
+[K
+[2Cmap.resources :fault_types
+[K
+[2Cmap.resources :contact_types
+[K
+[2Cmap.resources :claims
+[K
+[2Cmap.resources :action_types
+[K
+[2Cmap.resources :actions
+[K
+[2Cmap.resources :users
+[K
+[2C[32m# The priority is based upon order of creation: first created -> highest prio
+[0m[K
+[2C[32m# Sample of regular route:[5G
+  map.connect 'products/:id', :controller => 'catalog', :action => 'view'[5G
+Keep in mind you can assign values other than :controller and :action[0m[K
+[K
+[2C[32m# Sample of named route:
+[1;44H[0m[7m6[24;5H[0m[32mThis route can be invoked with purchase_url(:id => product.id)[0m[K[2;3Hmap.resources :patients
+[K
+[2Cmap.resources :fault_types
+[K
+[2Cmap.resources :contact_types
+[K
+[2Cmap.resources :claims
+[K
+[2Cmap.resources :action_types
+[K
+[2Cmap.resources :actions
+[K
+[2Cmap.resources :users
+[K
+[2C[32m# The priority is based upon order of creation: first created -> highest prio
+[0m[K
+[2C[32m# Sample of regular route:[5G
+  map.connect 'products/:id', :controller => 'catalog', :action => 'view'[5G
+Keep in mind you can assign values other than :controller and :action[0m[K
+[K
+[2C[32m# Sample of named route:[5G
+  map.purchase 'products/:id/purchase', :controller => 'catalog', :action =
+[1;44H[0m[7m7[23B[0m[K[H
+[K
+[2Cmap.resources :fault_types
+[K
+[2Cmap.resources :contact_types
+[K
+[2Cmap.resources :claims
+[K
+[2Cmap.resources :action_types
+[K
+[2Cmap.resources :actions
+[K
+[2Cmap.resources :users
+[K
+[2C[32m# The priority is based upon order of creation: first created -> highest prio
+[0m[K
+[2C[32m# Sample of regular route:[5G
+  map.connect 'products/:id', :controller => 'catalog', :action => 'view'[5G
+Keep in mind you can assign values other than :controller and :action[0m[K
+[K
+[2C[32m# Sample of named route:[5G
+  map.purchase 'products/:id/purchase', :controller => 'catalog', :action =[5G
+This route can be invoked with purchase_url(:id => product.id)[0m[K
+[1;44H[7m8[24;3H[0m[32m# Sample resource route (maps HTTP verbs to controller actions automatically)[2;3H[0mmap.resources :fault_types
+[K
+[2Cmap.resources :contact_types
+[K
+[2Cmap.resources :claims
+[K
+[2Cmap.resources :action_types
+[K
+[2Cmap.resources :actions
+[K
+[2Cmap.resources :users
+[K
+[2C[32m# The priority is based upon order of creation: first created -> highest prio
+[0m[K
+[2C[32m# Sample of regular route:[5G
+  map.connect 'products/:id', :controller => 'catalog', :action => 'view'[5G
+Keep in mind you can assign values other than :controller and :action[0m[K
+[K
+[2C[32m# Sample of named route:[5G
+  map.purchase 'products/:id/purchase', :controller => 'catalog', :action =[5G
+This route can be invoked with purchase_url(:id => product.id)[0m[K
+[K
+[1;44H[7m9[24;5H[0m[32m  map.resources :products[0m[K[H
+[K
+[2Cmap.resources :contact_types
+[K
+[2Cmap.resources :claims
+[K
+[2Cmap.resources :action_types
+[K
+[2Cmap.resources :actions
+[K
+[2Cmap.resources :users
+[K
+[2C[32m# The priority is based upon order of creation: first created -> highest prio
+[0m[K
+[2C[32m# Sample of regular route:[5G
+  map.connect 'products/:id', :controller => 'catalog', :action => 'view'[5G
+Keep in mind you can assign values other than :controller and :action[0m[K
+[K
+[2C[32m# Sample of named route:[5G
+  map.purchase 'products/:id/purchase', :controller => 'catalog', :action =[5G
+This route can be invoked with purchase_url(:id => product.id)[0m[K
+[K
+[2C[32m# Sample resource route (maps HTTP verbs to controller actions automatically)
+[1;43H[0m[7m30[23B[0m[K[2;3Hmap.resources :contact_types
+[K
+[2Cmap.resources :claims
+[K
+[2Cmap.resources :action_types
+[K
+[2Cmap.resources :actions
+[K
+[2Cmap.resources :users
+[K
+[2C[32m# The priority is based upon order of creation: first created -> highest prio
+[0m[K
+[2C[32m# Sample of regular route:[5G
+  map.connect 'products/:id', :controller => 'catalog', :action => 'view'[5G
+Keep in mind you can assign values other than :controller and :action[0m[K
+[K
+[2C[32m# Sample of named route:[5G
+  map.purchase 'products/:id/purchase', :controller => 'catalog', :action =[5G
+This route can be invoked with purchase_url(:id => product.id)[0m[K
+[K
+[2C[32m# Sample resource route (maps HTTP verbs to controller actions automatically)[5G
+  map.resources :products[0m[K
+[1;44H[7m1[24;3H[0m[32m# Sample resource route with options:[H
+[0m[K
+[2Cmap.resources :claims
+[K
+[2Cmap.resources :action_types
+[K
+[2Cmap.resources :actions
+[K
+[2Cmap.resources :users
+[K
+[2C[32m# The priority is based upon order of creation: first created -> highest prio
+[0m[K
+[2C[32m# Sample of regular route:[5G
+  map.connect 'products/:id', :controller => 'catalog', :action => 'view'[5G
+Keep in mind you can assign values other than :controller and :action[0m[K
+[K
+[2C[32m# Sample of named route:[5G
+  map.purchase 'products/:id/purchase', :controller => 'catalog', :action =[5G
+This route can be invoked with purchase_url(:id => product.id)[0m[K
+[K
+[2C[32m# Sample resource route (maps HTTP verbs to controller actions automatically)[5G
+  map.resources :products[0m[K
+[K
+[1;44H[7m2[24;5H[0m[32m  map.resources :products, :member => { :short => :get, :toggle => :post },[2;3H[0mmap.resources :claims
+[K
+[2Cmap.resources :action_types
+[K
+[2Cmap.resources :actions
+[K
+[2Cmap.resources :users
+[K
+[2C[32m# The priority is based upon order of creation: first created -> highest prio
+[0m[K
+[2C[32m# Sample of regular route:[5G
+  map.connect 'products/:id', :controller => 'catalog', :action => 'view'[5G
+Keep in mind you can assign values other than :controller and :action[0m[K
+[K
+[2C[32m# Sample of named route:[5G
+  map.purchase 'products/:id/purchase', :controller => 'catalog', :action =[5G
+This route can be invoked with purchase_url(:id => product.id)[0m[K
+[K
+[2C[32m# Sample resource route (maps HTTP verbs to controller actions automatically)[5G
+  map.resources :products[0m[K
+[K
+[2C[32m# Sample resource route with options:
+[1;44H[0m[7m3[23B[0m[K[H
+[K
+[2Cmap.resources :action_types
+[K
+[2Cmap.resources :actions
+[K
+[2Cmap.resources :users
+[K
+[2C[32m# The priority is based upon order of creation: first created -> highest prio
+[0m[K
+[2C[32m# Sample of regular route:[5G
+  map.connect 'products/:id', :controller => 'catalog', :action => 'view'[5G
+Keep in mind you can assign values other than :controller and :action[0m[K
+[K
+[2C[32m# Sample of named route:[5G
+  map.purchase 'products/:id/purchase', :controller => 'catalog', :action =[5G
+This route can be invoked with purchase_url(:id => product.id)[0m[K
+[K
+[2C[32m# Sample resource route (maps HTTP verbs to controller actions automatically)[5G
+  map.resources :products[0m[K
+[K
+[2C[32m# Sample resource route with options:[5G
+  map.resources :products, :member => { :short => :get, :toggle => :post },
+[1;44H[0m[7m4[24;3H[0m[32m# Sample resource route with sub-resources:[2;3H[0mmap.resources :action_types
+[K
+[2Cmap.resources :actions
+[K
+[2Cmap.resources :users
+[K
+[2C[32m# The priority is based upon order of creation: first created -> highest prio
+[0m[K
+[2C[32m# Sample of regular route:[5G
+  map.connect 'products/:id', :controller => 'catalog', :action => 'view'[5G
+Keep in mind you can assign values other than :controller and :action[0m[K
+[K
+[2C[32m# Sample of named route:[5G
+  map.purchase 'products/:id/purchase', :controller => 'catalog', :action =[5G
+This route can be invoked with purchase_url(:id => product.id)[0m[K
+[K
+[2C[32m# Sample resource route (maps HTTP verbs to controller actions automatically)[5G
+  map.resources :products[0m[K
+[K
+[2C[32m# Sample resource route with options:[5G
+  map.resources :products, :member => { :short => :get, :toggle => :post },
+[0m[K
+[1;44H[7m5[24;5H[0m[32m  map.resources :products, :has_many => [ :comments, :sales ], :has_one => [H
+[0m[K
+[2Cmap.resources :actions
+[K
+[2Cmap.resources :users
+[K
+[2C[32m# The priority is based upon order of creation: first created -> highest prio
+[0m[K
+[2C[32m# Sample of regular route:[5G
+  map.connect 'products/:id', :controller => 'catalog', :action => 'view'[5G
+Keep in mind you can assign values other than :controller and :action[0m[K
+[K
+[2C[32m# Sample of named route:[5G
+  map.purchase 'products/:id/purchase', :controller => 'catalog', :action =[5G
+This route can be invoked with purchase_url(:id => product.id)[0m[K
+[K
+[2C[32m# Sample resource route (maps HTTP verbs to controller actions automatically)[5G
+  map.resources :products[0m[K
+[K
+[2C[32m# Sample resource route with options:[5G
+  map.resources :products, :member => { :short => :get, :toggle => :post },
+[0m[K
+[2C[32m# Sample resource route with sub-resources:
+[H[0m[7m^[[23B[H  [41C6[24;3H[0m[K[2dmap.resources :actions
+[K
+[2Cmap.resources :users
+[K
+[2C[32m# The priority is based upon order of creation: first created -> highest prio
+[0m[K
+[2C[32m# Sample of regular route:[5G
+  map.connect 'products/:id', :controller => 'catalog', :action => 'view'[5G
+Keep in mind you can assign values other than :controller and :action[0m[K
+[K
+[2C[32m# Sample of named route:[5G
+  map.purchase 'products/:id/purchase', :controller => 'catalog', :action =[5G
+This route can be invoked with purchase_url(:id => product.id)[0m[K
+[K
+[2C[32m# Sample resource route (maps HTTP verbs to controller actions automatically)[5G
+  map.resources :products[0m[K
+[K
+[2C[32m# Sample resource route with options:[5G
+  map.resources :products, :member => { :short => :get, :toggle => :post },
+[0m[K
+[2C[32m# Sample resource route with sub-resources:[5G
+  map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[1;44H[0m[7m7[24;3H[0m[32m# Sample resource route with more complex sub-resources[H
+[0m[K
+[2Cmap.resources :users
+[K
+[2C[32m# The priority is based upon order of creation: first created -> highest prio
+[0m[K
+[2C[32m# Sample of regular route:[5G
+  map.connect 'products/:id', :controller => 'catalog', :action => 'view'[5G
+Keep in mind you can assign values other than :controller and :action[0m[K
+[K
+[2C[32m# Sample of named route:[5G
+  map.purchase 'products/:id/purchase', :controller => 'catalog', :action =[5G
+This route can be invoked with purchase_url(:id => product.id)[0m[K
+[K
+[2C[32m# Sample resource route (maps HTTP verbs to controller actions automatically)[5G
+  map.resources :products[0m[K
+[K
+[2C[32m# Sample resource route with options:[5G
+  map.resources :products, :member => { :short => :get, :toggle => :post },
+[0m[K
+[2C[32m# Sample resource route with sub-resources:[5G
+  map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[1;44H[7m8[24;5H[0m[32m  map.resources :products do |products|[0m[K[2;3Hmap.resources :users
+[K
+[2C[32m# The priority is based upon order of creation: first created -> highest prio
+[0m[K
+[2C[32m# Sample of regular route:[5G
+  map.connect 'products/:id', :controller => 'catalog', :action => 'view'[5G
+Keep in mind you can assign values other than :controller and :action[0m[K
+[K
+[2C[32m# Sample of named route:[5G
+  map.purchase 'products/:id/purchase', :controller => 'catalog', :action =[5G
+This route can be invoked with purchase_url(:id => product.id)[0m[K
+[K
+[2C[32m# Sample resource route (maps HTTP verbs to controller actions automatically)[5G
+  map.resources :products[0m[K
+[K
+[2C[32m# Sample resource route with options:[5G
+  map.resources :products, :member => { :short => :get, :toggle => :post },
+[0m[K
+[2C[32m# Sample resource route with sub-resources:[5G
+  map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[32m# Sample resource route with more complex sub-resources
+[1;44H[0m[7m9[24;7H[0m[32m  products.resources :comments[0m[K[H
+[K
+[2C[32m# The priority is based upon order of creation: first created -> highest prio
+[0m[K
+[2C[32m# Sample of regular route:[5G
+  map.connect 'products/:id', :controller => 'catalog', :action => 'view'[5G
+Keep in mind you can assign values other than :controller and :action[0m[K
+[K
+[2C[32m# Sample of named route:[5G
+  map.purchase 'products/:id/purchase', :controller => 'catalog', :action =[5G
+This route can be invoked with purchase_url(:id => product.id)[0m[K
+[K
+[2C[32m# Sample resource route (maps HTTP verbs to controller actions automatically)[5G
+  map.resources :products[0m[K
+[K
+[2C[32m# Sample resource route with options:[5G
+  map.resources :products, :member => { :short => :get, :toggle => :post },
+[0m[K
+[2C[32m# Sample resource route with sub-resources:[5G
+  map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[32m# Sample resource route with more complex sub-resources[5G
+  map.resources :products do |products|[0m[K
+[1;43H[7m40[24;29H[0m[32msales, :collection => { :recent => :get }[2;3H# The priority is based upon order of creation: first created -> highest prio
+[0m[K
+[2C[32m# Sample of regular route:[5G
+  map.connect 'products/:id', :controller => 'catalog', :action => 'view'[5G
+Keep in mind you can assign values other than :controller and :action[0m[K
+[K
+[2C[32m# Sample of named route:[5G
+  map.purchase 'products/:id/purchase', :controller => 'catalog', :action =[5G
+This route can be invoked with purchase_url(:id => product.id)[0m[K
+[K
+[2C[32m# Sample resource route (maps HTTP verbs to controller actions automatically)[5G
+  map.resources :products[0m[K
+[K
+[2C[32m# Sample resource route with options:[5G
+  map.resources :products, :member => { :short => :get, :toggle => :post },
+[0m[K
+[2C[32m# Sample resource route with sub-resources:[5G
+  map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[32m# Sample resource route with more complex sub-resources[5G
+  map.resources :products do |products|[0m[K[7G
+[32m  products.resources :comments[0m[K
+[1;44H[7m1[24;7H[0m[32mend[0m[K[H
+[K
+[2C[32m# Sample of regular route:[5G
+  map.connect 'products/:id', :controller => 'catalog', :action => 'view'[5G
+Keep in mind you can assign values other than :controller and :action[0m[K
+[K
+[2C[32m# Sample of named route:[5G
+  map.purchase 'products/:id/purchase', :controller => 'catalog', :action =[5G
+This route can be invoked with purchase_url(:id => product.id)[0m[K
+[K
+[2C[32m# Sample resource route (maps HTTP verbs to controller actions automatically)[5G
+  map.resources :products[0m[K
+[K
+[2C[32m# Sample resource route with options:[5G
+  map.resources :products, :member => { :short => :get, :toggle => :post },
+[0m[K
+[2C[32m# Sample resource route with sub-resources:[5G
+  map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[32m# Sample resource route with more complex sub-resources[5G
+  map.resources :products do |products|[0m[K[7G
+[32m  products.resources :comments[0m[K
+[8D[32msales, :collection => { :recent => :get }
+[1;44H[0m[7m2[23B[0m[K[2;3H[32m# Sample of regular route:[5G
+  map.connect 'products/:id', :controller => 'catalog', :action => 'view'[5G
+Keep in mind you can assign values other than :controller and :action[0m[K
+[K
+[2C[32m# Sample of named route:[5G
+  map.purchase 'products/:id/purchase', :controller => 'catalog', :action =[5G
+This route can be invoked with purchase_url(:id => product.id)[0m[K
+[K
+[2C[32m# Sample resource route (maps HTTP verbs to controller actions automatically)[5G
+  map.resources :products[0m[K
+[K
+[2C[32m# Sample resource route with options:[5G
+  map.resources :products, :member => { :short => :get, :toggle => :post },
+[0m[K
+[2C[32m# Sample resource route with sub-resources:[5G
+  map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[32m# Sample resource route with more complex sub-resources[5G
+  map.resources :products do |products|[0m[K[7G
+[32m  products.resources :comments[0m[K
+[8D[32msales, :collection => { :recent => :get }[7G
+end[0m[K
+[1;44H[7m3[24;3H[0m[32m# Sample resource route within a namespace:[2;5H  map.connect 'products/:id', :controller => 'catalog', :action => 'view'[5G
+Keep in mind you can assign values other than :controller and :action[0m[K
+[K
+[2C[32m# Sample of named route:[5G
+  map.purchase 'products/:id/purchase', :controller => 'catalog', :action =[5G
+This route can be invoked with purchase_url(:id => product.id)[0m[K
+[K
+[2C[32m# Sample resource route (maps HTTP verbs to controller actions automatically)[5G
+  map.resources :products[0m[K
+[K
+[2C[32m# Sample resource route with options:[5G
+  map.resources :products, :member => { :short => :get, :toggle => :post },
+[0m[K
+[2C[32m# Sample resource route with sub-resources:[5G
+  map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[32m# Sample resource route with more complex sub-resources[5G
+  map.resources :products do |products|[0m[K[7G
+[32m  products.resources :comments[0m[K
+[8D[32msales, :collection => { :recent => :get }[7G
+end[0m[K
+[K
+[1;44H[7m4[24;5H[0m[32m  map.namespace :admin do |admin|[0m[K[2;5H[32mKeep in mind you can assign values other than :controller and :action[0m[K
+[K
+[2C[32m# Sample of named route:[5G
+  map.purchase 'products/:id/purchase', :controller => 'catalog', :action =[5G
+This route can be invoked with purchase_url(:id => product.id)[0m[K
+[K
+[2C[32m# Sample resource route (maps HTTP verbs to controller actions automatically)[5G
+  map.resources :products[0m[K
+[K
+[2C[32m# Sample resource route with options:[5G
+  map.resources :products, :member => { :short => :get, :toggle => :post },
+[0m[K
+[2C[32m# Sample resource route with sub-resources:[5G
+  map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[32m# Sample resource route with more complex sub-resources[5G
+  map.resources :products do |products|[0m[K[7G
+[32m  products.resources :comments[0m[K
+[8D[32msales, :collection => { :recent => :get }[7G
+end[0m[K
+[K
+[2C[32m# Sample resource route within a namespace:
+[H[0m[7m^[[23B[H  [41C5[24;7H[0m[32m  # Directs /admin/products/* to Admin::ProductsController (app/controlle[H
+[0m[K
+[2C[32m# Sample of named route:[5G
+  map.purchase 'products/:id/purchase', :controller => 'catalog', :action =[5G
+This route can be invoked with purchase_url(:id => product.id)[0m[K
+[K
+[2C[32m# Sample resource route (maps HTTP verbs to controller actions automatically)[5G
+  map.resources :products[0m[K
+[K
+[2C[32m# Sample resource route with options:[5G
+  map.resources :products, :member => { :short => :get, :toggle => :post },
+[0m[K
+[2C[32m# Sample resource route with sub-resources:[5G
+  map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[32m# Sample resource route with more complex sub-resources[5G
+  map.resources :products do |products|[0m[K[7G
+[32m  products.resources :comments[0m[K
+[8D[32msales, :collection => { :recent => :get }[7G
+end[0m[K
+[K
+[2C[32m# Sample resource route within a namespace:[5G
+  map.namespace :admin do |admin|[0m[K
+[1;44H[7m6[24;9H[0m[32madmin.resources :[8C[0m[K[2;3H[32m# Sample of named route:[5G
+  map.purchase 'products/:id/purchase', :controller => 'catalog', :action =[5G
+This route can be invoked with purchase_url(:id => product.id)[0m[K
+[K
+[2C[32m# Sample resource route (maps HTTP verbs to controller actions automatically)[5G
+  map.resources :products[0m[K
+[K
+[2C[32m# Sample resource route with options:[5G
+  map.resources :products, :member => { :short => :get, :toggle => :post },
+[0m[K
+[2C[32m# Sample resource route with sub-resources:[5G
+  map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[32m# Sample resource route with more complex sub-resources[5G
+  map.resources :products do |products|[0m[K[7G
+[32m  products.resources :comments[0m[K
+[8D[32msales, :collection => { :recent => :get }[7G
+end[0m[K
+[K
+[2C[32m# Sample resource route within a namespace:[5G
+  map.namespace :admin do |admin|[0m[K[7G
+[32m  # Directs /admin/products/* to Admin::ProductsController (app/controlle
+[1;44H[0m[7m7[24;7H[0m[32mend[0m[K[2;5H[32m  map.purchase 'products/:id/purchase', :controller => 'catalog', :action =[5G
+This route can be invoked with purchase_url(:id => product.id)[0m[K
+[K
+[2C[32m# Sample resource route (maps HTTP verbs to controller actions automatically)[5G
+  map.resources :products[0m[K
+[K
+[2C[32m# Sample resource route with options:[5G
+  map.resources :products, :member => { :short => :get, :toggle => :post },
+[0m[K
+[2C[32m# Sample resource route with sub-resources:[5G
+  map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[32m# Sample resource route with more complex sub-resources[5G
+  map.resources :products do |products|[0m[K[7G
+[32m  products.resources :comments[0m[K
+[8D[32msales, :collection => { :recent => :get }[7G
+end[0m[K
+[K
+[2C[32m# Sample resource route within a namespace:[5G
+  map.namespace :admin do |admin|[0m[K[7G
+[32m  # Directs /admin/products/* to Admin::ProductsController (app/controlle[9G
+admin.resources :[8C[0m[K
+[1;44H[7m8[23B[0m[K[2;5H[32mThis route can be invoked with purchase_url(:id => product.id)[0m[K
+[K
+[2C[32m# Sample resource route (maps HTTP verbs to controller actions automatically)[5G
+  map.resources :products[0m[K
+[K
+[2C[32m# Sample resource route with options:[5G
+  map.resources :products, :member => { :short => :get, :toggle => :post },
+[0m[K
+[2C[32m# Sample resource route with sub-resources:[5G
+  map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[32m# Sample resource route with more complex sub-resources[5G
+  map.resources :products do |products|[0m[K[7G
+[32m  products.resources :comments[0m[K
+[8D[32msales, :collection => { :recent => :get }[7G
+end[0m[K
+[K
+[2C[32m# Sample resource route within a namespace:[5G
+  map.namespace :admin do |admin|[0m[K[7G
+[32m  # Directs /admin/products/* to Admin::ProductsController (app/controlle[9G
+admin.resources :[8C[0m[K[7G
+[32mend[0m[K
+[1;44H[7m9[24;3H[0m[32m# You can have the root of your site routed with map.root -- just remember to[H
+[0m[K
+[2C[32m# Sample resource route (maps HTTP verbs to controller actions automatically)[5G
+  map.resources :products[0m[K
+[K
+[2C[32m# Sample resource route with options:[5G
+  map.resources :products, :member => { :short => :get, :toggle => :post },
+[0m[K
+[2C[32m# Sample resource route with sub-resources:[5G
+  map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[32m# Sample resource route with more complex sub-resources[5G
+  map.resources :products do |products|[0m[K[7G
+[32m  products.resources :comments[0m[K
+[8D[32msales, :collection => { :recent => :get }[7G
+end[0m[K
+[K
+[2C[32m# Sample resource route within a namespace:[5G
+  map.namespace :admin do |admin|[0m[K[7G
+[32m  # Directs /admin/products/* to Admin::ProductsController (app/controlle[9G
+admin.resources :[8C[0m[K[7G
+[32mend[0m[K
+[K
+[1;43H[7m50[24;5H[0m[32mmap.root :controller => "welcome"[0m[K[2;3H[32m# Sample resource route (maps HTTP verbs to controller actions automatically)[5G
+  map.resources :products[0m[K
+[K
+[2C[32m# Sample resource route with options:[5G
+  map.resources :products, :member => { :short => :get, :toggle => :post },
+[0m[K
+[2C[32m# Sample resource route with sub-resources:[5G
+  map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[32m# Sample resource route with more complex sub-resources[5G
+  map.resources :products do |products|[0m[K[7G
+[32m  products.resources :comments[0m[K
+[8D[32msales, :collection => { :recent => :get }[7G
+end[0m[K
+[K
+[2C[32m# Sample resource route within a namespace:[5G
+  map.namespace :admin do |admin|[0m[K[7G
+[32m  # Directs /admin/products/* to Admin::ProductsController (app/controlle[9G
+admin.resources :[8C[0m[K[7G
+[32mend[0m[K
+[K
+[2C[32m# You can have the root of your site routed with map.root -- just remember to
+[1;44H[0m[7m1[23B[0m[K[2;5H[32m  map.resources :products[0m[K
+[K
+[2C[32m# Sample resource route with options:[5G
+  map.resources :products, :member => { :short => :get, :toggle => :post },
+[0m[K
+[2C[32m# Sample resource route with sub-resources:[5G
+  map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[32m# Sample resource route with more complex sub-resources[5G
+  map.resources :products do |products|[0m[K[7G
+[32m  products.resources :comments[0m[K
+[8D[32msales, :collection => { :recent => :get }[7G
+end[0m[K
+[K
+[2C[32m# Sample resource route within a namespace:[5G
+  map.namespace :admin do |admin|[0m[K[7G
+[32m  # Directs /admin/products/* to Admin::ProductsController (app/controlle[9G
+admin.resources :[8C[0m[K[7G
+[32mend[0m[K
+[K
+[2C[32m# You can have the root of your site routed with map.root -- just remember to[5G
+map.root :controller => "welcome"[0m[K
+[1;44H[7m2[24;3H[0m[32m# See how all your routes lay out with "rake routes"[H
+[0m[K
+[2C[32m# Sample resource route with options:[5G
+  map.resources :products, :member => { :short => :get, :toggle => :post },
+[0m[K
+[2C[32m# Sample resource route with sub-resources:[5G
+  map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[32m# Sample resource route with more complex sub-resources[5G
+  map.resources :products do |products|[0m[K[7G
+[32m  products.resources :comments[0m[K
+[8D[32msales, :collection => { :recent => :get }[7G
+end[0m[K
+[K
+[2C[32m# Sample resource route within a namespace:[5G
+  map.namespace :admin do |admin|[0m[K[7G
+[32m  # Directs /admin/products/* to Admin::ProductsController (app/controlle[9G
+admin.resources :[8C[0m[K[7G
+[32mend[0m[K
+[K
+[2C[32m# You can have the root of your site routed with map.root -- just remember to[5G
+map.root :controller => "welcome"[0m[K
+[K
+[1;44H[7m3[23B[0m[K[2;3H[32m# Sample resource route with options:[5G
+  map.resources :products, :member => { :short => :get, :toggle => :post },
+[0m[K
+[2C[32m# Sample resource route with sub-resources:[5G
+  map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[32m# Sample resource route with more complex sub-resources[5G
+  map.resources :products do |products|[0m[K[7G
+[32m  products.resources :comments[0m[K
+[8D[32msales, :collection => { :recent => :get }[7G
+end[0m[K
+[K
+[2C[32m# Sample resource route within a namespace:[5G
+  map.namespace :admin do |admin|[0m[K[7G
+[32m  # Directs /admin/products/* to Admin::ProductsController (app/controlle[9G
+admin.resources :[8C[0m[K[7G
+[32mend[0m[K
+[K
+[2C[32m# You can have the root of your site routed with map.root -- just remember to[5G
+map.root :controller => "welcome"[0m[K
+[K
+[2C[32m# See how all your routes lay out with "rake routes"
+[1;44H[0m[7m4[24;3H[0m[32m# Install the default routes as the lowest priority.[2;5H  map.resources :products, :member => { :short => :get, :toggle => :post },
+[0m[K
+[2C[32m# Sample resource route with sub-resources:[5G
+  map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[32m# Sample resource route with more complex sub-resources[5G
+  map.resources :products do |products|[0m[K[7G
+[32m  products.resources :comments[0m[K
+[8D[32msales, :collection => { :recent => :get }[7G
+end[0m[K
+[K
+[2C[32m# Sample resource route within a namespace:[5G
+  map.namespace :admin do |admin|[0m[K[7G
+[32m  # Directs /admin/products/* to Admin::ProductsController (app/controlle[9G
+admin.resources :[8C[0m[K[7G
+[32mend[0m[K
+[K
+[2C[32m# You can have the root of your site routed with map.root -- just remember to[5G
+map.root :controller => "welcome"[0m[K
+[K
+[2C[32m# See how all your routes lay out with "rake routes"
+[0m[K
+[1;44H[7m5[24;5H[0m[32mNote: Thes[17Cmake all actions in every controller accessible [H
+[0m[K
+[2C[32m# Sample resource route with sub-resources:[5G
+  map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[32m# Sample resource route with more complex sub-resources[5G
+  map.resources :products do |products|[0m[K[7G
+[32m  products.resources :comments[0m[K
+[8D[32msales, :collection => { :recent => :get }[7G
+end[0m[K
+[K
+[2C[32m# Sample resource route within a namespace:[5G
+  map.namespace :admin do |admin|[0m[K[7G
+[32m  # Directs /admin/products/* to Admin::ProductsController (app/controlle[9G
+admin.resources :[8C[0m[K[7G
+[32mend[0m[K
+[K
+[2C[32m# You can have the root of your site routed with map.root -- just remember to[5G
+map.root :controller => "welcome"[0m[K
+[K
+[2C[32m# See how all your routes lay out with "rake routes"
+[0m[K
+[2C[32m# Install the default routes as the lowest priority.
+[H[0m[7m^[[23B[H  [41C6[24;5H[0m[32mconsider removing or commenting them out if you're using named routes and r[2;3H# Sample resource route with sub-resources:[5G
+  map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[32m# Sample resource route with more complex sub-resources[5G
+  map.resources :products do |products|[0m[K[7G
+[32m  products.resources :comments[0m[K
+[8D[32msales, :collection => { :recent => :get }[7G
+end[0m[K
+[K
+[2C[32m# Sample resource route within a namespace:[5G
+  map.namespace :admin do |admin|[0m[K[7G
+[32m  # Directs /admin/products/* to Admin::ProductsController (app/controlle[9G
+admin.resources :[8C[0m[K[7G
+[32mend[0m[K
+[K
+[2C[32m# You can have the root of your site routed with map.root -- just remember to[5G
+map.root :controller => "welcome"[0m[K
+[K
+[2C[32m# See how all your routes lay out with "rake routes"
+[0m[K
+[2C[32m# Install the default routes as the lowest priority.[5G
+Note: Thes[17Cmake all actions in every controller accessible 
+[1;44H[0m[7m7[24;3H[0mmap.connect [36m':controller/:action/:id'[0m[K[2;5H[32m  map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[32m# Sample resource route with more complex sub-resources[5G
+  map.resources :products do |products|[0m[K[7G
+[32m  products.resources :comments[0m[K
+[8D[32msales, :collection => { :recent => :get }[7G
+end[0m[K
+[K
+[2C[32m# Sample resource route within a namespace:[5G
+  map.namespace :admin do |admin|[0m[K[7G
+[32m  # Directs /admin/products/* to Admin::ProductsController (app/controlle[9G
+admin.resources :[8C[0m[K[7G
+[32mend[0m[K
+[K
+[2C[32m# You can have the root of your site routed with map.root -- just remember to[5G
+map.root :controller => "welcome"[0m[K
+[K
+[2C[32m# See how all your routes lay out with "rake routes"
+[0m[K
+[2C[32m# Install the default routes as the lowest priority.[5G
+Note: Thes[17Cmake all actions in every controller accessible [5G
+consider removing or commenting them out if you're using named routes and r
+[1;44H[0m[7m8[24;39H[0m[36m.:format'[2;3H[0m[K
+[32m# Sample resource route with more complex sub-resources[5G
+  map.resources :products do |products|[0m[K[7G
+[32m  products.resources :comments[0m[K
+[8D[32msales, :collection => { :recent => :get }[7G
+end[0m[K
+[K
+[2C[32m# Sample resource route within a namespace:[5G
+  map.namespace :admin do |admin|[0m[K[7G
+[32m  # Directs /admin/products/* to Admin::ProductsController (app/controlle[9G
+admin.resources :[8C[0m[K[7G
+[32mend[0m[K
+[K
+[2C[32m# You can have the root of your site routed with map.root -- just remember to[5G
+map.root :controller => "welcome"[0m[K
+[K
+[2C[32m# See how all your routes lay out with "rake routes"
+[0m[K
+[2C[32m# Install the default routes as the lowest priority.[5G
+Note: Thes[17Cmake all actions in every controller accessible [5G
+consider removing or commenting them out if you're using named routes and r
+[2C[0mmap.connect [36m':controller/:action/:id'[0m[K
+[1;35H[7men[7C9[23B[0m[1mend[0m[K[2d[32m# Sample resource route with more complex sub-resources[5G
+  map.resources :products do |products|[0m[K[7G
+[32m  products.resources :comments[0m[K
+[8D[32msales, :collection => { :recent => :get }[7G
+end[0m[K
+[K
+[2C[32m# Sample resource route within a namespace:[5G
+  map.namespace :admin do |admin|[0m[K[7G
+[32m  # Directs /admin/products/* to Admin::ProductsController (app/controlle[9G
+admin.resources :[8C[0m[K[7G
+[32mend[0m[K
+[K
+[2C[32m# You can have the root of your site routed with map.root -- just remember to[5G
+map.root :controller => "welcome"[0m[K
+[K
+[2C[32m# See how all your routes lay out with "rake routes"
+[0m[K
+[2C[32m# Install the default routes as the lowest priority.[5G
+Note: Thes[17Cmake all actions in every controller accessible [5G
+consider removing or commenting them out if you're using named routes and r
+[2C[0mmap.connect [36m':controller/:action/:id'[0m[K
+[36m.:format'
+[H[0m[7m^[[23B[H  [40C60[23B[0m   [2d[C[32m  map.resources :products do |products|[0m[K[7G
+[32m  products.resources :comments[0m[K
+[8D[32msales, :collection => { :recent => :get }[7G
+end[0m[K
+[K
+[2C[32m# Sample resource route within a namespace:[5G
+  map.namespace :admin do |admin|[0m[K[7G
+[32m  # Directs /admin/products/* to Admin::ProductsController (app/controlle[9G
+admin.resources :[8C[0m[K[7G
+[32mend[0m[K
+[K
+[2C[32m# You can have the root of your site routed with map.root -- just remember to[5G
+map.root :controller => "welcome"[0m[K
+[K
+[2C[32m# See how all your routes lay out with "rake routes"
+[0m[K
+[2C[32m# Install the default routes as the lowest priority.[5G
+Note: Thes[17Cmake all actions in every controller accessible [5G
+consider removing or commenting them out if you're using named routes and r
+[2C[0mmap.connect [36m':controller/:action/:id'[0m[K
+[36m.:format'
+[0m[1mend[0m[K
+[H[7m^[[23B[H  [40C59[22B[1;35HAc[7C8[21B[H^[[21B[H  [41C7[20B[1;44H6[19B[1;44H7[20B[H^[[20B[H  [41C8[21B[1;44H7[20B[H^[[20B[H  [41C6[19B[1;44H5[18B[1;44H4[17B[1;44H3[16B[1;44H2[15B[1;44H1[14B[1;44H0[13B[1;43H49[12B[1;44H8[11B[1;44H7[10B[H^[[10B[H  [41C6[9B[1;44H5[8B[1;44H4[7B[1;44H3[6B[1;44H2[5B[1;44H1
+
+
+
+[1;44H0
+
+
+[1;43H39
+
+[1;44H8
+[1;44H7[5G
+[0m[32mSample resource route with more complex sub-resources[7G
+map.resources :products do |products|
+[15Dcomments[0m[K[7G
+[32m  products.resources :sales, :collection => { :recent => :get }
+[2C#   end
+[0m[K
+[4C[32mSample resource route within a namespace:[7G
+map.namespace :admin do |admin|[0m[K[9G
+[32m# Directs /admin/[8C/* to Admin::ProductsController (app/controlle[7G
+  admin.resources :products
+[2C#   end
+[0m[K
+[4C[32mYou can have the root of your site routed with map.root -- just remember to
+[2C# map.root :controller => "welcome"
+[0m[K
+[2C[32m# See how all your routes lay out with "rake routes"
+[0m[K
+[4C[32mInstall th[17Cas the lowest priority.[0m[K[5G
+[32mNote: These default routes make all actions in every controller accessible 
+[2C# consider removing or commenting them out if you're using named routes and r
+[41D[36m'[0m[K
+  map.connect [36m':controller/:action/:id.:format'
+[0m[1mend[H
+[1;44H[0m[7m6
+[2C[0m[K
+[2C[32mSample resource route with more complex sub-resources[7G
+map.resources :products do |products|
+[15Dcomments[0m[K[7G
+[32m  products.resources :sales, :collection => { :recent => :get }
+[2C#   end
+[0m[K
+[4C[32mSample resource route within a namespace:[7G
+map.namespace :admin do |admin|[0m[K[9G
+[32m# Directs /admin/[8C/* to Admin::ProductsController (app/controlle[7G
+  admin.resources :products
+[2C#   end
+[0m[K
+[4C[32mYou can have the root of your site routed with map.root -- just remember to
+[2C# map.root :controller => "welcome"
+[0m[K
+[2C[32m# See how all your routes lay out with "rake routes"
+[0m[K
+[4C[32mInstall th[17Cas the lowest priority.[0m[K[5G
+[32mNote: These default routes make all actions in every controller accessible 
+[2C# consider removing or commenting them out if you're using named routes and r
+[41D[36m'[0m[K
+  map.connect [36m':controller/:action/:id.:format'[H
+[1;44H[0m[7m5
+[2C[0m[32m#   map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[2C[32mSample resource route with more complex sub-resources[7G
+map.resources :products do |products|
+[15Dcomments[0m[K[7G
+[32m  products.resources :sales, :collection => { :recent => :get }
+[2C#   end
+[0m[K
+[4C[32mSample resource route within a namespace:[7G
+map.namespace :admin do |admin|[0m[K[9G
+[32m# Directs /admin/[8C/* to Admin::ProductsController (app/controlle[7G
+  admin.resources :products
+[2C#   end
+[0m[K
+[4C[32mYou can have the root of your site routed with map.root -- just remember to
+[2C# map.root :controller => "welcome"
+[0m[K
+[2C[32m# See how all your routes lay out with "rake routes"
+[0m[K
+[4C[32mInstall th[17Cas the lowest priority.[0m[K[5G
+[32mNote: These default routes make all actions in every controller accessible 
+[2C# consider removing or commenting them out if you're using named routes and r
+[41D[36m'[0m[K[H
+[1;44H[7m4[5G
+[0m[32mSample resource route with sub-resources:[0m[K
+[2C[32m#   map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[2C[32mSample resource route with more complex sub-resources[7G
+map.resources :products do |products|
+[15Dcomments[0m[K[7G
+[32m  products.resources :sales, :collection => { :recent => :get }
+[2C#   end
+[0m[K
+[4C[32mSample resource route within a namespace:[7G
+map.namespace :admin do |admin|[0m[K[9G
+[32m# Directs /admin/[8C/* to Admin::ProductsController (app/controlle[7G
+  admin.resources :products
+[2C#   end
+[0m[K
+[4C[32mYou can have the root of your site routed with map.root -- just remember to
+[2C# map.root :controller => "welcome"
+[0m[K
+[2C[32m# See how all your routes lay out with "rake routes"
+[0m[K
+[4C[32mInstall th[17Cas the lowest priority.[0m[K[5G
+[32mNote: These default routes make all actions in every controller accessible 
+[2C# consider removing or commenting them out if you're using named routes and r[H
+[1;44H[0m[7m3
+[0m[K
+[4C[32mSample resource route with sub-resources:[0m[K
+[2C[32m#   map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[2C[32mSample resource route with more complex sub-resources[7G
+map.resources :products do |products|
+[15Dcomments[0m[K[7G
+[32m  products.resources :sales, :collection => { :recent => :get }
+[2C#   end
+[0m[K
+[4C[32mSample resource route within a namespace:[7G
+map.namespace :admin do |admin|[0m[K[9G
+[32m# Directs /admin/[8C/* to Admin::ProductsController (app/controlle[7G
+  admin.resources :products
+[2C#   end
+[0m[K
+[4C[32mYou can have the root of your site routed with map.root -- just remember to
+[2C# map.root :controller => "welcome"
+[0m[K
+[2C[32m# See how all your routes lay out with "rake routes"
+[0m[K
+[4C[32mInstall th[17Cas the lowest priority.[0m[K[5G
+[32mNote: These default routes make all actions in every controller accessible [H
+[1;44H[0m[7m2
+[2C[0m[32m#   map.resources :products, :member => { :short => :get, :toggle => :post },
+[0m[K
+[4C[32mSample resource route with sub-resources:[0m[K
+[2C[32m#   map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[2C[32mSample resource route with more complex sub-resources[7G
+map.resources :products do |products|
+[15Dcomments[0m[K[7G
+[32m  products.resources :sales, :collection => { :recent => :get }
+[2C#   end
+[0m[K
+[4C[32mSample resource route within a namespace:[7G
+map.namespace :admin do |admin|[0m[K[9G
+[32m# Directs /admin/[8C/* to Admin::ProductsController (app/controlle[7G
+  admin.resources :products
+[2C#   end
+[0m[K
+[4C[32mYou can have the root of your site routed with map.root -- just remember to
+[2C# map.root :controller => "welcome"
+[0m[K
+[2C[32m# See how all your routes lay out with "rake routes"
+[0m[K
+[4C[32mInstall th[17Cas the lowest priority.[0m[K[H
+[1;44H[7m1[5G
+[0m[32mSample resource route with options:[0m[K
+[2C[32m#   map.resources :products, :member => { :short => :get, :toggle => :post },
+[0m[K
+[4C[32mSample resource route with sub-resources:[0m[K
+[2C[32m#   map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[2C[32mSample resource route with more complex sub-resources[7G
+map.resources :products do |products|
+[15Dcomments[0m[K[7G
+[32m  products.resources :sales, :collection => { :recent => :get }
+[2C#   end
+[0m[K
+[4C[32mSample resource route within a namespace:[7G
+map.namespace :admin do |admin|[0m[K[9G
+[32m# Directs /admin/[8C/* to Admin::ProductsController (app/controlle[7G
+  admin.resources :products
+[2C#   end
+[0m[K
+[4C[32mYou can have the root of your site routed with map.root -- just remember to
+[2C# map.root :controller => "welcome"
+[0m[K
+[2C[32m# See how all your routes lay out with "rake routes"
+[0m[K[H
+[1;44H[7m0
+[0m[K
+[4C[32mSample resource route with options:[0m[K
+[2C[32m#   map.resources :products, :member => { :short => :get, :toggle => :post },
+[0m[K
+[4C[32mSample resource route with sub-resources:[0m[K
+[2C[32m#   map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[2C[32mSample resource route with more complex sub-resources[7G
+map.resources :products do |products|
+[15Dcomments[0m[K[7G
+[32m  products.resources :sales, :collection => { :recent => :get }
+[2C#   end
+[0m[K
+[4C[32mSample resource route within a namespace:[7G
+map.namespace :admin do |admin|[0m[K[9G
+[32m# Directs /admin/[8C/* to Admin::ProductsController (app/controlle[7G
+  admin.resources :products
+[2C#   end
+[0m[K
+[4C[32mYou can have the root of your site routed with map.root -- just remember to
+[2C# map.root :controller => "welcome"
+[0m[K
+[2C[32m# See how all your routes lay out with "rake routes"[H
+[1;43H[0m[7m29
+[2C[0m[32m#   map.resources :products
+[0m[K
+[4C[32mSample resource route with options:[0m[K
+[2C[32m#   map.resources :products, :member => { :short => :get, :toggle => :post },
+[0m[K
+[4C[32mSample resource route with sub-resources:[0m[K
+[2C[32m#   map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[2C[32mSample resource route with more complex sub-resources[7G
+map.resources :products do |products|
+[15Dcomments[0m[K[7G
+[32m  products.resources :sales, :collection => { :recent => :get }
+[2C#   end
+[0m[K
+[4C[32mSample resource route within a namespace:[7G
+map.namespace :admin do |admin|[0m[K[9G
+[32m# Directs /admin/[8C/* to Admin::ProductsController (app/controlle[7G
+  admin.resources :products
+[2C#   end
+[0m[K
+[4C[32mYou can have the root of your site routed with map.root -- just remember to
+[2C# map.root :controller => "welcome"
+[0m[K[H
+[A[7m^[
+[A  [41C8[5G
+[0m[32mSample resource route (maps HTTP verbs to controller actions automatically)
+[2C#   map.resources :products
+[0m[K
+[4C[32mSample resource route with options:[0m[K
+[2C[32m#   map.resources :products, :member => { :short => :get, :toggle => :post },
+[0m[K
+[4C[32mSample resource route with sub-resources:[0m[K
+[2C[32m#   map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[2C[32mSample resource route with more complex sub-resources[7G
+map.resources :products do |products|
+[15Dcomments[0m[K[7G
+[32m  products.resources :sales, :collection => { :recent => :get }
+[2C#   end
+[0m[K
+[4C[32mSample resource route within a namespace:[7G
+map.namespace :admin do |admin|[0m[K[9G
+[32m# Directs /admin/[8C/* to Admin::ProductsController (app/controlle[7G
+  admin.resources :products
+[2C#   end
+[0m[K
+[4C[32mYou can have the root of your site routed with map.root -- just remember to
+[2C# map.root :controller => "welcome"[H
+[1;44H[0m[7m7
+[0m[K
+[4C[32mSample resource route (maps HTTP verbs to controller actions automatically)
+[2C#   map.resources :products
+[0m[K
+[4C[32mSample resource route with options:[0m[K
+[2C[32m#   map.resources :products, :member => { :short => :get, :toggle => :post },
+[0m[K
+[4C[32mSample resource route with sub-resources:[0m[K
+[2C[32m#   map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[2C[32mSample resource route with more complex sub-resources[7G
+map.resources :products do |products|
+[15Dcomments[0m[K[7G
+[32m  products.resources :sales, :collection => { :recent => :get }
+[2C#   end
+[0m[K
+[4C[32mSample resource route within a namespace:[7G
+map.namespace :admin do |admin|[0m[K[9G
+[32m# Directs /admin/[8C/* to Admin::ProductsController (app/controlle[7G
+  admin.resources :products
+[2C#   end
+[0m[K
+[4C[32mYou can have the root of your site routed with map.root -- just remember to[H
+[1;44H[0m[7m6
+[2C[0m[32m# This route can be invoked with purchase_url(:id => product.id)
+[0m[K
+[4C[32mSample resource route (maps HTTP verbs to controller actions automatically)
+[2C#   map.resources :products
+[0m[K
+[4C[32mSample resource route with options:[0m[K
+[2C[32m#   map.resources :products, :member => { :short => :get, :toggle => :post },
+[0m[K
+[4C[32mSample resource route with sub-resources:[0m[K
+[2C[32m#   map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[2C[32mSample resource route with more complex sub-resources[7G
+map.resources :products do |products|
+[15Dcomments[0m[K[7G
+[32m  products.resources :sales, :collection => { :recent => :get }
+[2C#   end
+[0m[K
+[4C[32mSample resource route within a namespace:[7G
+map.namespace :admin do |admin|[0m[K[9G
+[32m# Directs /admin/[8C/* to Admin::ProductsController (app/controlle[7G
+  admin.resources :products
+[2C#   end
+[0m[K[H
+[A[7m^[
+[A  [41C5[5G
+[0m[32m  map.purchase 'products/:id/purchase', :controller => 'catalog', :action =
+[2C# This route can be invoked with purchase_url(:id => product.id)
+[0m[K
+[4C[32mSample resource route (maps HTTP verbs to controller actions automatically)
+[2C#   map.resources :products
+[0m[K
+[4C[32mSample resource route with options:[0m[K
+[2C[32m#   map.resources :products, :member => { :short => :get, :toggle => :post },
+[0m[K
+[4C[32mSample resource route with sub-resources:[0m[K
+[2C[32m#   map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[2C[32mSample resource route with more complex sub-resources[7G
+map.resources :products do |products|
+[15Dcomments[0m[K[7G
+[32m  products.resources :sales, :collection => { :recent => :get }
+[2C#   end
+[0m[K
+[4C[32mSample resource route within a namespace:[7G
+map.namespace :admin do |admin|[0m[K[9G
+[32m# Directs /admin/[8C/* to Admin::ProductsController (app/controlle[7G
+  admin.resources :products
+[2C#   end[H
+[1;44H[0m[7m4[5G
+[0m[32mSample of named route:[0m[K[5G
+[32m  map.purchase 'products/:id/purchase', :controller => 'catalog', :action =
+[2C# This route can be invoked with purchase_url(:id => product.id)
+[0m[K
+[4C[32mSample resource route (maps HTTP verbs to controller actions automatically)
+[2C#   map.resources :products
+[0m[K
+[4C[32mSample resource route with options:[0m[K
+[2C[32m#   map.resources :products, :member => { :short => :get, :toggle => :post },
+[0m[K
+[4C[32mSample resource route with sub-resources:[0m[K
+[2C[32m#   map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[2C[32mSample resource route with more complex sub-resources[7G
+map.resources :products do |products|
+[15Dcomments[0m[K[7G
+[32m  products.resources :sales, :collection => { :recent => :get }
+[2C#   end
+[0m[K
+[4C[32mSample resource route within a namespace:[7G
+map.namespace :admin do |admin|[0m[K[9G
+[32m# Directs /admin/[8C/* to Admin::ProductsController (app/controlle[7G
+  admin.resources :products[H
+[1;44H[0m[7m3
+[0m[K
+[4C[32mSample of named route:[0m[K[5G
+[32m  map.purchase 'products/:id/purchase', :controller => 'catalog', :action =
+[2C# This route can be invoked with purchase_url(:id => product.id)
+[0m[K
+[4C[32mSample resource route (maps HTTP verbs to controller actions automatically)
+[2C#   map.resources :products
+[0m[K
+[4C[32mSample resource route with options:[0m[K
+[2C[32m#   map.resources :products, :member => { :short => :get, :toggle => :post },
+[0m[K
+[4C[32mSample resource route with sub-resources:[0m[K
+[2C[32m#   map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[2C[32mSample resource route with more complex sub-resources[7G
+map.resources :products do |products|
+[15Dcomments[0m[K[7G
+[32m  products.resources :sales, :collection => { :recent => :get }
+[2C#   end
+[0m[K
+[4C[32mSample resource route within a namespace:[7G
+map.namespace :admin do |admin|[0m[K[9G
+[32m# Directs /admin/[8C/* to Admin::ProductsController (app/controlle[H
+[1;44H[0m[7m2
+[2C[0m[32m# Keep in mind you can assign values other than :controller and :action
+[0m[K
+[4C[32mSample of named route:[0m[K[5G
+[32m  map.purchase 'products/:id/purchase', :controller => 'catalog', :action =
+[2C# This route can be invoked with purchase_url(:id => product.id)
+[0m[K
+[4C[32mSample resource route (maps HTTP verbs to controller actions automatically)
+[2C#   map.resources :products
+[0m[K
+[4C[32mSample resource route with options:[0m[K
+[2C[32m#   map.resources :products, :member => { :short => :get, :toggle => :post },
+[0m[K
+[4C[32mSample resource route with sub-resources:[0m[K
+[2C[32m#   map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[2C[32mSample resource route with more complex sub-resources[7G
+map.resources :products do |products|
+[15Dcomments[0m[K[7G
+[32m  products.resources :sales, :collection => { :recent => :get }
+[2C#   end
+[0m[K
+[4C[32mSample resource route within a namespace:[7G
+map.namespace :admin do |admin|[0m[K[H
+[1;44H[7m1[5G
+[0m[32m  map.connect 'products/:id', :controller => 'catalog', :action => 'view'
+[2C# Keep in mind you can assign values other than :controller and :action
+[0m[K
+[4C[32mSample of named route:[0m[K[5G
+[32m  map.purchase 'products/:id/purchase', :controller => 'catalog', :action =
+[2C# This route can be invoked with purchase_url(:id => product.id)
+[0m[K
+[4C[32mSample resource route (maps HTTP verbs to controller actions automatically)
+[2C#   map.resources :products
+[0m[K
+[4C[32mSample resource route with options:[0m[K
+[2C[32m#   map.resources :products, :member => { :short => :get, :toggle => :post },
+[0m[K
+[4C[32mSample resource route with sub-resources:[0m[K
+[2C[32m#   map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[2C[32mSample resource route with more complex sub-resources[7G
+map.resources :products do |products|
+[15Dcomments[0m[K[7G
+[32m  products.resources :sales, :collection => { :recent => :get }
+[2C#   end
+[0m[K
+[4C[32mSample resource route within a namespace:[H
+[1;44H[0m[7m0[5G
+[0m[32mSample of regular route:[0m[K[5G
+[32m  map.connect 'products/:id', :controller => 'catalog', :action => 'view'
+[2C# Keep in mind you can assign values other than :controller and :action
+[0m[K
+[4C[32mSample of named route:[0m[K[5G
+[32m  map.purchase 'products/:id/purchase', :controller => 'catalog', :action =
+[2C# This route can be invoked with purchase_url(:id => product.id)
+[0m[K
+[4C[32mSample resource route (maps HTTP verbs to controller actions automatically)
+[2C#   map.resources :products
+[0m[K
+[4C[32mSample resource route with options:[0m[K
+[2C[32m#   map.resources :products, :member => { :short => :get, :toggle => :post },
+[0m[K
+[4C[32mSample resource route with sub-resources:[0m[K
+[2C[32m#   map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[2C[32mSample resource route with more complex sub-resources[7G
+map.resources :products do |products|
+[15Dcomments[0m[K[7G
+[32m  products.resources :sales, :collection => { :recent => :get }
+[2C#   end
+[0m[K[H
+[1;43H[7m19
+[0m[K
+[4C[32mSample of regular route:[0m[K[5G
+[32m  map.connect 'products/:id', :controller => 'catalog', :action => 'view'
+[2C# Keep in mind you can assign values other than :controller and :action
+[0m[K
+[4C[32mSample of named route:[0m[K[5G
+[32m  map.purchase 'products/:id/purchase', :controller => 'catalog', :action =
+[2C# This route can be invoked with purchase_url(:id => product.id)
+[0m[K
+[4C[32mSample resource route (maps HTTP verbs to controller actions automatically)
+[2C#   map.resources :products
+[0m[K
+[4C[32mSample resource route with options:[0m[K
+[2C[32m#   map.resources :products, :member => { :short => :get, :toggle => :post },
+[0m[K
+[4C[32mSample resource route with sub-resources:[0m[K
+[2C[32m#   map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[2C[32mSample resource route with more complex sub-resources[7G
+map.resources :products do |products|
+[15Dcomments[0m[K[7G
+[32m  products.resources :sales, :collection => { :recent => :get }
+[2C#   end[H
+[1;44H[0m[7m8
+[2C[0m[32m# The priority is based upon order of creation: first created -> highest prio
+[0m[K
+[4C[32mSample of regular route:[0m[K[5G
+[32m  map.connect 'products/:id', :controller => 'catalog', :action => 'view'
+[2C# Keep in mind you can assign values other than :controller and :action
+[0m[K
+[4C[32mSample of named route:[0m[K[5G
+[32m  map.purchase 'products/:id/purchase', :controller => 'catalog', :action =
+[2C# This route can be invoked with purchase_url(:id => product.id)
+[0m[K
+[4C[32mSample resource route (maps HTTP verbs to controller actions automatically)
+[2C#   map.resources :products
+[0m[K
+[4C[32mSample resource route with options:[0m[K
+[2C[32m#   map.resources :products, :member => { :short => :get, :toggle => :post },
+[0m[K
+[4C[32mSample resource route with sub-resources:[0m[K
+[2C[32m#   map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[2C[32mSample resource route with more complex sub-resources[7G
+map.resources :products do |products|
+[15Dcomments[0m[K[7G
+[32m  products.resources :sales, :collection => { :recent => :get }[H
+[1;44H[0m[7m7
+[0m[K
+[2C[32m# The priority is based upon order of creation: first created -> highest prio
+[0m[K
+[4C[32mSample of regular route:[0m[K[5G
+[32m  map.connect 'products/:id', :controller => 'catalog', :action => 'view'
+[2C# Keep in mind you can assign values other than :controller and :action
+[0m[K
+[4C[32mSample of named route:[0m[K[5G
+[32m  map.purchase 'products/:id/purchase', :controller => 'catalog', :action =
+[2C# This route can be invoked with purchase_url(:id => product.id)
+[0m[K
+[4C[32mSample resource route (maps HTTP verbs to controller actions automatically)
+[2C#   map.resources :products
+[0m[K
+[4C[32mSample resource route with options:[0m[K
+[2C[32m#   map.resources :products, :member => { :short => :get, :toggle => :post },
+[0m[K
+[4C[32mSample resource route with sub-resources:[0m[K
+[2C[32m#   map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[2C[32mSample resource route with more complex sub-resources[7G
+map.resources :products do |products|
+[15Dcomments[0m[K[H
+[1;44H[7m6
+[2C[0mmap.resources :users
+[K
+[2C[32m# The priority is based upon order of creation: first created -> highest prio
+[0m[K
+[4C[32mSample of regular route:[0m[K[5G
+[32m  map.connect 'products/:id', :controller => 'catalog', :action => 'view'
+[2C# Keep in mind you can assign values other than :controller and :action
+[0m[K
+[4C[32mSample of named route:[0m[K[5G
+[32m  map.purchase 'products/:id/purchase', :controller => 'catalog', :action =
+[2C# This route can be invoked with purchase_url(:id => product.id)
+[0m[K
+[4C[32mSample resource route (maps HTTP verbs to controller actions automatically)
+[2C#   map.resources :products
+[0m[K
+[4C[32mSample resource route with options:[0m[K
+[2C[32m#   map.resources :products, :member => { :short => :get, :toggle => :post },
+[0m[K
+[4C[32mSample resource route with sub-resources:[0m[K
+[2C[32m#   map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[2C[32mSample resource route with more complex sub-resources[7G
+map.resources :products do |products|[H
+[1;44H[0m[7m5
+[0m[K
+[2Cmap.resources :users
+[K
+[2C[32m# The priority is based upon order of creation: first created -> highest prio
+[0m[K
+[4C[32mSample of regular route:[0m[K[5G
+[32m  map.connect 'products/:id', :controller => 'catalog', :action => 'view'
+[2C# Keep in mind you can assign values other than :controller and :action
+[0m[K
+[4C[32mSample of named route:[0m[K[5G
+[32m  map.purchase 'products/:id/purchase', :controller => 'catalog', :action =
+[2C# This route can be invoked with purchase_url(:id => product.id)
+[0m[K
+[4C[32mSample resource route (maps HTTP verbs to controller actions automatically)
+[2C#   map.resources :products
+[0m[K
+[4C[32mSample resource route with options:[0m[K
+[2C[32m#   map.resources :products, :member => { :short => :get, :toggle => :post },
+[0m[K
+[4C[32mSample resource route with sub-resources:[0m[K
+[2C[32m#   map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K
+[2C[32mSample resource route with more complex sub-resources[H
+[1;44H[0m[7m4
+[2C[0mmap.resources :actions
+[K
+[2Cmap.resources :users
+[K
+[2C[32m# The priority is based upon order of creation: first created -> highest prio
+[0m[K
+[4C[32mSample of regular route:[0m[K[5G
+[32m  map.connect 'products/:id', :controller => 'catalog', :action => 'view'
+[2C# Keep in mind you can assign values other than :controller and :action
+[0m[K
+[4C[32mSample of named route:[0m[K[5G
+[32m  map.purchase 'products/:id/purchase', :controller => 'catalog', :action =
+[2C# This route can be invoked with purchase_url(:id => product.id)
+[0m[K
+[4C[32mSample resource route (maps HTTP verbs to controller actions automatically)
+[2C#   map.resources :products
+[0m[K
+[4C[32mSample resource route with options:[0m[K
+[2C[32m#   map.resources :products, :member => { :short => :get, :toggle => :post },
+[0m[K
+[4C[32mSample resource route with sub-resources:[0m[K
+[2C[32m#   map.resources :products, :has_many => [ :comments, :sales ], :has_one => 
+[2C[0m[K[H
+[A[7m^[
+[A  [41C5
+
+[1;44H6
+
+
+[1;44H7
+
+
+
+[1;44H8[5B[1;44H9[6B[1;43H20[7B[H^[[7B[H  [41C1[8B[1;44H2[9B[1;44H3[10B[1;44H4[11B[0m[12B
+File config/routes.rb not changed so no update needed
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ cd www[K[K[K[K[K[Ks[Kls
+[0m[01;34mapp[0m         [01;34mconfig[0m   [01;34mdb[0m   [01;34mlib[0m  [01;34mpublic[0m    README  [01;34mtest[0m  [01;34mvendor[0m
+[01;32mclaims.kpf[0m  console  [01;34mdoc[0m  [01;34mlog[0m  Rakefile  [01;34mscript[0m  [01;34mtmp[0m
+[m]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ cd html[K[K[K[Kpublic/
+]0;dev@LPGWEB: ~/dev/claims/publicdev@LPGWEB:~/dev/claims/public$ ls
+404.html  500.html     [0m[01;34mimages[0m      [01;34mjavascripts[0m  [01;34mstylesheets[0m
+422.html  favicon.ico  index.html  robots.txt
+[m]0;dev@LPGWEB: ~/dev/claims/publicdev@LPGWEB:~/dev/claims/public$ joe index.html 
+Processing '/etc/joe/joerc'...Processing '/etc/joe/ftyperc'...done
+done
+[H[2J[0m[1;24r[H[2J[7m    IWA  index.html (html)  <!DOCTYP  Row 1    Col 1    9:31  Ctrl-K H for help
+[0m[35m<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+[32m<[36mhtml[32m>
+[2C<[36mhead[32m>
+<[36mmeta[0m [32mhttp-equiv[1m=[0m[36m"Content-type"[0m [32mcontent[1m=[0m[36m"text/html; charset=utf-8"[0m [32m/>[5G
+<[36mtitle[32m>[0mRuby on Rails: Welcome aboard[32m</[36mtitle[32m>[5G
+<[36mstyle[0m [32mtype[1m=[0m[36m"text/css"[0m [32mmedia[1m=[0m[36m"screen"[32m>[7G
+[35mbody [0m{
+[1mmargin[0m: 0;[9G
+[1mmargin-bottom[0m: 25px;[9G
+[1mpadding[0m: 0;[9G
+[1mbackground-color[0m: #f0f0f0;[9G
+[1mfont-family[0m: "Lucida Grande", "Bitstream Vera Sans", "Verdana";[9G
+[1mfont-size[0m: 13px;[9G
+[1mcolor[0m: #333;[7G
+}
+
+[35mh1 [0m{
+[1mfont-size[0m: 28px;[9G
+[1mcolor[0m: #000;[7G
+}
+
+[35ma  [0m{[1mcolor[0m: #03c}[7m** Joe's Own Editor v3.7 ** (utf-8) ** Copyright © 2008 **[H
+[1;60H2
+[A^[
+[A  [40C2[23B[0m      [35ma  [0m{[1mcolor[0m: #03c}[K[H
+
+[1;30H[7mhtml>  [6C3
+
+
+[1;43H4
+
+
+
+[1;43H5[5B[1;43H6[6B[1;43H7[7B[1;43H8[8B[1;43H9[9B[1;43H10[10B[1;44H1[11B[1;44H2[12B[H^[[12B[H  [41C1[11B[1;44H0[10B[1;43H9 [9B[1;43H8[8B[1;43H7[7B[H^[[7B[H  [40C6[6B[48C[H^[[49C48[7;48H[1;53H2[7;42H[H  [50C1[7;41H[1;22HModified)(html)[16C0[7;40H[0m[32m</[36mtitle[32m>[0m [9D[32m</[36mtitle[32m>[0m [9D[1;52H[7m39[7;39H[0m[32m</[36mtitle[32m>[0m [9D[32m</[36mtitle[32m>[0m [9D[32m</[36mtitle[32m>[0m [9D[32m</[36mtitle[32m>[0m [9D[32m</[36mtitle[32m>[0m [9D[32m</[36mtitle[32m>[0m [9D[32m</[36mtitle[32m>[0m [9D[32m</[36mtitle[32m>[0m [9D[32m</[36mtitle[32m>[0m [9D[32m</[36mtitle[32m>[0m [9D[32m</[36mtitle[32m>[0m [9D[32m</[36mtitle[32m>[0m [9D[32m</[36mtitle[32m>[0m [9D[32m</[36mtitle[32m>[0m [9D[32m</[36mtitle[32m>[0m [9D[32m</[36mtitle[32m>[0m [9D[32m</[36mtitle[32m>[0m [9D[32m</[36mtitle[32m>[0m [9D[32m</[36mtitle[32m>[0m [9D[32m</[36mtitle[32m>[0m [9D[32m</[36mtitle[32m>[0m [9D[32m</[36mtitle[32m>[0m [9D[32m</[36mtitle[32m>[0m [9D[1;52H[7m16[7;16H[0m[32m</[36mtitle[32m>[0m [9D[32m</[36mtitle[32m>[0m [9D[32m</[36mtitle[32m>[0m [9D[32m</[36mtitle[32m>[0m [9D[1;53H[7m2[7;12H[0mS[32m</[36mtitle[32m>[8D[1;53H[0m[7m3[7;13H[0mt[32m</[36mtitle[32m>[8D[0ma[32m</[36mtitle[32m>[8D[0mr[32m</[36mtitle[32m>[8D[0mt[32m</[36mtitle[32m>[8D[H[0m[7m^[[50C7[7;17H[H  [40C7[8;17H[1;43H8[9C3[9;17H[1;43H9[9C7[10;17H[1;53H6[10;16H[1;60H3[10;16H[1;60H4[10;16H[1;60H5[10;16H[1;60H6[10;16H[1;60H7[10;16H[1;60H8[10;16H[1;60H9[10;16H[14B[0mLose changes to this file (y,n,^C)? 
+File index.html not saved
+]0;dev@LPGWEB: ~/dev/claims/publicdev@LPGWEB:~/dev/claims/public$ sudo gem install annotate-models
+[sudo] password for dev: 
+Successfully installed annotate-models-1.0.4
+1 gem installed
+Installing ri documentation for annotate-models-1.0.4...
+Installing RDoc documentation for annotate-models-1.0.4...
+]0;dev@LPGWEB: ~/dev/claims/publicdev@LPGWEB:~/dev/claims/public$ annote[Kate
+The program 'annotate' is currently not installed.  You can install it by typing:
+sudo apt-get install libgd-tools
+]0;dev@LPGWEB: ~/dev/claims/publicdev@LPGWEB:~/dev/claims/public$ annotate[K[K[K[K[K[K[K[K
+]0;dev@LPGWEB: ~/dev/claims/publicdev@LPGWEB:~/dev/claims/public$ cd ..
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ annotate
+The program 'annotate' is currently not installed.  You can install it by typing:
+sudo apt-get install libgd-tools
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ annotate
+The program 'annotate' is currently not installed.  You can install it by typing:
+sudo apt-get install libgd-tools
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ /[Kann[K[K[Kannotate
+The program 'annotate' is currently not installed.  You can install it by typing:
+sudo apt-get install libgd-tools
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ /et[K[K[Kwhereis gems[K
+gem: /usr/bin/gem1.8 /usr/bin/gem /usr/share/man/man1/gem.1.gz
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$  /usr/bin/gem/annotate
+bash: /usr/bin/gem/annotate: Not a directory
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ script [K/generate sessions[K[K[K[K[K[K[K[Kcontroller Sessions new
+      exists  app/controllers/
+      exists  app/helpers/
+      create  app/views/sessions
+      exists  test/functional/
+      exists  test/unit/helpers/
+      create  app/controllers/sessions_controller.rb
+      create  test/functional/sessions_controller_test.rb
+      create  app/helpers/sessions_helper.rb
+      create  test/unit/helpers/sessions_helper_test.rb
+      create  app/views/sessions/new.html.erb
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ script/console 
+Loading development environment (Rails 2.3.8)
+Users.>> Users.find_+all[K[K[K[Kal;l[K[Kl
+NameError: uninitialized constant Users
+	from /var/lib/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:443:in `load_missing_constant'
+	from /var/lib/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:80:in `const_missing'
+	from /var/lib/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:92:in `const_missing'
+	from (irb):1
+>> Users.find_all[1P.find_all[C[C[C[C[C[C[C
+NoMethodError: undefined method `find_all' for User(ID: integer, UserName: string):Class
+	from /var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/base.rb:1994:in `method_missing'
+	from (irb):2
+>> User.find_all(_all:_all[1Pall[C[C[C)
+=> [#<User ID: 1, UserName: "Ryan">, #<User ID: 2, UserName: "Brian">, #<User ID: 3, UserName: "Rhonda">, #<User ID: 4, UserName: "Chrystal">, #<User ID: 5, UserName: "Teresa">, #<User ID: 6, UserName: "Christy">, #<User ID: 7, UserName: "Jeanine">, #<User ID: 8, UserName: "Mary Hill">, #<User ID: 9, UserName: "Christina">, #<User ID: 10, UserName: "Stephanie">, #<User ID: 11, UserName: "Jessica">, #<User ID: 12, UserName: "Angela">, #<User ID: 13, UserName: "Mary">, #<User ID: 14, UserName: "Lynn">, #<User ID: 15, UserName: "Dee">, #<User ID: 16, UserName: "Elyssa">, #<User ID: 17, UserName: "Patricia">, #<User ID: 18, UserName: "Raelisa">, #<User ID: 19, UserName: "Tina">, #<User ID: 20, UserName: "Nate">, #<User ID: 21, UserName: "Jim">, #<User ID: 22, UserName: "Ben">, #<User ID: 23, UserName: "Teresa">, #<User ID: 24, UserName: "John">, #<User ID: 25, UserName: "Karen">]
+>> User.find(:all)
+=> [#<User ID: 1, UserName: "Ryan">, #<User ID: 2, UserName: "Brian">, #<User ID: 3, UserName: "Rhonda">, #<User ID: 4, UserName: "Chrystal">, #<User ID: 5, UserName: "Teresa">, #<User ID: 6, UserName: "Christy">, #<User ID: 7, UserName: "Jeanine">, #<User ID: 8, UserName: "Mary Hill">, #<User ID: 9, UserName: "Christina">, #<User ID: 10, UserName: "Stephanie">, #<User ID: 11, UserName: "Jessica">, #<User ID: 12, UserName: "Angela">, #<User ID: 13, UserName: "Mary">, #<User ID: 14, UserName: "Lynn">, #<User ID: 15, UserName: "Dee">, #<User ID: 16, UserName: "Elyssa">, #<User ID: 17, UserName: "Patricia">, #<User ID: 18, UserName: "Raelisa">, #<User ID: 19, UserName: "Tina">, #<User ID: 20, UserName: "Nate">, #<User ID: 21, UserName: "Jim">, #<User ID: 22, UserName: "Ben">, #<User ID: 23, UserName: "Teresa">, #<User ID: 24, UserName: "John">, #<User ID: 25, UserName: "Karen">]
+>> User.find(:all)[1]
+=> #<User ID: 2, UserName: "Brian">
+>> \q
+SyntaxError: compile error
+(irb):6: syntax error, unexpected $undefined
+	from (irb):6
+>> exit
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ fg
+script/server
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET search_path TO public[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET standard_conforming_strings = on[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mUser Load (1.1ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."ID" = 1) [0m
+  [4;35;1mUser Load (2.6ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."ID" = 1) [0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET search_path TO public[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET standard_conforming_strings = on[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mUser Load (1.1ms)[0m   [0;1mSELECT * FROM "users" [0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM "users" [0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM "users" [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET search_path TO public[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET standard_conforming_strings = on[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing SessionsController#new (for 192.168.147.117 at 2010-06-29 22:00:30) [GET]
+
+NameError (uninitialized constant SessionsController::Users):
+  app/controllers/sessions_controller.rb:3:in `new'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (29.4ms)
+Rendered rescues/_request_and_response (1.6ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.4ms)[0m   [0mSET search_path TO public[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET standard_conforming_strings = on[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing SessionsController#new (for 192.168.147.117 at 2010-06-29 22:00:39) [GET]
+  [4;35;1mUser Load (2.6ms)[0m   [0mSELECT * FROM "users" [0m
+Rendering sessions/new
+
+ActionView::TemplateError (undefined local variable or method `sessions_path' for #<ActionView::Base:0x7f7e9cac04f0>) on line #3 of app/views/sessions/new.html.erb:
+1: <h1>Pick Your Username</h1>
+2: <p>Choose your name and signin</p>
+3: <% form_for(:session, :url=> sessions_path) do |f| %>
+4:   <div class='field'>
+5:     <%= f.select("user_id","id",@users.map{|u| [u.UserName,u.id]}) %>
+6:   </div>
+
+    app/views/sessions/new.html.erb:3
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (42.0ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSET search_path TO public[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSET standard_conforming_strings = on[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing SessionsController#new (for 192.168.147.117 at 2010-06-29 22:02:58) [GET]
+  [4;36;1mUser Load (2.7ms)[0m   [0;1mSELECT * FROM "users" [0m
+Rendering sessions/new
+ERROR: compiling _run_erb_app47views47sessions47new46html46erb RAISED compile error
+/home/dev/dev/claims/app/views/sessions/new.html.erb:3: syntax error, unexpected tIDENTIFIER, expecting ')'
+....concat "\n  <div class='field'>\n    "
+                              ^
+/home/dev/dev/claims/app/views/sessions/new.html.erb:5: syntax error, unexpected tIDENTIFIER, expecting kEND
+... </div>\n  <div class='actions'>\n    "
+                              ^
+/home/dev/dev/claims/app/views/sessions/new.html.erb:8: syntax error, unexpected tIDENTIFIER, expecting kEND
+...buffer.concat(( f.submit('sign in') ).to_s); @output_buffer....
+                              ^
+/home/dev/dev/claims/app/views/sessions/new.html.erb:8: unterminated string meets end of file
+Function body:           def _run_erb_app47views47sessions47new46html46erb(local_assigns)
+            old_output_buffer = output_buffer;;@output_buffer = '';  __in_erb_template=true ; @output_buffer.concat "<h1>Pick Your Username</h1>\n<p>Choose your name and signin</p>\n"
+
+;  form_for(:session, :url=> 'new) do |f| ; @output_buffer.concat "\n  <div class='field'>\n    "
+
+; @output_buffer.concat(( f.select("user_id","id",@users.map{|u| [u.UserName,u.id]}) ).to_s); @output_buffer.concat "\n  </div>\n  <div class='actions'>\n    "
+
+
+; @output_buffer.concat(( f.submit('sign in') ).to_s); @output_buffer.concat "\n  </div>\n"
+
+;  end ; @output_buffer.concat "\nend\n"
+
+; @output_buffer
+          ensure
+            self.output_buffer = old_output_buffer
+          end
+Backtrace: /home/dev/dev/claims/app/views/sessions/new.html.erb:8:in `compile!'
+/var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_view/renderable.rb:61:in `compile'
+/var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_view/renderable.rb:28:in `render'
+/var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_view/template.rb:205:in `render_template'
+/var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_view/base.rb:265:in `render'
+/var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/base.rb:1250:in `render_for_file'
+/var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/base.rb:936:in `render_without_benchmark'
+/var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/benchmarking.rb:51:in `render'
+/var/lib/gems/1.8/gems/activesupport-2.3.8/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+/var/lib/gems/1.8/gems/activesupport-2.3.8/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/benchmarking.rb:51:in `render'
+/var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/base.rb:1326:in `default_render'
+/var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/base.rb:1332:in `perform_action_without_filters'
+/var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/filters.rb:617:in `call_filters'
+/var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+/var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+/var/lib/gems/1.8/gems/activesupport-2.3.8/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+/var/lib/gems/1.8/gems/activesupport-2.3.8/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+/var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/rescue.rb:160:in `perform_action_without_flash'
+/var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/flash.rb:151:in `perform_action'
+/var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/base.rb:532:in `send'
+/var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/base.rb:532:in `process_without_filters'
+/var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/filters.rb:606:in `process'
+/var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/base.rb:391:in `process'
+/var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/base.rb:386:in `call'
+/var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/routing/route_set.rb:438:in `call'
+/var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/dispatcher.rb:87:in `dispatch'
+/var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/dispatcher.rb:121:in `_call'
+/var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/dispatcher.rb:130
+/var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/query_cache.rb:29:in `call'
+/var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/query_cache.rb:29:in `call'
+/var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+/var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/query_cache.rb:9:in `cache'
+/var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/query_cache.rb:28:in `call'
+/var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+/var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/string_coercion.rb:25:in `call'
+/var/lib/gems/1.8/gems/rack-1.1.0/lib/rack/head.rb:9:in `call'
+/var/lib/gems/1.8/gems/rack-1.1.0/lib/rack/methodoverride.rb:24:in `call'
+/var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/params_parser.rb:15:in `call'
+/var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/session/cookie_store.rb:99:in `call'
+/var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/failsafe.rb:26:in `call'
+/var/lib/gems/1.8/gems/rack-1.1.0/lib/rack/lock.rb:11:in `call'
+/var/lib/gems/1.8/gems/rack-1.1.0/lib/rack/lock.rb:11:in `synchronize'
+/var/lib/gems/1.8/gems/rack-1.1.0/lib/rack/lock.rb:11:in `call'
+/var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/dispatcher.rb:114:in `call'
+/var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/reloader.rb:34:in `run'
+/var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/dispatcher.rb:108:in `call'
+/home/dev/.gem/ruby/1.8/gems/rails-2.3.8/lib/rails/rack/static.rb:31:in `call'
+/var/lib/gems/1.8/gems/rack-1.1.0/lib/rack/urlmap.rb:47:in `call'
+/var/lib/gems/1.8/gems/rack-1.1.0/lib/rack/urlmap.rb:41:in `each'
+/var/lib/gems/1.8/gems/rack-1.1.0/lib/rack/urlmap.rb:41:in `call'
+/home/dev/.gem/ruby/1.8/gems/rails-2.3.8/lib/rails/rack/log_tailer.rb:17:in `call'
+/var/lib/gems/1.8/gems/rack-1.1.0/lib/rack/content_length.rb:13:in `call'
+/var/lib/gems/1.8/gems/rack-1.1.0/lib/rack/handler/webrick.rb:48:in `service'
+/usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+/usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+/usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+/usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+/usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+/usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+/usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+/usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+/usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+/usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+/var/lib/gems/1.8/gems/rack-1.1.0/lib/rack/handler/webrick.rb:14:in `run'
+/home/dev/.gem/ruby/1.8/gems/rails-2.3.8/lib/commands/server.rb:111
+/usr/lib/ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/usr/lib/ruby/1.8/rubygems/custom_require.rb:31:in `require'
+script/server:3
+
+ActionView::TemplateError (compile error
+/home/dev/dev/claims/app/views/sessions/new.html.erb:3: syntax error, unexpected tIDENTIFIER, expecting ')'
+....concat "\n  <div class='field'>\n    "
+                              ^
+/home/dev/dev/claims/app/views/sessions/new.html.erb:5: syntax error, unexpected tIDENTIFIER, expecting kEND
+... </div>\n  <div class='actions'>\n    "
+                              ^
+/home/dev/dev/claims/app/views/sessions/new.html.erb:8: syntax error, unexpected tIDENTIFIER, expecting kEND
+...buffer.concat(( f.submit('sign in') ).to_s); @output_buffer....
+                              ^
+/home/dev/dev/claims/app/views/sessions/new.html.erb:8: unterminated string meets end of file) on line #3 of app/views/sessions/new.html.erb:
+1: <h1>Pick Your Username</h1>
+2: <p>Choose your name and signin</p>
+3: <% form_for(:session, :url=> 'new) do |f| %>
+4:   <div class='field'>
+5:     <%= f.select("user_id","id",@users.map{|u| [u.UserName,u.id]}) %>
+6:   </div>
+
+    app/views/sessions/new.html.erb:8:in `compile!'
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (115.4ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.3ms)[0m   [0mSET search_path TO public[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET standard_conforming_strings = on[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing SessionsController#new (for 192.168.147.117 at 2010-06-29 22:03:08) [GET]
+  [4;35;1mUser Load (2.3ms)[0m   [0mSELECT * FROM "users" [0m
+Rendering sessions/new
+
+ActionView::TemplateError (undefined method `merge' for #<Array:0x7f7e9c8a8f00>) on line #5 of app/views/sessions/new.html.erb:
+2: <p>Choose your name and signin</p>
+3: <% form_for(:session, :url=> 'new') do |f| %>
+4:   <div class='field'>
+5:     <%= f.select("user_id","id",@users.map{|u| [u.UserName,u.id]}) %>
+6:   </div>
+7:   <div class='actions'>
+8:     <%= f.submit('sign in') %>
+
+    app/views/sessions/new.html.erb:5
+    app/views/sessions/new.html.erb:3
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (34.5ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET search_path TO public[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET standard_conforming_strings = on[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing SessionsController#new (for 192.168.147.117 at 2010-06-29 22:03:38) [GET]
+  [4;36;1mUser Load (2.8ms)[0m   [0;1mSELECT * FROM "users" [0m
+Rendering sessions/new
+
+ActionView::TemplateError (undefined method `merge' for #<Array:0x7f7e9ca5c040>) on line #5 of app/views/sessions/new.html.erb:
+2: <p>Choose your name and signin</p>
+3: <% form_for(:session, :url=> 'new') do |f| %>
+4:   <div class='field'>
+5:     <%= f.select("user_id","id",@users.map{|u| [u.UserName,u.ID]}) %>
+6:   </div>
+7:   <div class='actions'>
+8:     <%= f.submit('sign in') %>
+
+    app/views/sessions/new.html.erb:5
+    app/views/sessions/new.html.erb:3
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (38.4ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.4ms)[0m   [0mSET search_path TO public[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET standard_conforming_strings = on[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing SessionsController#new (for 192.168.147.117 at 2010-06-29 22:03:41) [GET]
+  [4;35;1mUser Load (3.1ms)[0m   [0mSELECT * FROM "users" [0m
+Rendering sessions/new
+
+ActionView::TemplateError (undefined method `merge' for #<Array:0x7f7e9c6d1ee8>) on line #5 of app/views/sessions/new.html.erb:
+2: <p>Choose your name and signin</p>
+3: <% form_for(:session, :url=> 'new') do |f| %>
+4:   <div class='field'>
+5:     <%= f.select("user_id","id",@users.map{|u| [u.UserName,u.ID]}) %>
+6:   </div>
+7:   <div class='actions'>
+8:     <%= f.submit('sign in') %>
+
+    app/views/sessions/new.html.erb:5
+    app/views/sessions/new.html.erb:3
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (118.7ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSET search_path TO public[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET standard_conforming_strings = on[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing SessionsController#new (for 192.168.147.117 at 2010-06-29 22:04:26) [GET]
+  [4;36;1mUser Load (2.5ms)[0m   [0;1mSELECT * FROM "users" [0m
+Rendering sessions/new
+
+ActionView::TemplateError (undefined method `merge' for #<Array:0x7f7e9c883688>) on line #5 of app/views/sessions/new.html.erb:
+2: <p>Choose your name and signin</p>
+3: <% form_for(:session, :url=> 'new') do |f| %>
+4:   <div class='field'>
+5:     <%= f.select("user_id","id",@users.map {|u| [u.UserName,u.ID]}) %>
+6:   </div>
+7:   <div class='actions'>
+8:     <%= f.submit('sign in') %>
+
+    app/views/sessions/new.html.erb:5
+    app/views/sessions/new.html.erb:3
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (35.6ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.6ms)[0m   [0mSET search_path TO public[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSET standard_conforming_strings = on[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing SessionsController#new (for 192.168.147.117 at 2010-06-29 22:08:25) [GET]
+  [4;35;1mUser Load (3.9ms)[0m   [0mSELECT * FROM "users" [0m
+Rendering sessions/new
+Completed in 31ms (View: 18, DB: 6) | 200 OK [http://lpgweb/signin]
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET search_path TO public[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET standard_conforming_strings = on[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing ApplicationController#index (for 192.168.147.117 at 2010-06-29 22:11:58) [POST]
+  Parameters: {"commit"=>"sign in", "session"=>{"user_id"=>"12"}, "authenticity_token"=>"6zkhURRaKfwIa1X9wl+s617UiaJ+dKMhpVG9qXAVIeY="}
+
+ActionController::RoutingError (No route matches "/new" with {:method=>:post}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET search_path TO public[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET standard_conforming_strings = on[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing SessionsController#new (for 192.168.147.117 at 2010-06-29 22:12:16) [GET]
+  [4;36;1mUser Load (2.2ms)[0m   [0;1mSELECT * FROM "users" [0m
+Rendering sessions/new
+Completed in 22ms (View: 12, DB: 3) | 200 OK [http://lpgweb/signin]
+  [4;35;1mSQL (0.3ms)[0m   [0mSET search_path TO public[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET standard_conforming_strings = on[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing ApplicationController#index (for 192.168.147.117 at 2010-06-29 22:12:17) [POST]
+  Parameters: {"commit"=>"sign in", "session"=>{"user_id"=>"1"}, "authenticity_token"=>"6zkhURRaKfwIa1X9wl+s617UiaJ+dKMhpVG9qXAVIeY="}
+
+ActionController::RoutingError (No route matches "/create" with {:method=>:post}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.4ms)[0m   [0mSET search_path TO public[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET standard_conforming_strings = on[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing ApplicationController#index (for 192.168.147.117 at 2010-06-29 22:12:50) [POST]
+  Parameters: {"commit"=>"sign in", "session"=>{"user_id"=>"1"}, "authenticity_token"=>"6zkhURRaKfwIa1X9wl+s617UiaJ+dKMhpVG9qXAVIeY="}
+
+ActionController::RoutingError (No route matches "/create" with {:method=>:post}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.4ms)[0m   [0mSET search_path TO public[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET standard_conforming_strings = on[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing SessionsController#new (for 192.168.147.117 at 2010-06-29 22:12:53) [GET]
+  [4;35;1mUser Load (2.3ms)[0m   [0mSELECT * FROM "users" [0m
+Rendering sessions/new
+Completed in 21ms (View: 12, DB: 3) | 200 OK [http://lpgweb/signin]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET search_path TO public[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET standard_conforming_strings = on[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing SessionsController#create (for 192.168.147.117 at 2010-06-29 22:12:54) [POST]
+  Parameters: {"commit"=>"sign in", "session"=>{"user_id"=>"1"}, "authenticity_token"=>"6zkhURRaKfwIa1X9wl+s617UiaJ+dKMhpVG9qXAVIeY="}
+Rendering sessions/new
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.map) on line #5 of app/views/sessions/new.html.erb:
+2: <p>Choose your name and signin</p>
+3: <% form_for(:session, :url=> '/sessions/create') do |f| %>
+4:   <div class='field'>
+5:     <%= f.select("user_id",@users.map {|u| [u.UserName,u.ID]}) %>
+6:   </div>
+7:   <div class='actions'>
+8:     <%= f.submit('sign in') %>
+
+    app/views/sessions/new.html.erb:5
+    app/views/sessions/new.html.erb:3
+    app/controllers/sessions_controller.rb:10:in `create'
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (105.7ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSET search_path TO public[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET standard_conforming_strings = on[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing SessionsController#create (for 192.168.147.117 at 2010-06-29 22:13:43) [POST]
+  Parameters: {"commit"=>"sign in", "session"=>{"user_id"=>"1"}, "authenticity_token"=>"6zkhURRaKfwIa1X9wl+s617UiaJ+dKMhpVG9qXAVIeY="}
+  [4;36;1mUser Load (3.3ms)[0m   [0;1mSELECT * FROM "users" [0m
+Rendering sessions/new
+Completed in 21ms (View: 10, DB: 5) | 200 OK [http://lpgweb/sessions/create]
+  [4;35;1mSQL (0.5ms)[0m   [0mSET search_path TO public[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET standard_conforming_strings = on[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing SessionsController#create (for 192.168.147.117 at 2010-06-29 22:14:10) [POST]
+  Parameters: {"commit"=>"sign in", "session"=>{"user_id"=>"1"}, "authenticity_token"=>"6zkhURRaKfwIa1X9wl+s617UiaJ+dKMhpVG9qXAVIeY="}
+  [4;35;1mUser Load (2.3ms)[0m   [0mSELECT * FROM "users" [0m
+Rendering sessions/new
+Completed in 17ms (View: 8, DB: 4) | 200 OK [http://lpgweb/sessions/create]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET search_path TO public[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET standard_conforming_strings = on[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing SessionsController#create (for 192.168.147.117 at 2010-06-29 22:14:13) [POST]
+  Parameters: {"commit"=>"sign in", "session"=>{"user_id"=>"1"}, "authenticity_token"=>"6zkhURRaKfwIa1X9wl+s617UiaJ+dKMhpVG9qXAVIeY="}
+  [4;36;1mUser Load (2.2ms)[0m   [0;1mSELECT * FROM "users" [0m
+Rendering sessions/new
+Completed in 16ms (View: 8, DB: 3) | 200 OK [http://lpgweb/sessions/create]
+  [4;35;1mSQL (0.4ms)[0m   [0mSET search_path TO public[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET standard_conforming_strings = on[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing SessionsController#create (for 192.168.147.117 at 2010-06-29 22:14:14) [POST]
+  Parameters: {"commit"=>"sign in", "session"=>{"user_id"=>"1"}, "authenticity_token"=>"6zkhURRaKfwIa1X9wl+s617UiaJ+dKMhpVG9qXAVIeY="}
+  [4;35;1mUser Load (2.3ms)[0m   [0mSELECT * FROM "users" [0m
+Rendering sessions/new
+Completed in 17ms (View: 8, DB: 3) | 200 OK [http://lpgweb/sessions/create]
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET search_path TO public[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET standard_conforming_strings = on[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+/!\ FAILSAFE /!\  Tue Jun 29 23:00:30 -0400 2010
+  Status: 500 Internal Server Error
+  /home/dev/dev/claims/app/helpers/sessions_helper.rb:29: syntax error, unexpected '.', expecting kEND
+/home/dev/dev/claims/app/helpers/sessions_helper.rb:59: syntax error, unexpected kEND, expecting $end
+    /var/lib/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:380:in `load_without_new_constant_marking'
+    /var/lib/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:380:in `load_file'
+    /var/lib/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /var/lib/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:379:in `load_file'
+    /var/lib/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:259:in `require_or_load'
+    /var/lib/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:224:in `depend_on'
+    /var/lib/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:136:in `require_dependency'
+    /var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/helpers.rb:126:in `helper'
+    /var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/helpers.rb:115:in `each'
+    /var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/helpers.rb:115:in `helper'
+    /var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/helpers.rb:120:in `helper'
+    /var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/helpers.rb:115:in `each'
+    /var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/helpers.rb:115:in `helper'
+    /home/dev/dev/claims/app/controllers/application_controller.rb:5
+    /var/lib/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:380:in `load_without_new_constant_marking'
+    /var/lib/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:380:in `load_file'
+    /var/lib/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /var/lib/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:379:in `load_file'
+    /var/lib/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:259:in `require_or_load'
+    /var/lib/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:425:in `load_missing_constant'
+    /var/lib/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:80:in `const_missing'
+    /var/lib/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:92:in `const_missing'
+    /var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/dispatcher.rb:89:in `dispatch'
+    /var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/dispatcher.rb:121:in `_call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/dispatcher.rb:130
+    /var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/query_cache.rb:29:in `call'
+    /var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/query_cache.rb:29:in `call'
+    /var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    /var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/query_cache.rb:9:in `cache'
+    /var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/query_cache.rb:28:in `call'
+    /var/lib/gems/1.8/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/string_coercion.rb:25:in `call'
+    /var/lib/gems/1.8/gems/rack-1.1.0/lib/rack/head.rb:9:in `call'
+    /var/lib/gems/1.8/gems/rack-1.1.0/lib/rack/methodoverride.rb:24:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/params_parser.rb:15:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/session/cookie_store.rb:99:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/failsafe.rb:26:in `call'
+    /var/lib/gems/1.8/gems/rack-1.1.0/lib/rack/lock.rb:11:in `call'
+    /var/lib/gems/1.8/gems/rack-1.1.0/lib/rack/lock.rb:11:in `synchronize'
+    /var/lib/gems/1.8/gems/rack-1.1.0/lib/rack/lock.rb:11:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/dispatcher.rb:114:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/reloader.rb:34:in `run'
+    /var/lib/gems/1.8/gems/actionpack-2.3.8/lib/action_controller/dispatcher.rb:108:in `call'
+    /home/dev/.gem/ruby/1.8/gems/rails-2.3.8/lib/rails/rack/static.rb:31:in `call'
+    /var/lib/gems/1.8/gems/rack-1.1.0/lib/rack/urlmap.rb:47:in `call'
+    /var/lib/gems/1.8/gems/rack-1.1.0/lib/rack/urlmap.rb:41:in `each'
+    /var/lib/gems/1.8/gems/rack-1.1.0/lib/rack/urlmap.rb:41:in `call'
+    /home/dev/.gem/ruby/1.8/gems/rails-2.3.8/lib/rails/rack/log_tailer.rb:17:in `call'
+    /var/lib/gems/1.8/gems/rack-1.1.0/lib/rack/content_length.rb:13:in `call'
+    /var/lib/gems/1.8/gems/rack-1.1.0/lib/rack/handler/webrick.rb:48:in `service'
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    /var/lib/gems/1.8/gems/rack-1.1.0/lib/rack/handler/webrick.rb:14:in `run'
+    /home/dev/.gem/ruby/1.8/gems/rails-2.3.8/lib/commands/server.rb:111
+    /usr/lib/ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/lib/ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSET search_path TO public[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSET standard_conforming_strings = on[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing ApplicationController#create (for 192.168.147.117 at 2010-06-29 23:01:13) [POST]
+  Parameters: {"commit"=>"sign in", "session"=>{"user_id"=>"1"}, "authenticity_token"=>"6zkhURRaKfwIa1X9wl+s617UiaJ+dKMhpVG9qXAVIeY="}
+
+SyntaxError (/home/dev/dev/claims/app/controllers/sessions_controller.rb:15: syntax error, unexpected '.', expecting kEND
+/home/dev/dev/claims/app/controllers/sessions_controller.rb:20: syntax error, unexpected kEND, expecting $end):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (28.8ms)
+Rendered rescues/_request_and_response (0.7ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET search_path TO public[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET standard_conforming_strings = on[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing SessionsController#create (for 192.168.147.117 at 2010-06-29 23:01:30) [POST]
+  Parameters: {"commit"=>"sign in", "session"=>{"user_id"=>"1"}, "authenticity_token"=>"6zkhURRaKfwIa1X9wl+s617UiaJ+dKMhpVG9qXAVIeY="}
+  [4;36;1mUser Load (2.4ms)[0m   [0;1mSELECT * FROM "users" [0m
+Rendering sessions/new
+Completed in 20ms (View: 9, DB: 3) | 200 OK [http://lpgweb/sessions/create]
+  [4;35;1mSQL (0.4ms)[0m   [0mSET search_path TO public[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET standard_conforming_strings = on[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing SessionsController#create (for 192.168.147.117 at 2010-06-29 23:01:32) [POST]
+  Parameters: {"commit"=>"sign in", "session"=>{"user_id"=>"1"}, "authenticity_token"=>"6zkhURRaKfwIa1X9wl+s617UiaJ+dKMhpVG9qXAVIeY="}
+  [4;35;1mUser Load (2.3ms)[0m   [0mSELECT * FROM "users" [0m
+Rendering sessions/new
+Completed in 16ms (View: 7, DB: 3) | 200 OK [http://lpgweb/sessions/create]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET search_path TO public[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET standard_conforming_strings = on[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing ActionsController#show (for 192.168.147.117 at 2010-06-29 23:01:43) [GET]
+  Parameters: {"id"=>"index"}
+Redirected to http://lpgweb:3000/signin
+Filter chain halted as [:authenticate] rendered_or_redirected.
+Completed in 1ms (DB: 1) | 302 Found [http://lpgweb/actions/index]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET search_path TO public[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET standard_conforming_strings = on[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing SessionsController#new (for 192.168.147.117 at 2010-06-29 23:01:44) [GET]
+  [4;36;1mUser Load (3.3ms)[0m   [0;1mSELECT * FROM "users" [0m
+Rendering sessions/new
+Completed in 31ms (View: 12, DB: 4) | 200 OK [http://lpgweb/signin]
+  [4;35;1mSQL (0.3ms)[0m   [0mSET search_path TO public[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSET standard_conforming_strings = on[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing SessionsController#create (for 192.168.147.117 at 2010-06-29 23:01:47) [POST]
+  Parameters: {"commit"=>"sign in", "session"=>{"user_id"=>"1"}, "authenticity_token"=>"6zkhURRaKfwIa1X9wl+s617UiaJ+dKMhpVG9qXAVIeY="}
+  [4;35;1mUser Load (3.6ms)[0m   [0mSELECT * FROM "users" [0m
+Rendering sessions/new
+Completed in 21ms (View: 9, DB: 5) | 200 OK [http://lpgweb/sessions/create]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET search_path TO public[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET standard_conforming_strings = on[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing ActionsController#show (for 192.168.147.117 at 2010-06-29 23:01:53) [GET]
+  Parameters: {"id"=>"index"}
+Redirected to http://lpgweb:3000/signin
+Filter chain halted as [:authenticate] rendered_or_redirected.
+Completed in 1ms (DB: 1) | 302 Found [http://lpgweb/actions/index]
+
+
+^Z
+[1]+  Stopped                 script/server
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ script[K[K[K[K[K[Kfg
+script/server
+
+
+^Z
+[1]+  Stopped                 script/server
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ script/[K [K/console 
+Loading development environment (Rails 2.3.8)
+>> i[Kexit
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ fg
+script/server
+
+
+^Z
+[1]+  Stopped                 script/server
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ sudo gem nst[K[K[Kinstall ruby-debug
+[sudo] password for dev: 
+Building native extensions.  This could take a while...
+Building native extensions.  This could take a while...
+Successfully installed columnize-0.3.1
+Successfully installed linecache-0.43
+Successfully installed ruby-debug-base-0.10.3
+Successfully installed ruby-debug-0.10.3
+4 gems installed
+Installing ri documentation for columnize-0.3.1...
+Installing ri documentation for linecache-0.43...
+Installing ri documentation for ruby-debug-base-0.10.3...
+Installing ri documentation for ruby-debug-0.10.3...
+Installing RDoc documentation for columnize-0.3.1...
+Installing RDoc documentation for linecache-0.43...
+Installing RDoc documentation for ruby-debug-base-0.10.3...
+Installing RDoc documentation for ruby-debug-0.10.3...
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ fg
+script/server
+^C[2010-06-29 23:04:57] INFO  going to shutdown ...
+[2010-06-29 23:04:57] INFO  WEBrick::HTTPServer#start done.
+Exiting
+]0;dev@LPGWEB: ~/dev/claimsdev@LPGWEB:~/dev/claims$ script/server --debugger
+=> Booting WEBrick
+=> Rails 2.3.8 application starting on http://0.0.0.0:3000
+=> Debugger enabled
+=> Call with -d to detach
+=> Ctrl-C to shutdown server
+[2010-06-29 23:05:06] INFO  WEBrick 1.3.1
+[2010-06-29 23:05:06] INFO  ruby 1.8.7 (2010-01-10) [x86_64-linux]
+[2010-06-29 23:05:06] INFO  WEBrick::HTTPServer#start: pid=12432 port=3000
+^[[A      [4;36;1mSQL (0.3ms)[0m   [0;1mSET search_path TO public[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET standard_conforming_strings = on[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing ApplicationController#index (for 192.168.147.117 at 2010-06-29 23:05:50) [GET]
+
+ActionController::RoutingError (No route matches "/action/index" with {:method=>:get}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+/home/dev/dev/claims/app/helpers/sessions_helper.rb:12
+deny_access unless signed_in?
+(rdb:2) deny_[K[K[K[K[Ki[Ksigned_in?
+false
+(rdb:2) current_user
+nil
+(rdb:2) cookies
+{"_claims_session"=>"BAh7CToQX2NzcmZfdG9rZW4iMTZ6a2hVUlJhS2Z3SWExWDl3bCtzNjE3VWlhSitkS01ocFZHOXFYQVZJZVk9Og5yZXR1cm5fdG8iEy9hY3Rpb25zL2luZGV4Og9zZXNzaW9uX2lkIiVkODNjMjk2OTBiNTc2MDMzOTM3YjU2OTk1ZmM0ODJhYiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNoSGFzaHsGOgtub3RpY2UiKFBsZWFzZSBzaWduIGluIHRvIGFjY2VzcyB0aGlzIHBhZ2UuBjoKQHVzZWR7BjsJRg==--01d43c858514df7e76a40f4777cbffdb66369230"}
+(rdb:2) cookies[[K.map([K[K[K[K[K.sh[K[K[K[K[K[K[K[K[K[Kcookies['[K:remember_token]
+nil
+(rdb:2) fg
+NameError Exception: undefined local variable or method `fg' for #<ActionsController:0x7f6493cf7b60>
+(rdb:2) c
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET search_path TO public[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET standard_conforming_strings = on[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing ActionsController#show (for 192.168.147.117 at 2010-06-29 23:06:01) [GET]
+  Parameters: {"id"=>"index"}
+Redirected to http://lpgweb:3000/signin
+Filter chain halted as [:authenticate] rendered_or_redirected.
+Completed in 47044ms (DB: 1) | 302 Found [http://lpgweb/actions/index]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET search_path TO public[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET standard_conforming_strings = on[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing SessionsController#new (for 192.168.147.117 at 2010-06-29 23:06:48) [GET]
+  [4;36;1mUser Load (2.5ms)[0m   [0;1mSELECT * FROM "users" [0m
+Rendering sessions/new
+Completed in 32ms (View: 21, DB: 3) | 200 OK [http://lpgweb/signin]
+  [4;35;1mSQL (0.3ms)[0m   [0mSET search_path TO public[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET standard_conforming_strings = on[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing SessionsController#create (for 192.168.147.117 at 2010-06-29 23:06:52) [POST]
+  Parameters: {"commit"=>"sign in", "session"=>{"user_id"=>"1"}, "authenticity_token"=>"6zkhURRaKfwIa1X9wl+s617UiaJ+dKMhpVG9qXAVIeY="}
+  [4;35;1mUser Load (2.3ms)[0m   [0mSELECT * FROM "users" [0m
+Rendering sessions/new
+Completed in 20ms (View: 9, DB: 3) | 200 OK [http://lpgweb/sessions/create]
+/home/dev/dev/claims/app/helpers/sessions_helper.rb:12
+deny_access unless signed_in?
+(rdb:46) cookies
+{"_claims_session"=>"BAh7CToOcmV0dXJuX3RvIhMvYWN0aW9ucy9pbmRleDoQX2NzcmZfdG9rZW4iMTZ6a2hVUlJhS2Z3SWExWDl3bCtzNjE3VWlhSitkS01ocFZHOXFYQVZJZVk9Og9zZXNzaW9uX2lkIiVkODNjMjk2OTBiNTc2MDMzOTM3YjU2OTk1ZmM0ODJhYiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNoSGFzaHsGOgtub3RpY2UiKFBsZWFzZSBzaWduIGluIHRvIGFjY2VzcyB0aGlzIHBhZ2UuBjoKQHVzZWR7BjsJRg==--f1d93ca7eed7d0188324a37c3bb91355cbf713a2"}
+(rdb:46) cookies[[K[K[K[K[K[K[K[Kparams
+{"action"=>"show", "id"=>"index", "controller"=>"actions"}
+(rdb:46) params
+{"action"=>"show", "id"=>"index", "controller"=>"actions"}
+(rdb:46) c
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET search_path TO public[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET standard_conforming_strings = on[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing ActionsController#show (for 192.168.147.117 at 2010-06-29 23:07:00) [GET]
+  Parameters: {"id"=>"index"}
+Redirected to http://lpgweb:3000/signin
+Filter chain halted as [:authenticate] rendered_or_redirected.
+Completed in 103109ms (DB: 1) | 302 Found [http://lpgweb/actions/index]
+/home/dev/dev/claims/app/controllers/sessions_controller.rb:11
+if(!params[:user_id].nil?)
+(rdb:95) c[Kparams
+{"commit"=>"sign in", "session"=>{"user_id"=>"1"}, "authenticity_token"=>"6zkhURRaKfwIa1X9wl+s617UiaJ+dKMhpVG9qXAVIeY=", "action"=>"create", "controller"=>"sessions"}
+(rdb:95) c
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET search_path TO public[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET standard_conforming_strings = on[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing SessionsController#create (for 192.168.147.117 at 2010-06-29 23:08:43) [POST]
+  Parameters: {"commit"=>"sign in", "session"=>{"user_id"=>"1"}, "authenticity_token"=>"6zkhURRaKfwIa1X9wl+s617UiaJ+dKMhpVG9qXAVIeY="}
+  [4;36;1mUser Load (2.4ms)[0m   [0;1mSELECT * FROM "users" [0m
+Rendering sessions/new
+Completed in 27090ms (View: 9, DB: 3) | 200 OK [http://lpgweb/sessions/create]
+^[[A    ^[[A    /home/dev/dev/claims/app/controllers/sessions_controller.rb:12
+sign_in(User.find(params[:user_id]))
+(rdb:123) params
+{"commit"=>"sign in", "session"=>{"user_id"=>"1"}, "authenticity_token"=>"6zkhURRaKfwIa1X9wl+s617UiaJ+dKMhpVG9qXAVIeY=", "action"=>"create", "controller"=>"sessions"}
+(rdb:123) params[:session][:user_id].nil?
+false
+(rdb:123) params[:session][:user_id].nil?[K[K[K[K[K
+"1"
+(rdb:123) c
+  [4;35;1mSQL (0.2ms)[0m   [0mSET search_path TO public[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET standard_conforming_strings = on[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing SessionsController#create (for 192.168.147.117 at 2010-06-29 23:09:53) [POST]
+  Parameters: {"commit"=>"sign in", "session"=>{"user_id"=>"1"}, "authenticity_token"=>"6zkhURRaKfwIa1X9wl+s617UiaJ+dKMhpVG9qXAVIeY="}
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."ID" = 1) [0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM "users" [0m
+Rendering sessions/new
+Completed in 37070ms (View: 3, DB: 2) | 200 OK [http://lpgweb/sessions/create]
+/home/dev/dev/claims/app/controllers/sessions_controller.rb:12
+sign_in(User.find(params[:user_id]))
+(rdb:123) cookies
+{"_claims_session"=>"BAh7CToOcmV0dXJuX3RvIhMvYWN0aW9ucy9pbmRleDoQX2NzcmZfdG9rZW4iMTZ6a2hVUlJhS2Z3SWExWDl3bCtzNjE3VWlhSitkS01ocFZHOXFYQVZJZVk9Og9zZXNzaW9uX2lkIiVkODNjMjk2OTBiNTc2MDMzOTM3YjU2OTk1ZmM0ODJhYiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNoSGFzaHsGOgtub3RpY2UiKFBsZWFzZSBzaWduIGluIHRvIGFjY2VzcyB0aGlzIHBhZ2UuBjoKQHVzZWR7BjsJRg==--f1d93ca7eed7d0188324a37c3bb91355cbf713a2", "remember_token"=>"1"}
+(rdb:123) c
+  [4;35;1mSQL (0.4ms)[0m   [0mSET search_path TO public[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSET standard_conforming_strings = on[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing SessionsController#create (for 192.168.147.117 at 2010-06-29 23:10:36) [POST]
+  Parameters: {"commit"=>"sign in", "session"=>{"user_id"=>"1"}, "authenticity_token"=>"6zkhURRaKfwIa1X9wl+s617UiaJ+dKMhpVG9qXAVIeY="}
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."ID" = 1) [0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM "users" [0m
+Rendering sessions/new
+Completed in 10522ms (View: 4, DB: 3) | 200 OK [http://lpgweb/sessions/create]
+/home/dev/dev/claims/app/helpers/sessions_helper.rb:12
+deny_access unless signed_in?
+(rdb:123) signed_in?
+true
+(rdb:123) c
+  [4;35;1mSQL (0.5ms)[0m   [0mSET search_path TO public[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSET standard_conforming_strings = on[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing ActionsController#show (for 192.168.147.117 at 2010-06-29 23:10:56) [GET]
+  Parameters: {"id"=>"index"}
+  [4;35;1mUser Load (1.1ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."ID" = '1') LIMIT 1[0m
+  [4;36;1mAction Load (0.0ms)[0m   [0;1mPGError: ERROR: column actions.id does not exist
+LINE 1: SELECT * FROM "actions" WHERE ("actions"."id" = 'index') 
+ ^
+: SELECT * FROM "actions" WHERE ("actions"."id" = 'index') [0m
+
+ActiveRecord::StatementInvalid (PGError: ERROR:  column actions.id does not exist
+LINE 1: SELECT * FROM "actions" WHERE ("actions"."id" = 'index') 
+                                       ^
+: SELECT * FROM "actions" WHERE ("actions"."id" = 'index') ):
+  app/controllers/actions_controller.rb:20:in `show'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (139.3ms)
+Rendered rescues/_request_and_response (1.6ms)
+Rendering rescues/layout (internal_server_error)
+/home/dev/dev/claims/app/helpers/sessions_helper.rb:12
+deny_access unless signed_in?
+(rdb:199) c
+  [4;35;1mSQL (0.3ms)[0m   [0mSET search_path TO public[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET standard_conforming_strings = on[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing ActionsController#show (for 192.168.147.117 at 2010-06-29 23:13:14) [GET]
+  Parameters: {"id"=>"index"}
+  [4;35;1mUser Load (2.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."ID" = '1') LIMIT 1[0m
+  [4;36;1mAction Load (0.9ms)[0m   [0;1mSELECT * FROM "actions" WHERE ("actions"."ID" = 0) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find Action with ID=index):
+  app/controllers/actions_controller.rb:20:in `show'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (49.1ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (not_found)
+/home/dev/dev/claims/app/helpers/sessions_helper.rb:12
+deny_access unless signed_in?
+(rdb:211) c
+  [4;35;1mSQL (0.3ms)[0m   [0mSET search_path TO public[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET standard_conforming_strings = on[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing ActionsController#show (for 192.168.147.117 at 2010-06-29 23:13:36) [GET]
+  Parameters: {"id"=>"index"}
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."ID" = '1') LIMIT 1[0m
+  [4;36;1mAction Load (0.7ms)[0m   [0;1mSELECT * FROM "actions" WHERE ("actions"."ID" = 0) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find Action with ID=index):
+  app/controll
