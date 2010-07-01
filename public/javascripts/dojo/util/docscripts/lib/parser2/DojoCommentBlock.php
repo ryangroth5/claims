@@ -10,13 +10,20 @@ class DojoCommentBlock {
   protected $keys = array();
   protected $key_sets = array();
 
-  public function __construct($comments, $keys, $key_sets) {
+  public function __construct($comments, $keys, $key_sets = array()) {
     if (!is_array($comments)) {
       throw new Exception('DojoCommentBlock expects an array of comments to be passed');
     }
     $this->comments = $comments;
     $this->keys = $keys;
     $this->key_sets = $key_sets;
+  }
+
+  public function __destruct() {
+    unset($this->blocks);
+    unset($this->comments);
+    unset($this->keys);
+    unset($this->key_sets);
   }
 
   public function add_key($key) {
@@ -26,6 +33,11 @@ class DojoCommentBlock {
 
   public function return_type() {
     // TODO: Add return type(s)
+  }
+
+  public function get($key) {
+    $comments = $this->all();
+    return $comments[$key] ? $comments[$key] : '';
   }
 
   public function all() {
@@ -45,7 +57,6 @@ class DojoCommentBlock {
 
       $comment = preg_replace('%(^//\s*|^/\*\s*|\s*\*/$)%', '', $comment);
       foreach (explode("\n", $comment) as $line) {
-        $line = preg_replace('%^(\s*\*\s*)+%', '', $line); // if they have ' * multilines like this'
         if (preg_match($expression, $line, $match)) {
           if ($key && !empty($buffer)) {
             $this->swallow($blocks, $key, $buffer);
@@ -54,7 +65,14 @@ class DojoCommentBlock {
           $key = $match[1];
         }
 
-        $buffer[] = $line;
+        $line = trim($line);
+        if ($line && $line{0} == '|') {
+          $line = substr($line, 1);
+        }
+
+        if ($key) {
+          $buffer[] = $line;
+        }
       }
     }
 
@@ -66,7 +84,7 @@ class DojoCommentBlock {
   }
 
   private function swallow(&$blocks, &$key, &$lines) {
-    $lines = trim(implode("\n", $lines));
+    $lines = preg_replace('%(^\n+|\n+$)%', '', implode("\n", $lines));
     if (in_array($key, $this->keys)) {
       $blocks[$key] = $lines;
     }

@@ -15,14 +15,14 @@
 			.letter p { font-family: monospace; }
 			h3 { font-family: helvetica; font-style: italic; }
 		</style>
-		
+
 		<!-- required: a default dijit theme: -->
 		<link id="themeStyles" rel="stylesheet" href="../../dijit/themes/tundra/tundra.css">
-		
+
 		<!-- required: dojo.js -->
 		<script type="text/javascript" src="../../dojo/dojo.js"
 			djConfig="parseOnLoad: true, isDebug: true"></script>
-		
+
 		<!-- not needed, for testing alternate themes -->
 		<script type="text/javascript" src="_testCommon.js"></script>
 
@@ -69,7 +69,7 @@
 		<span dojoType="dojo.data.ItemFileReadStore" jsId="productStore">
 			<script type="dojo/method">
 				this._jsonData =
-					{ identifier: 'name', 
+					{ identifier: 'name',
 					  label: 'name',
 					  items: [
 						{ name: "refrigerator" },
@@ -84,12 +84,12 @@
 		<div class="letter">
 			<h3 id="editable" dojoType="dijit.InlineEditBox" onChange="myHandler(this.id,arguments[0])" autoSave="true" title="company name"></h3>
 			<p>
-				Dear <span dojoType="dijit.InlineEditBox" width="200px" title="recipient name"></span>,
+				Dear <span id="MrSmith" dojoType="dijit.InlineEditBox" width="200px" title="recipient name"></span>,
 			</p>
 			<p class="letter">
 				Thank you for your recent order.
 				Please remit
-				<span dojoType="dijit.InlineEditBox" editor="dijit.form.CurrencyTextBox" editorParams="{currency: 'USD'}" width="100px" title="dollar amount"></span>&nbsp;for
+				<span id="dollar_as" dojoType="dijit.InlineEditBox" editor="dijit.form.CurrencyTextBox" editorParams="{currency: 'USD'}" width="100px" title="dollar amount"></span>&nbsp;for
 				your purchase of
 				<span dojoType="dijit.InlineEditBox" editor="dijit.form.NumberSpinner" editorParams="{constraints: {places:0} }" width="70px" title="quantity"></span>&nbsp;deluxe
 				<span dojoType="dijit.InlineEditBox" editor="dijit.form.ComboBox" title="item name"
@@ -100,7 +100,7 @@
 					editorParams="{searchAttr: 'name', keyAttr: 'abbreviation', store: stateStore, autocomplete: true, hasDownArrow: true}"
 					 width="200px" title="state of purchase"></span>.
 			</p>
-			<p dojoType="dijit.InlineEditBox" autoSave="true" editor="dijit.form.Textarea" title="additional details"></p>
+			<p id="textarea" dojoType="dijit.InlineEditBox" autoSave="true" editor="dijit.form.Textarea" title="additional details"></p>
 			<p>
 				Sincerely,
 			</p>
@@ -108,7 +108,7 @@
 		</div>
 		<hr style="margin-bottom: 1em;">
 
-		<h2>Form Letter with predefined values, and no auto-save</h2>
+		<h2>Form Letter with <span id="predefined">predefined values</span>, and no auto-save</h2>
 		<div class="letter">
 			<h3 id="editable2" dojoType="dijit.InlineEditBox" onChange="myHandler(this.id,arguments[0])" autoSave="false" title="company name">
 				Bob Vance Refrigeration
@@ -119,17 +119,25 @@
 			<p class="letter">
 				Thank you for your recent order.
 				Please remit
-				<span dojoType="dijit.InlineEditBox" editor="dijit.form.CurrencyTextBox" editorParams="{currency: 'USD'}" width="100px" autoSave="false" title="dollar amount">$2,000</span>
+				<span id="dollar" dojoType="dijit.InlineEditBox" editor="dijit.form.CurrencyTextBox" editorParams="{currency: 'USD'}" width="100px" autoSave="false" title="dollar amount">$2,000</span>
 				for your purchase of
-				<span dojoType="dijit.InlineEditBox" editor="dijit.form.NumberSpinner" editorParams="{constraints: {places:0} }" width="70px" autoSave="false" title="quantity">3</span>
+				<span id="quantity" dojoType="dijit.InlineEditBox" editor="dijit.form.NumberSpinner" editorParams="{constraints: {places:0} }" width="70px" autoSave="false" title="quantity">3</span>
 				deluxe
-				<span dojoType="dijit.InlineEditBox" editor="dijit.form.ComboBox"
+				<span id="item" dojoType="dijit.InlineEditBox" editor="dijit.form.ComboBox"
 					editorParams="{searchAttr: 'name', store: productStore, autocomplete: false, hasDownArrow: false}"
 					 width="200px" autoSave="false" title="item name">refrigerators</span>
 				on
-				<span dojoType="dijit.InlineEditBox" editor="dijit.form.DateTextBox" width="200px" autoSave="false" title="purchase date as mm/dd/yy">01/01/2007</span>
+				<!--
+					normally the server is in charge of formatting the displayed date pattern (01/05/2007) below
+					in the client's locale (since the user is expecting to see it that way and so is DateTextBox),
+					but since this test is static HTML, we instead hardcode the displayed value and use editorParams
+					to tell DateTextBox to expect that pattern regardless of the machine's locale
+				-->
+				<span id="purchase" dojoType="dijit.InlineEditBox"
+					editor="dijit.form.DateTextBox" editorParams="{constraints: {datePattern: 'MM/dd/yyyy'}}"
+					width="200px" autoSave="false" title="purchase date as mm/dd/yy">01/05/2007</span>
 				in
-				<span dojoType="dijit.InlineEditBox" editor="dijit.form.FilteringSelect"
+				<span id="state" dojoType="dijit.InlineEditBox" editor="dijit.form.FilteringSelect"
 					editorParams="{searchAttr: 'name', keyAttr: 'abbreviation', store: stateStore, autocomplete: true, hasDownArrow: false}"
 					 width="200px" autoSave="false" title="state of purchase">
 					 Pennsylvania
@@ -176,7 +184,7 @@ semper velit ante id metus. Praesent massa dolor, porttitor sed,
 pulvinar in, consequat ut, leo. Nullam nec est. Aenean id risus blandit
 tortor pharetra congue. Suspendisse pulvinar.
 		</p>
-		(before editable paragraph.  the editable paragraph has Save/Cancel buttons when open.)		
+		(before editable paragraph.  the editable paragraph has Save/Cancel buttons when open.)
 		<p id="areaEditable" dojoType="dijit.InlineEditBox" autoSave="false" editor="dijit.form.Textarea">
 			Aliquam vitae enim. Duis scelerisque metus auctor est venenatis
 imperdiet. Fusce dignissim porta augue. Nulla vestibulum. Integer lorem
@@ -219,7 +227,7 @@ tortor pharetra congue. Suspendisse pulvinar.
 			don't make the InlineEditBox itself a &lt;p&gt; because that would cause nested
 			&lt;p&gt;s, which is illegal, and messes up IE
 		</p>
-		
+
 		<h2>FilteringSelect (no down arrow, and save/cancel buttons):</h2>
 		before
 		<span id="filteringSelect2" dojoType="dijit.InlineEditBox" editor="dijit.form.FilteringSelect"
@@ -230,7 +238,7 @@ tortor pharetra congue. Suspendisse pulvinar.
 		<button onclick="dijit.byId('filteringSelect2').edit();return false;">Edit previous value</button>
 		after
 		<hr style="width:100%;">
-		
+
 		<h2>Programmatically created:</h2>
 		before block<div style="display:block;" id="programmatic">Click here to edit a block programmatically created inline edit region</div>after
 		<script type="text/javascript">

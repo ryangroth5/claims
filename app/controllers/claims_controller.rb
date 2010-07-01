@@ -21,6 +21,11 @@ class ClaimsController < ApplicationController
     end
   end
 
+  def list
+    claims = Claim.find( :all, :conditions => {:PatientID => params[:patientid]})
+   
+  end
+
   # GET /claims/new
   # GET /claims/new.xml
   def new

@@ -3,7 +3,7 @@ dojo.experimental("dojox.layout.ExpandoPane"); // just to show it can be done?
 
 dojo.require("dijit.layout.ContentPane");
 dojo.require("dijit._Templated");
-dojo.require("dijit._Container");
+dojo.require("dijit._Contained");
 
 dojo.declare("dojox.layout.ExpandoPane",
 	[dijit.layout.ContentPane, dijit._Templated, dijit._Contained],
@@ -17,9 +17,9 @@ dojo.declare("dojox.layout.ExpandoPane",
 
 	maxHeight: "",
 	maxWidth: "",
-	splitter: "",
+	splitter: false,
 	
-	templatePath: dojo.moduleUrl("dojox.layout","resources/ExpandoPane.html"),
+	templateString: dojo.cache("dojox.layout","resources/ExpandoPane.html"),
 
 	// easeOut: String|Function
 	//		easing function used to hide pane
@@ -71,6 +71,7 @@ dojo.declare("dojox.layout.ExpandoPane",
 					break;
 			}
 			dojo.addClass(this.domNode, "dojoxExpando" + thisClass);
+			dojo.addClass(this.iconNode, "dojoxExpandoIcon" + thisClass);
 			this._isHorizontal = /top|bottom/.test(this.region);
 		}
 		dojo.style(this.domNode, {
@@ -144,12 +145,10 @@ dojo.declare("dojox.layout.ExpandoPane",
 		;
 
 		showProps[dimension] = { 
-			end: this._showSize, 
-			unit:"px" 
+			end: this._showSize
 		};
 		hideProps[dimension] = { 
-			end: this._closedSize, 
-			unit:"px"
+			end: this._closedSize
 		};
 		
 		this._showAnim = dojo.animateProperty(dojo.mixin(_common,{
@@ -183,6 +182,7 @@ dojo.declare("dojox.layout.ExpandoPane",
 	_hideWrapper: function(){
 		// summary: Set the Expando state to "closed"
 		dojo.addClass(this.domNode, "dojoxExpandoClosed");
+		
 		dojo.style(this.cwrapper,{
 			visibility: "hidden",
 			opacity: "0",

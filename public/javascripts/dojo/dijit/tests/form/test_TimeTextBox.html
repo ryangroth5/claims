@@ -25,7 +25,7 @@
 				font-weight:bold;
 			}
 		</style>
-		
+
 		<!-- required: the default dijit theme: -->
 		<link id="themeStyles" rel="stylesheet" href="../../../dijit/themes/tundra/tundra.css">
 
@@ -126,16 +126,29 @@
 	<div class="dojoTitlePaneLabel">
 		<label for="q6">Initially empty time text box</label>
 		<span class="noticeMessage">TimeTextBox class,
-			Attributes: {formatLength:'medium'}</span>
+			Attributes: {formatLength:'medium',min:'T00:00:00',max:'T12:00:00'}</span>
 	</div>
 	<div class="testExample">
 		<input id="q6" type="text" name="time6"
 			dojoType="dijit.form.TimeTextBox"
-			constraints="{formatLength:'medium'}"
+			constraints="{formatLength:'medium',min:'T00:00:00',max:'T12:00:00'}"
 			required="true"
 			onChange="dojo.byId('oc6').value=arguments[0]"
 			invalidMessage="Invalid time." />
 		onChange:<input id="oc6" size="34" disabled value="not fired yet!" autocomplete="off">
+	</div>
+	<div class="dojoTitlePaneLabel">
+		<strong>Using title attribute for label.</strong>
+		<span class="noticeMessage">TimeTextBox class,
+			Attributes: {formatLength:'short'} Time using local conventions without seconds, required, no invalid message tooltip</span>
+	</div>
+	<div class="testExample">
+		<input id="q20" type="text" name="q20" value="T17:45:00"
+			dojoType="dijit.form.TimeTextBox"
+			title="title: Time using local conventions"
+			constraints="{formatLength:'short'}"
+			required="true"
+			invalidMessage="" />
 	</div>
 
 	<script>

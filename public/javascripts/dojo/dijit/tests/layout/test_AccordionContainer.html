@@ -40,7 +40,7 @@
 			dojo.subscribe("focusNode", function(node){ console.log("focused on " + (node?(node.id||node.tagName):"nothing"));});
 		});
 	</script>
-	
+
 	<style type="text/css">
 		.somePadding .dijitAccordionBody {
 			padding: 5px;
@@ -56,10 +56,10 @@
 
 	<h2>Accordion from markup:</h2>
 
-	<div dojoType="dijit.layout.AccordionContainer"
+	<div dojoType="dijit.layout.AccordionContainer" id="markupAccordion"
 		style="width: 400px; height: 300px; overflow: hidden">
-		<div dojoType="dijit.layout.AccordionPane" selected="true"
-			title="A Simple Pane" >
+		<div dojoType="dijit.layout.ContentPane" selected="true"
+			title="A Simple Pane" iconClass="dijitEditorIcon dijitEditorIconSave" tooltip="tooltip for simple pane" id="pane1">
 				<select>
 					<option>red</option>
 					<option>blue</option>
@@ -93,9 +93,9 @@
 		</div>
 
 		<!-- test lazy loading -->
-		<div dojoType="dijit.layout.AccordionPane" id="lazyLoadPane" title="Lazy Load Pane" href="tab1.html"></div>
+		<div dojoType="dijit.layout.ContentPane" id="lazyLoadPane" title="Lazy Load Pane" iconClass="dijitEditorIcon dijitEditorIconCopy" href="tab1.html"></div>
 
-		<div dojoType="dijit.layout.BorderContainer" title="BorderContainer Pane">
+		<div dojoType="dijit.layout.BorderContainer" title="BorderContainer Pane" iconClass="dijitEditorIcon dijitEditorIconPaste">
 			<div dojoType="dijit.layout.ContentPane" region="left" style="width:50%" splitter="true">
 			1Sed arcu magna, molestie at, fringilla in, sodales eu, elit.
 			Curabitur mattis lorem et est. Quisque et tortor. Integer bibendum
@@ -128,7 +128,7 @@
 			</div>
 		</div>
 
-		<div dojoType="dijit.layout.ContentPane" title="Embedded layout widgets">
+		<div dojoType="dijit.layout.ContentPane" title="Embedded layout widgets" iconClass="dijitEditorIcon dijitEditorIconCut">
 			<p>
 				The pane has some text, plus two embedded layout widgets, which should
 				appear correctly even though the pane is initially hidden.
@@ -171,7 +171,7 @@
 			<p>
 				And a TabContainer:
 			</p>
-			<div dojoType="dijit.layout.TabContainer" style="height:200px; width:300px">	
+			<div dojoType="dijit.layout.TabContainer" style="height:200px; width:300px">
 				<div dojoType="dijit.layout.ContentPane" title="Tab 1">
 					1Sed arcu magna, molestie at, fringilla in, sodales eu, elit.
 					Curabitur mattis lorem et est. Quisque et tortor. Integer bibendum
@@ -208,12 +208,15 @@
 			</p>
 		</div>
 	</div>
+	<button onclick="dijit.byId('pane1').attr('title', 'My First Pane');">Change title of first pane</button>
+	<button onclick="dijit.byId('pane1').attr('iconClass', 'plusIcon');">Change icon of first pane</button>
+	<button onclick="dijit.byId('markupAccordion').removeChild(dijit.byId('lazyLoadPane'));">Remove lazy-load pane</button>
 
 	<p></p>
-	<h2>Accordion with padding</h2>	
+	<h2>Accordion with padding</h2>
 	<div dojoType="dijit.layout.AccordionContainer"
 		style="width: 400px; height: 300px; overflow: hidden">
-		<div dojoType="dijit.layout.AccordionPane" class="somePadding" title="Some Padding">
+		<div dojoType="dijit.layout.ContentPane" class="somePadding" title="Some Padding">
 			<p>
 				Nunc consequat nisi vitae quam. Suspendisse sed nunc. Proin
 				suscipit porta magna. Duis accumsan nunc in velit. Nam et nibh.
@@ -240,7 +243,7 @@
 				ut eros sit amet ante pharetra interdum.
 			</p>
 		</div>
-		<div dojoType="dijit.layout.AccordionPane" title="No Padding">
+		<div dojoType="dijit.layout.ContentPane" title="No Padding">
 			<p>
 				Nunc consequat nisi vitae quam. Suspendisse sed nunc. Proin
 				suscipit porta magna. Duis accumsan nunc in velit. Nam et nibh.
@@ -268,6 +271,7 @@
 			</p>
 		</div>
 		<div dojoType="dijit.layout.AccordionPane" class="extremePadding" title="Extreme Padding">
+			<p>(Leaving one to test deprecation)</p>
 			<p>
 				Nunc consequat nisi vitae quam. Suspendisse sed nunc. Proin
 				suscipit porta magna. Duis accumsan nunc in velit. Nam et nibh.
@@ -295,6 +299,6 @@
 			</p>
 		</div>
 	</div>
-	
+
 </body>
 </html>

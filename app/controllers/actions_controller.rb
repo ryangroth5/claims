@@ -1,5 +1,5 @@
 class ActionsController < ApplicationController
-  
+  layout false  
   before_filter :authenticate
   #before_filter :correct_user #, :only => [:edit, :update]
   
@@ -16,7 +16,13 @@ class ActionsController < ApplicationController
 
   #GET /actions/main
   def main
+    render :layout=>'layout';  
+  end
+  
     
+  def list
+    actions = Action.find_by_sql( :all, :conditions => {:patient_id => params[:patientid]}, :order=>'contact_date')
+    render :json => {:identifier => "id", :items=>actions};
   end
 
   # GET /actions/1
@@ -33,12 +39,11 @@ class ActionsController < ApplicationController
   # GET /actions/new
   # GET /actions/new.xml
   def new
-    @action = Action.new
+    
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @action }
-    end
+    
+    @action = Action.new();
+
   end
 
   # GET /actions/1/edit
@@ -49,6 +54,7 @@ class ActionsController < ApplicationController
   # POST /actions
   # POST /actions.xml
   def create
+    #debugger;
     @action = Action.new(params[:action])
 
     respond_to do |format|

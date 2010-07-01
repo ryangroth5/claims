@@ -227,13 +227,232 @@
 								var anim = dojo.anim(id, { width: endWidth });
 								dojo.connect(anim, "onEnd", function(){
 									var elapsed = (new Date().valueOf()) - anim._startTime;
-									doh.t(elapsed >= dojo._Animation.prototype.duration); // the default
+									doh.t(elapsed >= dojo.Animation.prototype.duration); // the default
 									doh.is(dojo.marginBox(id).w, endWidth);
 									d.callback(true);
 								});
 								return d;
 							}
+						},
+						{
+							// basic testing of a function for a property
+							name:"anim-fn-property",
+							timeout:1000,
+							runTest: function(){
+								
+								var d = new doh.Deferred();
+								dojo.animateProperty({
+									node: "thud",
+									properties:{
+										// also testing node passed to property function
+										padding: function(node){
+											doh.is("thud", node.id);
+											d.callback(true);
+											return { end:15, start:22 };
+										}
+									},
+									duration:350
+								}).play();
+								return d;	
+							}
+						},
+						{
+							// just testing a property function which returns two other functions
+							name:"anim-fn-property-return-fn",
+							timeout:1000,
+							runTest: function(){
+								
+								var d = new doh.Deferred();
+								dojo.animateProperty({
+									node: "thud",
+									properties:{
+										// also testing node passed to property function
+										height: function(node){
+											return {
+												start: function(){ return 50; },
+												end: function(){ d.callback(true); return 100; }
+											};
+										}
+									},
+									duration:350
+								}).play();
+								return d;	
+							}
+						},
+						{
+							// ensuring the end property can be a function
+							name:"anim-fn-prop-end",
+							timeout:1000,
+							runTest: function(){
+								
+								var d = new doh.Deferred();
+								dojo.animateProperty({
+									node: "thud",
+									properties:{
+										width: { 
+											// also testing node passed to end function
+											end: function(node){
+												doh.is("thud", node.id);
+												d.callback(true);
+												return 100;
+											}
+										}
+									},
+									duration:50
+								}).play();
+								
+								return d;	
+							}
+						},
+						{
+							// ensuring the start property can be a function
+							name:"anim-fn-prop-start",
+							timeout:1000,
+							runTest: function(){
+								
+								var d = new doh.Deferred();
+								dojo.animateProperty({
+									node: "thud",
+									properties:{
+										width: { 
+											// also testing node passed to start function
+											start: function(node){
+												doh.is("thud", node.id);
+												d.callback(true);
+												return 100;
+											},
+											end: 200
+										}
+									},
+									duration:50
+								}).play();
+								
+								return d;
+							}
+						},
+						{
+							// ensuring our node ref is passed onEnd:
+							name:"anim-onend-node",
+							timeout:1000,
+							runTest: function(){
+								
+								var d = new doh.Deferred();
+								dojo.animateProperty({
+									node: "thud",
+									properties:{
+										width: 200
+									},
+									duration:150,
+									onEnd:function(node){
+										if(node){
+											doh.is("thud", node.id);
+											d.callback(true);
+										}
+									}
+								}).play();
+								
+								return d;	
+							}
+						},
+						{
+							// ensuring our node ref is passed beforeBegin:
+							name:"anim-beforebegin-node",
+							timeout:1000,
+							runTest: function(){
+
+								var d = new doh.Deferred();
+								dojo.animateProperty({
+									node: "thud",
+									properties:{
+										width: 200
+									},
+									duration:50,
+									beforeBegin:function(node){
+										if(node){
+											doh.is("thud", node.id);
+											d.callback(true);
+										}else{
+											d.errback(node);
+										}
+									}
+								}).play();
+
+								return d;	
+							}
+						},
+						{
+							name:"anim-onend-scope",
+							timeout:1000,
+							runTest: function(){
+								var d = new doh.Deferred();
+								dojo.declare("fx.Thinger", null, {
+									constructor: function(a){
+										this.bar = 10;
+									},
+									method: function(e){
+										d.callback(true);
+									}
+								});
+								
+								dojo.declare("fx.ThingerToo", fx.Thinger, {
+									method: function(){
+										var a = arguments;
+										dojo.fadeIn({
+											node:"thud",
+											onEnd: dojo.hitch(this, function(){
+												// to call inherited in a callback, stash the orig 'arguments'
+												this.inherited(a);
+											}),
+											duration:100
+										}).play()
+									}
+								});
+								
+								var x = new fx.ThingerToo();
+								x.method();
+								
+								return d;
+							}
+						},
+						{
+							name:"anim-onend-scope-natural",
+							timeout:1000,
+							runTest: function(){
+								var d = new doh.Deferred();
+
+								// testing vanilla inheritance
+								fx.NThinger = function(args){
+									dojo.mixin(this, args);
+								}
+								fx.NThinger.prototype.method = function(){
+									d.callback(true);
+								}
+								
+								
+								dojo.declare("fx.ThingerThree", fx.NThinger, {
+									method: function(){
+										var x = dojo.fadeOut({
+											node:"thud",
+											duration:100
+										});
+										
+										// to use with connect, pass a newArgs (arguements again) to override any 
+										// possible references passed from the orig function.
+										dojo.connect(x, "onEnd", dojo.hitch(this, "inherited", arguments, arguments));
+										
+										x.play();
+									}
+								});
+								
+								var x = new fx.ThingerThree();
+								x.method();
+								
+								return d;
+							}
 						}
+						
+					
+						
 					]
 				);
 				doh.run();

@@ -12,7 +12,7 @@ dojo.declare("dijit.MenuItem",
 
 		// Make 3 columns
 		// icon, label, and expand arrow (BiDi-dependent) indicating sub-menu
-		templatePath: dojo.moduleUrl("dijit", "templates/MenuItem.html"),
+		templateString: dojo.cache("dijit", "templates/MenuItem.html"),
 
 		attributeMap: dojo.delegate(dijit._Widget.prototype.attributeMap, {
 			label: { node: "containerNode", type: "innerHTML" },
@@ -49,8 +49,13 @@ dojo.declare("dijit.MenuItem",
 
 		postCreate: function(){
 			dojo.setSelectable(this.domNode, false);
-			dojo.attr(this.containerNode, "id", this.id+"_text");
-			dijit.setWaiState(this.domNode, "labelledby", this.id+"_text");
+			var label = this.id+"_text";
+			dojo.attr(this.containerNode, "id", label);
+			if(this.accelKeyNode){
+				dojo.attr(this.accelKeyNode, "id", this.id + "_accel");
+				label += " " + this.id + "_accel";
+			}
+			dijit.setWaiState(this.domNode, "labelledby", label);
 		},
 
 		_onHover: function(){
@@ -96,6 +101,10 @@ dojo.declare("dijit.MenuItem",
 			// summary:
 			//		Focus on this MenuItem
 			try{
+				if(dojo.isIE == 8){
+					// needed for IE8 which won't scroll TR tags into view on focus yet calling scrollIntoView creates flicker (#10275)
+					this.containerNode.focus();
+				}
 				dijit.focus(this.focusNode);
 			}catch(e){
 				// this throws on IE (at least) in some scenarios
@@ -109,8 +118,9 @@ dojo.declare("dijit.MenuItem",
 			// tags:
 			//		protected
 			this._setSelected(true);
+			this.getParent()._onItemFocus(this);
 
-			// TODO: this.inherited(arguments);
+			this.inherited(arguments);
 		},
 
 		_setSelected: function(selected){
@@ -128,7 +138,7 @@ dojo.declare("dijit.MenuItem",
 			 * MenuItem is not in the chain of active widgets and gets a premature call to
 			 * _onBlur()
 			 */
-			
+
 			dojo.toggleClass(this.domNode, "dijitMenuItemSelected", selected);
 		},
 

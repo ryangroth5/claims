@@ -77,6 +77,47 @@ tests.register("tests._base._loader.bootstrap",
 		function evalWorks(t){
 			t.assertTrue(dojo.eval("(true)"));
 			t.assertFalse(dojo.eval("(false)"));
+		},
+		
+		function _mixin(t){
+			var a = {
+				x: 1,
+				y: function(){ return 2; },
+				z1: 99,
+				w: 2,
+				v: undefined
+			};
+			var b = {
+				x: 11,
+				y: function(){ return 12; },
+				z2: 33,
+				toString: function(){ return "bark!"; },
+				toLocaleString: function(){ return "le bark-s!"; },
+				w: undefined,
+				v: undefined,
+				u: undefined
+			};
+			t.is(1, a.x);
+			t.is(2, a.y());
+			t.is(99, a.z1);
+			t.t("w" in a);
+			t.is(2, a.w);
+			t.t("v" in a);
+			t.is(undefined, a.v);
+			t.f("u" in a);
+			dojo._mixin(a, b);
+			t.is(11, a.x);
+			t.is(12, a.y());
+			t.is("bark!", a.toString());
+			t.is("le bark-s!", a.toLocaleString());
+			t.is(99, a.z1);
+			t.is(33, a.z2);
+			t.t("w" in a);
+			t.is(undefined, a.w);
+			t.t("v" in a);
+			t.is(undefined, a.v);
+			t.t("u" in a);
+			t.is(undefined, a.u);
 		}
 	]
 );

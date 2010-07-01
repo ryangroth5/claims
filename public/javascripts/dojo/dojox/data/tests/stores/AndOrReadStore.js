@@ -5,7 +5,28 @@ dojo.require("dojo.data.api.Identity");
 dojo.require("dojo.date");
 dojo.require("dojo.date.stamp");
 
+dojo.declare("dojox.data.tests.Wrapper", null, {
+	//	summary:
+	//		Simple class to use for typeMap in order to	test out 
+	//		'falsy' values for _value.
+	_wrapped: null,
 
+	constructor: function(obj){
+		this._wrapped = obj;
+	},
+
+	getValue: function() {
+		return this._wrapped;
+	},
+
+	setValue: function(obj) {
+		this._wrapped = obj;
+	},
+
+	toString: function(){
+		 return "WRAPPER: [" + this._wrapped + "]";
+	}
+});
 
 
 //The test data-sets and tests are taken from ItemFileReadStore, to show 
@@ -825,6 +846,121 @@ dojox.data.tests.stores.AndOrReadStore.getTests = function(){
 				};
 				//Find all items starting with A, including child (nested) items.
 				store.fetch({ 	query: 'name: "A*"', 
+										onComplete: onComplete, 
+										onError: onError,
+										queryOptions: {deep:true}
+									});
+				return d;
+			}
+		},
+		{
+			name: "Read API: fetch() hierarchy off",
+			runTest: function(t){
+				//	summary: 
+				//		Simple test of a basic fetch on AndOrReadStore of all items with hierarchy disabled
+				//		This should turn off processing child objects as data store items.  It will still process
+				//		references and type maps.
+				//	description:
+				//		Simple test of a basic fetch on AndOrReadStore of all items with hierarchy disabled
+				//		This should turn off processing child objects as data store items.  It will still process
+				//		references and type maps.
+				var store = new dojox.data.AndOrReadStore(dojox.data.tests.stores.AndOrReadStore.getTestData("geography_hierarchy_small"));
+				
+				//Set this as hierarchy off before fetch to make sure it traps and configs right.
+				store.hierarchical = false;
+				
+				var d = new doh.Deferred();
+				function onComplete(items, request){
+					//With hierarchy off, this should only match 2, as only two data store items
+					//will be quertied
+					t.assertEqual(2, items.length);
+					var i;
+					var passed = true;
+					for(i = 0; i < items.length; i++){
+						var countries = store.getValues(items[i], "countries");
+						if(countries){
+							var j;
+							//Make sure none of the child objects were processed into items.
+							for(j = 0; j<countries.length; j++){
+								passed = !store.isItem(countries[j]);
+								if(!passed){
+									break;
+								}
+							}
+						}
+						if(!passed){
+							break;
+						}
+					}
+					if(!passed){
+						d.errback(new Error("Located a child item with hierarchy off and no references in the data.  Error."));
+					}else{
+						d.callback(true);
+					}
+				}
+				function onError(errData, request){
+					d.errback(errData);
+				}
+				//Find all items starting with A, including child (nested) items.
+				store.fetch({ 	query: {name: "A*"}, 
+										onComplete: onComplete, 
+										onError: onError,
+										queryOptions: {deep:true}
+									});
+				return d;
+			}
+		},
+		{
+			name: "Read API: fetch() hierarchy off refs still parse",
+			runTest: function(t){
+				//	summary: 
+				//		Simple test of a basic fetch on AndOrReadStore of all items with hierarchy disabled
+				//		This should turn off processing child objects as data store items.  It will still process
+				//		references and type maps.
+				//	description:
+				//		Simple test of a basic fetch on AndOrReadStore of all items with hierarchy disabled
+				//		This should turn off processing child objects as data store items.  It will still process
+				//		references and type maps.
+				var store = new dojox.data.AndOrReadStore(dojox.data.tests.stores.AndOrReadStore.getTestData("countries_references"));
+				
+				//Set this as hierarchy off before fetch to make sure it traps and configs right.
+				store.hierarchical = false;
+				
+				var d = new doh.Deferred();
+				function onComplete(items, request){
+					//With hierarchy off, this should only match 2, as only two data store items
+					//will be quertied
+					t.assertEqual(items.length, 4);
+					var i;
+					var passed = true;
+					for(i = 0; i < items.length; i++){
+						var countries = store.getValues(items[i], "children");
+						if(countries){
+							var j;
+							//Make sure none of the child objects were processed into items.
+							for(j = 0; j<countries.length; j++){
+								passed = store.isItem(countries[j]);
+								if(!passed){
+									break;
+								}
+							}
+						}
+						if(!passed){
+							break;
+						}
+					}
+					if(!passed){
+						d.errback(new Error("Found a non-child item in a reference list in a references based input.  Error."));
+					}else{
+						d.callback(true);
+					}
+				}
+				function onError(errData, request){
+					t.assertTrue(false);
+					d.errback(errData);
+				}
+				//Find all items starting with A, including child (nested) items.
+				store.fetch({ 	query: {name: "A*"}, 
 										onComplete: onComplete, 
 										onError: onError,
 										queryOptions: {deep:true}
@@ -2689,9 +2825,200 @@ dojox.data.tests.stores.AndOrReadStore.getTests = function(){
 			}
 		},
 		{
+			name: "Read API: custom_datatype_CustomObject 0 (False) value",
+			runTest: function(t){
+				//	summary: 
+				//		Function to test type mapping and _values that are false-like
+				var dataset = {
+					identifier:'name',
+					items: [
+						{ name:'Bob', species:'human', age: {_type:'dojox.data.tests.Wrapper', _value:0} },
+						{ name:'Nancy', species:'human', age: {_type:'dojox.data.tests.Wrapper', _value:32} }
+					]
+				};
+				var store = new dojox.data.AndOrReadStore({
+						data:dataset,
+						typeMap:{'dojox.data.tests.Wrapper': 	{	
+												type: dojox.data.tests.Wrapper,
+												deserialize: function(value){
+													return new dojox.data.tests.Wrapper(value);
+												}
+											}
+								}
+				});
+				var d = new doh.Deferred();
+				function onItem(item){
+					console.log(item);
+					t.assertTrue(item !== null);
+					var bob = item;
+					var age = store.getValue(item, "age");
+					t.assertTrue(age instanceof dojox.data.tests.Wrapper);
+					t.assertTrue(age.toString() == "WRAPPER: [0]");
+					d.callback(true);
+				}
+				function onError(errData){
+					d.errback(errData);
+				}
+				store.fetchItemByIdentity({identity:"Bob", onItem:onItem, onError:onError});
+				return d; // Deferred
+			}
+		},
+		{
+			name: "Read API: custom_datatype_CustomObject Boolean False values",
+			runTest: function(t){
+				//	summary: 
+				//		Function to test type mapping and _values that are false-like
+				var dataset = {
+					identifier:'name',
+					items: [
+						{ name:'Bob', isHuman: {_type:'dojox.data.tests.Wrapper', _value:false} },
+						{ name:'Nancy', isHuman: {_type:'dojox.data.tests.Wrapper', _value: true} }
+					]
+				};
+				var store = new dojox.data.AndOrReadStore({
+						data:dataset,
+						typeMap:{'dojox.data.tests.Wrapper': 	{	
+												type: dojox.data.tests.Wrapper,
+												deserialize: function(value){
+													return new dojox.data.tests.Wrapper(value);
+												}
+											}
+								}
+				});
+				var d = new doh.Deferred();
+				function onItem(item){
+					t.assertTrue(item !== null);
+					var bob = item;
+					var isHuman = store.getValue(item, "isHuman");
+					t.assertTrue(isHuman instanceof dojox.data.tests.Wrapper);
+					t.assertTrue(isHuman.toString() == "WRAPPER: [false]");
+					d.callback(true);
+				}
+				function onError(errData){
+					d.errback(errData);
+				}
+				store.fetchItemByIdentity({identity:"Bob", onItem:onItem, onError:onError});
+				return d; // Deferred
+			}
+		},
+		{
+			name: "Read API: custom_datatype_CustomObject Empty String values",
+			runTest: function(t){
+				//	summary: 
+				//		Function to test type mapping and _values that are false-like
+				var dataset = {
+					identifier:'name',
+					items: [
+						{ name:'Bob', lastName: {_type:'dojox.data.tests.Wrapper', _value:""} },
+						{ name:'Nancy', lastName: {_type:'dojox.data.tests.Wrapper', _value: "Doe"} }
+					]
+				};
+				var store = new dojox.data.AndOrReadStore({
+						data:dataset,
+						typeMap:{'dojox.data.tests.Wrapper': 	{	
+												type: dojox.data.tests.Wrapper,
+												deserialize: function(value){
+													return new dojox.data.tests.Wrapper(value);
+												}
+											}
+								}
+				});
+				var d = new doh.Deferred();
+				function onItem(item){
+					t.assertTrue(item !== null);
+					var bob = item;
+					var lastName = store.getValue(item, "lastName");
+					t.assertTrue(lastName instanceof dojox.data.tests.Wrapper);
+					t.assertTrue(lastName.toString() == "WRAPPER: []");
+					d.callback(true);
+				}
+				function onError(errData){
+					d.errback(errData);
+				}
+				store.fetchItemByIdentity({identity:"Bob", onItem:onItem, onError:onError});
+				return d; // Deferred
+			}
+		},
+		{
+			name: "Read API: custom_datatype_CustomObject explicit null values",
+			runTest: function(t){
+				//	summary: 
+				//		Function to test type mapping and _values that are false-like
+				var dataset = {
+					identifier:'name',
+					items: [
+						{ name:'Bob', lastName: {_type:'dojox.data.tests.Wrapper', _value:null} },
+						{ name:'Nancy', lastName: {_type:'dojox.data.tests.Wrapper', _value: "Doe"} }
+					]
+				};
+				var store = new dojox.data.AndOrReadStore({
+						data:dataset,
+						typeMap:{'dojox.data.tests.Wrapper': 	{	
+												type: dojox.data.tests.Wrapper,
+												deserialize: function(value){
+													return new dojox.data.tests.Wrapper(value);
+												}
+											}
+								}
+				});
+				var d = new doh.Deferred();
+				function onItem(item){
+					t.assertTrue(item !== null);
+					var bob = item;
+					var lastName = store.getValue(item, "lastName");
+					t.assertTrue(lastName instanceof dojox.data.tests.Wrapper);
+					t.assertTrue(lastName.toString() == "WRAPPER: [null]");
+					d.callback(true);
+				}
+				function onError(errData){
+					d.errback(errData);
+				}
+				store.fetchItemByIdentity({identity:"Bob", onItem:onItem, onError:onError});
+				return d; // Deferred
+			}
+		},
+		{
+			name: "Read API: custom_datatype_CustomObject explicit undefined value",
+			runTest: function(t){
+				//	summary: 
+				//		Function to test type mapping and _values that are false-like
+				var dataset = {
+					identifier:'name',
+					items: [
+						{ name:'Bob', lastName: {_type:'dojox.data.tests.Wrapper', _value: undefined} },
+						{ name:'Nancy', lastName: {_type:'dojox.data.tests.Wrapper', _value: "Doe"} }
+					]
+				};
+				var store = new dojox.data.AndOrReadStore({
+						data:dataset,
+						typeMap:{'dojox.data.tests.Wrapper': 	{	
+												type: dojox.data.tests.Wrapper,
+												deserialize: function(value){
+													return new dojox.data.tests.Wrapper(value);
+												}
+											}
+								}
+				});
+				var d = new doh.Deferred();
+				function onItem(item){
+					t.assertTrue(item !== null);
+					var bob = item;
+					var lastName = store.getValue(item, "lastName");
+					t.assertTrue(lastName instanceof dojox.data.tests.Wrapper);
+					t.assertTrue(lastName.toString() == "WRAPPER: [undefined]");
+					d.callback(true);
+				}
+				function onError(errData){
+					d.errback(errData);
+				}
+				store.fetchItemByIdentity({identity:"Bob", onItem:onItem, onError:onError});
+				return d; // Deferred
+			}
+		},
+
+		{
 			name: "Read API: hierarchical_data",
 	 		runTest: function(t){
-				//var store = new dojox.data.AndOrReadStore(tests.data.readOnlyItemFileTestTemplates.testFile["geography_hierarchy_small"]);
 				var store = new dojox.data.AndOrReadStore(dojox.data.tests.stores.AndOrReadStore.getTestData("geography_hierarchy_small"));
 				var d = new doh.Deferred();
 				var onComplete = function(items, request){
@@ -2718,7 +3045,6 @@ dojox.data.tests.stores.AndOrReadStore.getTests = function(){
 		{
 			name: "Read API: hierarchical_data, complex",
 	 		runTest: function(t){
-				//var store = new dojox.data.AndOrReadStore(tests.data.readOnlyItemFileTestTemplates.testFile["geography_hierarchy_small"]);
 				var store = new dojox.data.AndOrReadStore(dojox.data.tests.stores.AndOrReadStore.getTestData("geography_hierarchy_small"));
 				var d = new doh.Deferred();
 				var onComplete = function(items, request){
@@ -2740,6 +3066,242 @@ dojox.data.tests.stores.AndOrReadStore.getTests = function(){
 				});
 				
 				return d; // Deferred
+			}
+		},
+		{
+			name: "Read API: close (clearOnClose: true, reset url.)",
+			runTest: function(t){
+				//	summary: 
+				//		Function to test the close api properly clears the store for reload when clearOnClose is set.
+				if (dojo.isBrowser) {
+					var store = new dojox.data.AndOrReadStore(dojox.data.tests.stores.AndOrReadStore.getTestData("countries"));
+					store.clearOnClose = true;
+					store.urlPreventCache = true;
+	
+					var d = new doh.Deferred();
+					function onItem(item){
+						var error = null;
+						try {
+							t.assertTrue(item !== null);
+							var ec = item;
+							var val = store.getValue(ec, "name");
+							t.assertEqual("Ecuador", val);
+	
+							store.close();
+							//Check some internals here.  Do not normally access these!
+							t.assertTrue(store._arrayOfAllItems.length === 0);
+							t.assertTrue(store._loadFinished === false);
+							
+							store.url = dojo.moduleUrl("dojox", "data/tests/stores/countries_withNull.json").toString()
+							function onItem2 (item){
+								var err;
+								try{
+									t.assertTrue(item !== null);
+									var val = store.getValue(item, "name");
+									t.assertEqual(null, val);
+								}catch(e){
+									err = e;
+								}
+								if(err){
+									d.errback(err);
+								}else{
+									d.callback(true);
+								}
+							}
+							store.fetchItemByIdentity({identity:"ec", onItem:onItem2, onError:onError});
+						}catch (e){
+							error = e;
+						}
+						if (error) {
+							d.errback(error);
+						}
+					}
+					function onError(errData){
+						d.errback(errData);
+					}
+					store.fetchItemByIdentity({identity:"ec", onItem:onItem, onError:onError});
+					return d; // Deferred
+				}
+			}
+		},
+		{
+			name: "Read API: fetch, close (clearOnClose: true, reset url.)",
+			runTest: function(t){
+				//	summary: 
+				//		Function to test the close api properly clears the store for reload when clearOnClose is set.
+				if (dojo.isBrowser) {
+					var store = new dojox.data.AndOrReadStore(dojox.data.tests.stores.AndOrReadStore.getTestData("countries"));
+					store.clearOnClose = true;
+					store.urlPreventCache = true;
+	
+					var d = new doh.Deferred();
+					function onItem(item){
+						var error = null;
+						try {
+							t.assertTrue(item !== null);
+							var ec = item;
+							var val = store.getValue(ec, "name");
+							t.assertEqual("Ecuador", val);
+	
+							store.close();
+							//Check some internals here.  Do not normally access these!
+							t.assertTrue(store._arrayOfAllItems.length === 0);
+							t.assertTrue(store._loadFinished === false);
+							
+							store.url = dojo.moduleUrl("dojox", "data/tests/stores/countries_withNull.json").toString()
+							function onComplete (items){
+								var err;
+								try{
+									t.assertEqual(1, items.length);
+									var item = items[0];
+									t.assertTrue(item !== null);
+									var val = store.getValue(item, "name");
+									t.assertEqual(null, val);
+								}catch(e){
+									err = e;
+								}
+								if(err){
+									d.errback(err);
+								}else{
+									d.callback(true);
+								}
+							}
+							store.fetch({query: {abbr:"ec"}, onComplete:onComplete, onError:onError});
+						}catch (e){
+							error = e;
+						}
+						if (error) {
+							d.errback(error);
+						}
+					}
+					function onError(errData){
+						d.errback(errData);
+					}
+					store.fetchItemByIdentity({identity:"ec", onItem:onItem, onError:onError});
+					return d; // Deferred
+				}
+			}
+		},
+		{
+			name: "Read API: close (clearOnClose: true, reset _jsonFileUrl.)",
+			runTest: function(t){
+				//	summary: 
+				//		Function to test the close api properly clears the store for reload when clearOnClose is set.
+				if (dojo.isBrowser) {
+					var store = new dojox.data.AndOrReadStore(dojox.data.tests.stores.AndOrReadStore.getTestData("countries"));
+					store.clearOnClose = true;
+					store.urlPreventCache = true;
+	
+					var d = new doh.Deferred();
+					function onItem(item){
+						var error = null;
+						try {
+							t.assertTrue(item !== null);
+							var ec = item;
+							var val = store.getValue(ec, "name");
+							t.assertEqual("Ecuador", val);
+	
+							store.close();
+							//Check some internals here.  Do not normally access these!
+							t.assertTrue(store._arrayOfAllItems.length === 0);
+							t.assertTrue(store._loadFinished === false);
+							
+							store._jsonFileUrl = dojo.moduleUrl("dojox", "data/tests/stores/countries_withNull.json").toString()
+							function onItem2 (item){
+								var err;
+								try{
+									t.assertTrue(item !== null);
+									var val = store.getValue(item, "name");
+									t.assertEqual(null, val);
+								}catch(e){
+									err = e;
+								}
+								if(err){
+									d.errback(err);
+								}else{
+									d.callback(true);
+								}
+							}
+							store.fetchItemByIdentity({identity:"ec", onItem:onItem2, onError:onError});
+						}catch (e){
+							error = e;
+						}
+						if (error) {
+							d.errback(error);
+						}
+					}
+					function onError(errData){
+						d.errback(errData);
+					}
+					store.fetchItemByIdentity({identity:"ec", onItem:onItem, onError:onError});
+					return d; // Deferred
+				}
+			}
+		},
+		{
+			name: "Read API: close (clearOnClose: true, reset data.)",
+			runTest: function(t){
+				//	summary: 
+				//		Function to test that clear on close and reset of data works.
+				//	description:
+				//		Function to test that clear on close and reset of data works.
+				var store = new dojox.data.AndOrReadStore({data: { identifier: "uniqueId", 
+						items: [ {uniqueId: 1, value:"foo*bar"},
+							{uniqueId: 2, value:"bar*foo"}, 
+							{uniqueId: 3, value:"boomBam"},
+							{uniqueId: 4, value:"bit$Bite"},
+							{uniqueId: 5, value:"ouagadogou"},
+							{uniqueId: 6, value:"BaBaMaSaRa***Foo"},
+							{uniqueId: 7, value:"squawl"},
+							{uniqueId: 8, value:"seaweed"},
+							{uniqueId: 9, value:"jfq4@#!$!@Rf14r14i5u"}
+						]
+					}
+				});
+	
+				var d = new doh.Deferred();
+				var firstComplete = function(items, request){
+					t.assertEqual(items.length, 1);
+					var firstItem = items[0];
+	
+					//Set the store clearing options and the new data
+					store.clearOnClose = true;
+					store.data = { identifier: "uniqueId", 
+						items: [ {uniqueId: 1, value:"foo*bar"},
+							{uniqueId: 2, value:"bar*foo"}, 
+							{uniqueId: 3, value:"boomBam"},
+							{uniqueId: 4, value:"bit$Bite"},
+							{uniqueId: 5, value:"ouagadogou"},
+							{uniqueId: 6, value:"BaBaMaSaRa***Foo"},
+							{uniqueId: 7, value:"squawl"},
+							{uniqueId: 8, value:"seaweed"},
+							{uniqueId: 9, value:"jfq4@#!$!@Rf14r14i5u"}
+						]
+					};
+					store.close();
+	
+					//Do the next fetch and verify that the next item you get is not
+					//a reference to the same item (data cleared and reloaded.
+					var secondComplete = function(items, request){
+						try{
+							t.assertEqual(items.length, 1);
+							var secondItem = items[0];
+							t.assertTrue(firstItem != null);
+							t.assertTrue(secondItem != null);
+							t.assertTrue(firstItem != secondItem);
+							d.callback(true);
+						}catch(e){
+							d.errback(e);
+						}
+					}
+					store.fetch({query: {value: "bar\*foo"}, onComplete: secondComplete, onError: error});
+				}
+				function error(error, request){
+					t.assertTrue(false);
+					d.errback(error);
+				}
+				store.fetch({query: {value: "bar\*foo"}, onComplete: firstComplete, onError: error});
+				return d;
 			}
 		},
 		{
@@ -2950,6 +3512,32 @@ dojox.data.tests.stores.AndOrReadStore.getTests = function(){
 					d.errback(errData);
 				};
 				store.fetch({ 	query: {complexQuery:'abbr: "e*" AND (capital:"A*" or capital: "Q*")', name: "Ec*"}, 
+										onComplete: onComplete, 
+										onError: onError
+									});
+				return d;
+			}
+		},
+		{
+			name: "Read API: fetch() multiple, AND/OR, as json object, complex, with extra attrs and spaces",
+	 		runTest: function(t){
+				//	summary: 
+				//		Simple test of a basic fetch on AndOrReadStore of a single item.
+				//	description:
+				//		Simple test of a basic fetch on AndOrReadStore of a single item.
+				var store = new dojox.data.AndOrReadStore(dojox.data.tests.stores.AndOrReadStore.getTestData("countries"));
+				
+				var d = new doh.Deferred();
+				var onComplete = function(items, request){
+					t.assertEqual(items.length, 1);
+					t.assertEqual("Equatorial Guinea", store.getValue(items[0], "name"));
+					d.callback(true);
+				};
+				var onError = function(errData, request){
+					t.assertTrue(false);
+					d.errback(errData);
+				};
+				store.fetch({ 	query: {complexQuery:'abbr: "g*" AND (capital:"A*" or capital: "M*")', name: "Equatorial G*"}, 
 										onComplete: onComplete, 
 										onError: onError
 									});

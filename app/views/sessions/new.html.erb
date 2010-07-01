@@ -2,7 +2,7 @@
 <p>Choose your name and signin</p>
 <% form_for(:session, :url=> '/sessions/create') do |f| %>
   <div class='field'>
-    <%= f.select("user_id",@users.map {|u| [u.UserName,u.ID]}) %>
+    <%= f.select("user_id",@users.map {|u| [u.user_name,u.id]}) %>
   </div>
   <div class='actions'>
     <%= f.submit('sign in') %>

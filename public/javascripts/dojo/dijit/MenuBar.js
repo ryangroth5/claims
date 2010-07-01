@@ -6,7 +6,7 @@ dojo.declare("dijit.MenuBar", dijit._MenuBase, {
 	// summary:
 	//		A menu bar, listing menu choices horizontally, like the "File" menu in most desktop applications
 
-	templatePath: dojo.moduleUrl("dijit", "templates/MenuBar.html"),
+	templateString: dojo.cache("dijit", "templates/MenuBar.html"),
 
 	// _isMenuBar: [protected] Boolean
 	//		This is a MenuBar widget, not a (vertical) Menu widget.
@@ -32,16 +32,16 @@ dojo.declare("dijit.MenuBar", dijit._MenuBase, {
 
 	focusChild: function(item){
 		// overload focusChild so that whenever the focus is moved to a new item,
-		// check the previous focused whether it has its popup open, if so, after 
+		// check the previous focused whether it has its popup open, if so, after
 		// focusing the new item, open its submenu immediately
-		var from_item = this.focusedChild,
-			showpopup = from_item && from_item.popup && from_item.popup.isShowingNow;
+		var prev_item = this.focusedChild,
+			showpopup = prev_item && prev_item.popup && prev_item.popup.isShowingNow;
 		this.inherited(arguments);
-		if(showpopup && !item.disabled){
+		if(showpopup && item.popup && !item.disabled){
 			this._openPopup();		// TODO: on down arrow, _openPopup() is called here and in onItemClick()
 		}
 	},
-	
+
 	_onKeyPress: function(/*Event*/ evt){
 		// summary:
 		//		Handle keyboard based menu navigation.
@@ -54,6 +54,18 @@ dojo.declare("dijit.MenuBar", dijit._MenuBase, {
 			case dojo.keys.DOWN_ARROW:
 				this._moveToPopup(evt);
 				dojo.stopEvent(evt);
+		}
+	},
+
+	onItemClick: function(/*dijit._Widget*/ item, /*Event*/ evt){
+		// summary:
+		//		Handle clicks on an item. Cancels a dropdown if already open.
+		// tags:
+		//		private
+		if(item.popup && item.popup.isShowingNow){
+			item.popup.onCancel();
+		}else{
+			this.inherited(arguments);
 		}
 	}
 });

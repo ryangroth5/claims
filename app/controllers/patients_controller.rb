@@ -10,6 +10,18 @@ class PatientsController < ApplicationController
     end
   end
 
+
+  def list_actions
+    actions = Patient.find(params[:id]).actions
+    #actions = Action.find(:all, :include=>[:action_types], :conditions=>" patient_id => #{params[:id]}"); #Patient.find(params[:id]).actions
+    render :json => {:identifier => "id", :items=>actions};
+  end
+  
+  def list_claims
+     claims = Patient.find(params[:id]).claims
+     render :json => {:identifier => "id", :items=>claims};
+  end
+
   # GET /patients/1
   # GET /patients/1.xml
   def show
@@ -30,6 +42,15 @@ class PatientsController < ApplicationController
       format.html # new.html.erb
       format.xml  { render :xml => @patient }
     end
+  end
+  
+  
+  def list
+    #layout :none
+    #debugger;
+    patients = Patient.find(:all, :order => 'patient_last_name, patient_first_name')
+    
+    render :json=> {:identifier=>'id', :items=>patients.map{|p| {:id =>p.id, :name=>(p.patient_last_name+", "+p.patient_first_name+" ("+(p.patient_birth_date ? p.patient_birth_date.strftime('%m/%d/%Y'):'')+")" )} }} 
   end
 
   # GET /patients/1/edit

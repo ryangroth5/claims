@@ -185,10 +185,7 @@ dojo.declare("dojox.image.LightboxDialog",
 	//		Path to the image used when a 404 is encountered
 	errorImg: dojo.moduleUrl("dojox.image","resources/images/warning.png"),
 
-	_fixSizes: false, // janktastic solution to #8967
-
-	
-	templatePath: dojo.moduleUrl("dojox.image","resources/Lightbox.html"),
+	templateString: dojo.cache("dojox.image","resources/Lightbox.html"),
 
 	startup: function(){
 		// summary: Add some extra event handlers, and startup our superclass.

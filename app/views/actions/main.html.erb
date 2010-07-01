@@ -1,1 +1,138 @@
-MAIN ERB
+<style>
+    .right .dojoxGridCellContent{text-align:right;}
+</style>
+
+<script>
+
+    var gridstore = null;
+    var action_types = <%=  ActionType.find(:all,:order=>:id).to_json %>;
+    var contact_types = <%= ContactType.find(:all,:order=>:id).to_json %>;
+    var fault_types = <%= FaultType.find(:all,:order=>:id).to_json %>;
+    var dlg = new dijit.Dialog({id:'dlg'});
+    function findAction(a)
+    {
+        return(findbyid(action_types,a,'action_name'));
+    }
+    function findContact(a)
+    {
+        return(findbyid(contact_types,a,'contact_type_name'));
+    }
+    function findFault(a)
+    {
+        return(findbyid(fault_types,a,'fault_name'));
+    }
+    
+    function formatDolars(n)
+    {
+        if(n)
+        {
+            return('$'+n);
+        }
+        return(null);
+        
+    }
+    function formatDate(d)
+    {
+        if(typeof(d) == 'string')
+        {
+            d = dojo.date.stamp.fromISOString(d);
+        }
+        return(dojo.date.locale.format(d,{datePattern:'M/d/y', selector:'date'}));
+    }
+    function findbyid(arr,id,field)
+    {
+        var name = null;
+        return(dojo.forEach(arr,function(v){if(v['id']==id){name =v[field];}}));
+        return(name);
+    }
+    function populategrid()
+    {
+        var patientid=dijit.byId('patient_id').attr('value');
+        if(patientid)
+        {
+            dijit.byId('claimgrid').setStore(new dojo.data.ItemFileReadStore({url:"/patient/"+patientid+"/claims"}));
+            dijit.byId('actiongrid').setStore(new dojo.data.ItemFileReadStore({url:"/patient/"+patientid+"/actions"}));
+        }
+    }
+    
+    function addcontact()
+    {
+        var grid = dijit.byId('claimgrid');
+        var s = grid.selection.getSelected();
+        var claimids = [];
+        dojo.forEach(s,function(x){
+            claimids.push(grid.attr('store').getValue(x, "id", null));
+        });
+        dlg.attr('href','/actions/new/?claimids='+claimids.join(',')); 
+        dlg.show();
+    }
+
+    dojo.addOnLoad(
+        function()
+        {
+            dojo.connect(dijit.byId('claimgrid'),'onStyleRow',dijit.byId('claimgrid'),
+                function(row)
+                {
+                    //The row object has 4 parameters, and you can set two others to provide your own styling
+                    //These parameters are :
+                    // -- index : the row index
+                    // -- selected: wether the row is selected
+                    // -- over : wether the mouse is over this row
+                    // -- odd : wether this row index is odd.
+                    var item = this.getItem(row.index);
+                    if (item) {
+                        var type = this.attr('store').getValue(item, "paid", null);
+                        if (type == "Not Paid") {
+                            row.customStyles += "background:pink;";
+                        }
+                    }
+                    this.focus.styleRow(row);
+                    this.edit.styleRow(row);
+                }
+            );
+        }
+    );
+    
+    
+     
+
+</script>
+
+<div dojoType="dojo.data.ItemFileReadStore" jsId="stateStore" url="/patients/list">
+</div>
+NAME: <input style='width:60em' dojoType="dijit.form.FilteringSelect" store="stateStore" searchAttr="name" name="id" id="patient_id">
+<button onclick='populategrid();'>Get Patient Information</button>
+<h2>Most Recent History</h2>
+<table id='claimgrid' selectionMode='multiple' plugins="{indirectSelection: true}"
+    dojoType="dojox.grid.EnhancedGrid" style='width: 45em; height:15em'>
+  <thead>
+    <tr>
+      <th classes='right'   field="id"  width="5em">Claim ID</th>
+      <th                   field="first_claim_date" formatter='formatDate' width="5em">Date</th>
+      <th classes='right'   field="paid" width="10em">Paid?</th>
+      <th classes='right'   field="total_charge" formatter='formatDolars' width="5em">Total $</th>
+      <th classes='right'   field="balance_due" formatter='formatDolars' width="5em">Balance</th>
+    </tr>
+  </thead>
+</table>
+
+
+<button onclick='addcontact()'>Add Contact</button>
+
+
+
+<h2>All Contacts</h2>
+<table  id='actiongrid' selectionMode='single' plugins="{indirectSelection: true}"
+    dojoType="dojox.grid.EnhancedGrid" style='width: auto; height:15em'>
+  <thead>
+    <tr>
+      <th classes='right'   field="id" width="5em">Claim ID</th>
+      <th                   field="contact_date" formatter='formatDate' width="5em">Date</th>
+      <th classes='right'   field="expected_writeoff" formatter='formatDolars' width="10em">WriteOff</th>
+      <th classes='right'   field="expected_payment" formatter='formatDolars' width="15em">Payment</th>
+      <th field="contact_type" formater='findContact' width="15em">Type</th>
+      <th field="contact_name" width="15em">Contact</th>
+      <th field="comments" width="30em">Comments</th>
+    </tr>
+  </thead>
+</table>

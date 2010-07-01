@@ -41,19 +41,7 @@
 			},"codeMade");
 			thinger.startup();
 			
-			// programatic with content: 
-			var thing2 = new dojox.widget.Dialog({
-				content:"<p>I am teh inner content</p>"
-			});
-			thing2.startup();
-			// a button to show it (though the error is from before showing)
-			new dijit.form.Button({
-				onClick:function(){
-					thing2.show()
-				},
-				label:"show prog."
-			}).placeAt("testholder");
-			
+
 			// make the "stock" buttons dijit Buttons, but skip the 
 			// dojoType="" for the purists.
 			dojo.query("button")
@@ -63,6 +51,34 @@
 						onClick: oc
 					},n)
 				});
+
+			// programatic with content: 
+			var thing2 = new dojox.widget.Dialog({
+				content:"<p>I am teh inner content</p>"
+			});
+			thing2.startup();
+				
+			new dijit.form.Button({
+				onClick:function(){
+					thing2.show()
+				},
+				label:"show prog."
+			}).placeAt("testholder");
+
+			// test double show (but #9147)
+			var dblDialog = new dojox.widget.Dialog({
+				content:"<p>.show() is called twice on me</p>"
+			});
+			dblDialog.startup();
+
+			new dijit.form.Button({
+				onClick:function(){
+					dblDialog.show();
+					dblDialog.show(); // intentially calling show() on an already shown dialog
+				},
+				label:"double show."
+			}).placeAt("testholder");
+			
 		});
 	</script>
 </head>
@@ -161,7 +177,58 @@
 		<button onclick="dijit.byId('yetanotherTest').show()">showTitle</button>	
 		<div id="yetanotherTest" dojoType="dojox.widget.Dialog" showTitle="true" title="I am A title!!!">
 			<h2 style="margin-top:0">Wow!</h2>
-			<p style="margin-top:0">Vestibulum convallis eros ac justo. Proin dolor. Etiam aliquam. Nam
+			<p style="margin-top:0">
+				Vestibulum convallis eros ac justo. Proin dolor. Etiam aliquam. Nam
+			ornare elit vel augue. Suspendisse potenti. Etiam sed mauris eu neque
+			nonummy mollis. Vestibulum vel purus ac pede semper accumsan. Vivamus
+			lobortis, sem vitae nonummy lacinia, nisl est gravida magna, non cursus
+			est quam sed urna. Phasellus adipiscing justo in ipsum. Duis sagittis
+			dolor sit amet magna. Suspendisse suscipit, neque eu dictum auctor,
+			nisi augue tincidunt arcu, non lacinia magna purus nec magna. Praesent
+			pretium sollicitudin sapien. Suspendisse imperdiet. Class aptent taciti
+			sociosqu ad litora torquent per conubia nostra, per inceptos
+			hymenaeos.
+				Vestibulum convallis eros ac justo. Proin dolor. Etiam aliquam. Nam
+			ornare elit vel augue. Suspendisse potenti. Etiam sed mauris eu neque
+			nonummy mollis. Vestibulum vel purus ac pede semper accumsan. Vivamus
+			lobortis, sem vitae nonummy lacinia, nisl est gravida magna, non cursus
+			est quam sed urna. Phasellus adipiscing justo in ipsum. Duis sagittis
+			dolor sit amet magna. Suspendisse suscipit, neque eu dictum auctor,
+			nisi augue tincidunt arcu, non lacinia magna purus nec magna. Praesent
+			pretium sollicitudin sapien. Suspendisse imperdiet. Class aptent taciti
+			sociosqu ad litora torquent per conubia nostra, per inceptos
+			hymenaeos.
+				Vestibulum convallis eros ac justo. Proin dolor. Etiam aliquam. Nam
+			ornare elit vel augue. Suspendisse potenti. Etiam sed mauris eu neque
+			nonummy mollis. Vestibulum vel purus ac pede semper accumsan. Vivamus
+			lobortis, sem vitae nonummy lacinia, nisl est gravida magna, non cursus
+			est quam sed urna. Phasellus adipiscing justo in ipsum. Duis sagittis
+			dolor sit amet magna. Suspendisse suscipit, neque eu dictum auctor,
+			nisi augue tincidunt arcu, non lacinia magna purus nec magna. Praesent
+			pretium sollicitudin sapien. Suspendisse imperdiet. Class aptent taciti
+			sociosqu ad litora torquent per conubia nostra, per inceptos
+			hymenaeos.
+				Vestibulum convallis eros ac justo. Proin dolor. Etiam aliquam. Nam
+			ornare elit vel augue. Suspendisse potenti. Etiam sed mauris eu neque
+			nonummy mollis. Vestibulum vel purus ac pede semper accumsan. Vivamus
+			lobortis, sem vitae nonummy lacinia, nisl est gravida magna, non cursus
+			est quam sed urna. Phasellus adipiscing justo in ipsum. Duis sagittis
+			dolor sit amet magna. Suspendisse suscipit, neque eu dictum auctor,
+			nisi augue tincidunt arcu, non lacinia magna purus nec magna. Praesent
+			pretium sollicitudin sapien. Suspendisse imperdiet. Class aptent taciti
+			sociosqu ad litora torquent per conubia nostra, per inceptos
+			hymenaeos.
+				Vestibulum convallis eros ac justo. Proin dolor. Etiam aliquam. Nam
+			ornare elit vel augue. Suspendisse potenti. Etiam sed mauris eu neque
+			nonummy mollis. Vestibulum vel purus ac pede semper accumsan. Vivamus
+			lobortis, sem vitae nonummy lacinia, nisl est gravida magna, non cursus
+			est quam sed urna. Phasellus adipiscing justo in ipsum. Duis sagittis
+			dolor sit amet magna. Suspendisse suscipit, neque eu dictum auctor,
+			nisi augue tincidunt arcu, non lacinia magna purus nec magna. Praesent
+			pretium sollicitudin sapien. Suspendisse imperdiet. Class aptent taciti
+			sociosqu ad litora torquent per conubia nostra, per inceptos
+			hymenaeos.
+				Vestibulum convallis eros ac justo. Proin dolor. Etiam aliquam. Nam
 			ornare elit vel augue. Suspendisse potenti. Etiam sed mauris eu neque
 			nonummy mollis. Vestibulum vel purus ac pede semper accumsan. Vivamus
 			lobortis, sem vitae nonummy lacinia, nisl est gravida magna, non cursus
@@ -210,7 +277,7 @@
 		<button onclick="dijit.byId('codeMade').show()">programatic</button>
 		<div id="codeMade"><h2 style="margin-top:0">Wow!</h2><p>A small dialog</p></div>
 
-		<button onclick="dijit.byId('modaltest').show()">modal:true</button>	
+		<button onclick="dijit.byId('modaltest').show()">modal:true</button>
 		<div id="modaltest" dojoType="dojox.widget.Dialog" modal="true"
 		 	easing="dojo.fx.easing.bounceOut" sizeDuration="600">
 			<h2 style="margin-top:0">Wow!</h2>

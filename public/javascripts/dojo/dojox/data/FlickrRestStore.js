@@ -14,10 +14,10 @@ dojo.declare("dojox.data.FlickrRestStore",
 		//	This store cannot do * and ? filtering as the flickr service 
 		//	provides no interface for wildcards.
 		if(args){
-			if(args.label) {
+			if(args.label){
 				this.label = args.label;
 			}
-			if(args.apikey) {
+			if(args.apikey){
 				this._apikey = args.apikey;
 			}
 		}
@@ -30,44 +30,44 @@ dojo.declare("dojox.data.FlickrRestStore",
 	},
 	
 	// _id: Integer
-	// A unique identifier for this store.
+	// 		A unique identifier for this store.
 	_id: 0,
 	
 	// _requestCount: Integer
-	// A counter for the number of requests made. This is used to define
-	// the callback function that Flickr will use.
+	//		A counter for the number of requests made. This is used to define
+	//		the callback function that Flickr will use.
 	_requestCount: 0,
 	
 	// _flickrRestUrl: String
-	//	The URL to the Flickr REST services.
+	//		The URL to the Flickr REST services.
 	_flickrRestUrl: "http://www.flickr.com/services/rest/",
 
 	// _apikey: String
-	//	The users API key to be used when accessing Flickr REST services.
+	//		The users API key to be used when accessing Flickr REST services.
 	_apikey: null,
 	
 	// _storeRef: String
-	//	A key used to mark an data store item as belonging to this store.
+	//		A key used to mark an data store item as belonging to this store.
 	_storeRef: "_S",
 	
 	// _cache: Array
-	//	An Array of all previously downloaded picture info.
+	//		An Array of all previously downloaded picture info.
 	_cache: null,
 	
 	// _prevRequests: Object
-	//	A HashMap used to record the signature of a request to prevent duplicate 
-	//	request being made.
+	//		A HashMap used to record the signature of a request to prevent duplicate 
+	//		request being made.
 	_prevRequests: null,
 	
 	// _handlers: Object
-	//	A HashMap used to record the handlers registered for a single remote request.  Multiple 
-	//	requests may be made for the same information before the first request has finished. 
-	//	Each element of this Object is an array of handlers to call back when the request finishes.
-	//	This prevents multiple requests being made for the same information.  
+	//		A HashMap used to record the handlers registered for a single remote request.  Multiple 
+	//		requests may be made for the same information before the first request has finished. 
+	//		Each element of this Object is an array of handlers to call back when the request finishes.
+	//		This prevents multiple requests being made for the same information.  
 	_handlers: null,
 	
 	// _sortAttributes: Object
-	// A quick lookup of valid attribute names in a sort query.
+	//		A quick lookup of valid attribute names in a sort query.
 	_sortAttributes: {
 		"date-posted": true,
 		"date-taken": true,
@@ -108,6 +108,12 @@ dojo.declare("dojox.data.FlickrRestStore",
 			primaryKey.push("userid"+request.query.userid);
 		}
 
+		if(query.groupid){
+			isRest = true;
+			content.group_id = query.groupid;
+			primaryKey.push("groupid" + query.groupid);
+		}
+
 		if(query.apikey){
 			isRest = true;
 			content.api_key = request.query.apikey;
@@ -125,7 +131,7 @@ dojo.declare("dojox.data.FlickrRestStore",
 		if(query.page){
 			content.page = request.query.page;
 			secondaryKey.push("page" + content.page);
-		}else if(typeof(request.start) != "undefined" && request.start != null){
+		}else if(("start" in request) && request.start !== null){
 			if(!request.count){
 				request.count = 20;
 			}
@@ -133,7 +139,7 @@ dojo.declare("dojox.data.FlickrRestStore",
 			var start = request.start, count = request.count;
 			// If the count does not divide cleanly into the start number,
 			// more work has to be done to figure out the best page to request
-			if(diff != 0) {
+			if(diff !== 0) {
 				if(start < count / 2){
 					// If the first record requested is less than half the
 					// amount requested, then request from 0 to the count record
@@ -142,7 +148,7 @@ dojo.declare("dojox.data.FlickrRestStore",
 				}else{
 					var divLimit = 20, div = 2;
 					for(var i = divLimit; i > 0; i--){
-						if(start % i == 0 && (start/i) >= count){
+						if(start % i === 0 && (start/i) >= count){
 							div = i;
 							break;
 						}
@@ -172,7 +178,6 @@ dojo.declare("dojox.data.FlickrRestStore",
 			content.lang = request.query.lang;
 			primaryKey.push("lang" + request.lang);
 		}
-		var url = this._flickrRestUrl;
 		
 		if(query.setid){
 			content.method = "flickr.photosets.getPhotos";
@@ -188,8 +193,8 @@ dojo.declare("dojox.data.FlickrRestStore",
 			}
 			primaryKey.push("tags" + content.tags);
 			
-			if(query["tag_mode"] && (query.tag_mode.toLowerCase() == "any"
-				|| query.tag_mode.toLowerCase() == "all")){
+			if(query["tag_mode"] && (query.tag_mode.toLowerCase() === "any" ||
+				query.tag_mode.toLowerCase() === "all")){
 				content.tag_mode = query.tag_mode;
 			}
 		}
@@ -260,7 +265,7 @@ dojo.declare("dojox.data.FlickrRestStore",
   		var handle = null;
   		var getArgs = {
 			url: this._flickrRestUrl,
-			preventCache: true,
+			preventCache: this.urlPreventCache,
 			content: content,
 			callbackParamName: "jsoncallback"
 		};
@@ -271,7 +276,7 @@ dojo.declare("dojox.data.FlickrRestStore",
 			var maxPhotos;
 			var req = handler.request;
 			
-			if(typeof(req._realStart) != undefined && req._realStart != null){
+			if(("_realStart" in req) && req._realStart != null){
 				req.start = req._realStart;
 				req.count = req._realCount;
 				req._realStart = req._realCount = null;
@@ -284,7 +289,7 @@ dojo.declare("dojox.data.FlickrRestStore",
 				if(data){
 					photos = (data.photoset ? data.photoset : data.photos);
 				}
-				if(photos && typeof(photos.perpage) != "undefined" && typeof(photos.pages) != "undefined"){
+				if(photos && ("perpage" in photos) && ("pages" in photos)){
 					if(photos.perpage * photos.pages <= handler.request.start + handler.request.count){
 						//If the final page of results has been received, it is possible to 
 						//know exactly how many photos there are
@@ -393,6 +398,10 @@ dojo.declare("dojox.data.FlickrRestStore",
 				return [ item.media.s ]; // String
 			case "imageUrl":
 				return [ item.media.l ]; // String
+			case "imageUrlOriginal":
+				return [ item.media.o ]; // String
+			case "imageUrlLarge":
+				return [ item.media.l ]; // String
 			case "imageUrlMedium":
 				return [ item.media.m ]; // String
 			case "imageUrlThumb":
@@ -444,7 +453,8 @@ dojo.declare("dojox.data.FlickrRestStore",
 					s: base + "_s.jpg",
 				 	m: base + "_m.jpg",
 				 	l: base + ".jpg",
-				 	t: base + "_t.jpg"
+				 	t: base + "_t.jpg",
+			    		o: base + "_o.jpg"
 				};
 				if(!item.owner && data.photoset){
 					item.owner = data.photoset.owner;

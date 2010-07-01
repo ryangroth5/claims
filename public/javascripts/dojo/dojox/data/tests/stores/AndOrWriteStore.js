@@ -860,6 +860,121 @@ dojox.data.tests.stores.AndOrWriteStore.getTests = function(){
 			}
 		},
 		{
+			name: "Read API: fetch() hierarchy off",
+			runTest: function(t){
+				//	summary: 
+				//		Simple test of a basic fetch on AndOrWriteStore of all items with hierarchy disabled
+				//		This should turn off processing child objects as data store items.  It will still process
+				//		references and type maps.
+				//	description:
+				//		Simple test of a basic fetch on AndOrWriteStore of all items with hierarchy disabled
+				//		This should turn off processing child objects as data store items.  It will still process
+				//		references and type maps.
+				var store = new dojox.data.AndOrWriteStore(dojox.data.tests.stores.AndOrWriteStore.getTestData("geography_hierarchy_small"));
+				
+				//Set this as hierarchy off before fetch to make sure it traps and configs right.
+				store.hierarchical = false;
+				
+				var d = new doh.Deferred();
+				function onComplete(items, request){
+					//With hierarchy off, this should only match 2, as only two data store items
+					//will be quertied
+					t.assertEqual(2, items.length);
+					var i;
+					var passed = true;
+					for(i = 0; i < items.length; i++){
+						var countries = store.getValues(items[i], "countries");
+						if(countries){
+							var j;
+							//Make sure none of the child objects were processed into items.
+							for(j = 0; j<countries.length; j++){
+								passed = !store.isItem(countries[j]);
+								if(!passed){
+									break;
+								}
+							}
+						}
+						if(!passed){
+							break;
+						}
+					}
+					if(!passed){
+						d.errback(new Error("Located a child item with hierarchy off and no references in the data.  Error."));
+					}else{
+						d.callback(true);
+					}
+				}
+				function onError(errData, request){
+					d.errback(errData);
+				}
+				//Find all items starting with A, including child (nested) items.
+				store.fetch({ 	query: {name: "A*"}, 
+										onComplete: onComplete, 
+										onError: onError,
+										queryOptions: {deep:true}
+									});
+				return d;
+			}
+		},
+		{
+			name: "Read API: fetch() hierarchy off refs still parse",
+			runTest: function(t){
+				//	summary: 
+				//		Simple test of a basic fetch on AndOrWriteStore of all items with hierarchy disabled
+				//		This should turn off processing child objects as data store items.  It will still process
+				//		references and type maps.
+				//	description:
+				//		Simple test of a basic fetch on AndOrWriteStore of all items with hierarchy disabled
+				//		This should turn off processing child objects as data store items.  It will still process
+				//		references and type maps.
+				var store = new dojox.data.AndOrWriteStore(dojox.data.tests.stores.AndOrWriteStore.getTestData("countries_references"));
+				
+				//Set this as hierarchy off before fetch to make sure it traps and configs right.
+				store.hierarchical = false;
+				
+				var d = new doh.Deferred();
+				function onComplete(items, request){
+					//With hierarchy off, this should only match 2, as only two data store items
+					//will be quertied
+					t.assertEqual(items.length, 4);
+					var i;
+					var passed = true;
+					for(i = 0; i < items.length; i++){
+						var countries = store.getValues(items[i], "children");
+						if(countries){
+							var j;
+							//Make sure none of the child objects were processed into items.
+							for(j = 0; j<countries.length; j++){
+								passed = store.isItem(countries[j]);
+								if(!passed){
+									break;
+								}
+							}
+						}
+						if(!passed){
+							break;
+						}
+					}
+					if(!passed){
+						d.errback(new Error("Found a non-child item in a reference list in a references based input.  Error."));
+					}else{
+						d.callback(true);
+					}
+				}
+				function onError(errData, request){
+					t.assertTrue(false);
+					d.errback(errData);
+				}
+				//Find all items starting with A, including child (nested) items.
+				store.fetch({ 	query: {name: "A*"}, 
+										onComplete: onComplete, 
+										onError: onError,
+										queryOptions: {deep:true}
+									});
+				return d;
+			}
+		},
+		{
 			name: "Read API: fetch() one_commentFilteredJson",
 	 		runTest: function(t){
 				//	summary: 
@@ -2984,6 +3099,35 @@ dojox.data.tests.stores.AndOrWriteStore.getTests = function(){
 			}
 		},
 		{
+			name: "Read API: fetch() multiple, AND/OR, as json object, complex, with extra attrs and spaces",
+	 		runTest: function(t){
+				//	summary: 
+				//		Simple test of a basic fetch on AndOrWriteStore of a single item.
+				//	description:
+				//		Simple test of a basic fetch on AndOrWriteStore of a single item.
+				var store = new dojox.data.AndOrWriteStore(dojox.data.tests.stores.AndOrWriteStore.getTestData("countries"));
+				
+				var d = new doh.Deferred();
+				var onComplete = function(items, request){
+					try{
+						t.assertEqual(items.length, 1);
+						t.assertEqual("Equatorial Guinea", store.getValue(items[0], "name"));
+						d.callback(true);
+					}catch(e){
+						d.errback(e);
+					}
+				};
+				var onError = function(errData, request){
+					d.errback(errData);
+				};
+				store.fetch({ 	query: {complexQuery:'abbr: "g*" AND (capital:"A*" or capital: "M*")', name: "Equatorial G*"}, 
+										onComplete: onComplete, 
+										onError: onError
+									});
+				return d;
+			}
+		},
+		{
 			name: "Read API: fetch() multiple, AND/OR, as quoted json object, complex",
 	 		runTest: function(t){
 				//	summary: 
@@ -3005,6 +3149,242 @@ dojox.data.tests.stores.AndOrWriteStore.getTests = function(){
 										onComplete: onComplete, 
 										onError: onError
 									});
+				return d;
+			}
+		},
+		{
+			name: "Read API: close (clearOnClose: true, reset url.)",
+			runTest: function(t){
+				//	summary: 
+				//		Function to test the close api properly clears the store for reload when clearOnClose is set.
+				if (dojo.isBrowser) {
+					var store = new dojox.data.AndOrWriteStore(dojox.data.tests.stores.AndOrWriteStore.getTestData("countries"));
+					store.clearOnClose = true;
+					store.urlPreventCache = true;
+	
+					var d = new doh.Deferred();
+					function onItem(item){
+						var error = null;
+						try {
+							t.assertTrue(item !== null);
+							var ec = item;
+							var val = store.getValue(ec, "name");
+							t.assertEqual("Ecuador", val);
+	
+							store.close();
+							//Check some internals here.  Do not normally access these!
+							t.assertTrue(store._arrayOfAllItems.length === 0);
+							t.assertTrue(store._loadFinished === false);
+							
+							store.url = dojo.moduleUrl("dojox", "data/tests/stores/countries_withNull.json").toString()
+							function onItem2 (item){
+								var err;
+								try{
+									t.assertTrue(item !== null);
+									var val = store.getValue(item, "name");
+									t.assertEqual(null, val);
+								}catch(e){
+									err = e;
+								}
+								if(err){
+									d.errback(err);
+								}else{
+									d.callback(true);
+								}
+							}
+							store.fetchItemByIdentity({identity:"ec", onItem:onItem2, onError:onError});
+						}catch (e){
+							error = e;
+						}
+						if (error) {
+							d.errback(error);
+						}
+					}
+					function onError(errData){
+						d.errback(errData);
+					}
+					store.fetchItemByIdentity({identity:"ec", onItem:onItem, onError:onError});
+					return d; // Deferred
+				}
+			}
+		},
+		{
+			name: "Read API: fetch, close (clearOnClose: true, reset url.)",
+			runTest: function(t){
+				//	summary: 
+				//		Function to test the close api properly clears the store for reload when clearOnClose is set.
+				if (dojo.isBrowser) {
+					var store = new dojox.data.AndOrWriteStore(dojox.data.tests.stores.AndOrWriteStore.getTestData("countries"));
+					store.clearOnClose = true;
+					store.urlPreventCache = true;
+	
+					var d = new doh.Deferred();
+					function onItem(item){
+						var error = null;
+						try {
+							t.assertTrue(item !== null);
+							var ec = item;
+							var val = store.getValue(ec, "name");
+							t.assertEqual("Ecuador", val);
+	
+							store.close();
+							//Check some internals here.  Do not normally access these!
+							t.assertTrue(store._arrayOfAllItems.length === 0);
+							t.assertTrue(store._loadFinished === false);
+							
+							store.url = dojo.moduleUrl("dojox", "data/tests/stores/countries_withNull.json").toString()
+							function onComplete (items){
+								var err;
+								try{
+									t.assertEqual(1, items.length);
+									var item = items[0];
+									t.assertTrue(item !== null);
+									var val = store.getValue(item, "name");
+									t.assertEqual(null, val);
+								}catch(e){
+									err = e;
+								}
+								if(err){
+									d.errback(err);
+								}else{
+									d.callback(true);
+								}
+							}
+							store.fetch({query: {abbr:"ec"}, onComplete:onComplete, onError:onError});
+						}catch (e){
+							error = e;
+						}
+						if (error) {
+							d.errback(error);
+						}
+					}
+					function onError(errData){
+						d.errback(errData);
+					}
+					store.fetchItemByIdentity({identity:"ec", onItem:onItem, onError:onError});
+					return d; // Deferred
+				}
+			}
+		},
+		{
+			name: "Read API: close (clearOnClose: true, reset _jsonFileUrl.)",
+			runTest: function(t){
+				//	summary: 
+				//		Function to test the close api properly clears the store for reload when clearOnClose is set.
+				if (dojo.isBrowser) {
+					var store = new dojox.data.AndOrWriteStore(dojox.data.tests.stores.AndOrWriteStore.getTestData("countries"));
+					store.clearOnClose = true;
+					store.urlPreventCache = true;
+	
+					var d = new doh.Deferred();
+					function onItem(item){
+						var error = null;
+						try {
+							t.assertTrue(item !== null);
+							var ec = item;
+							var val = store.getValue(ec, "name");
+							t.assertEqual("Ecuador", val);
+	
+							store.close();
+							//Check some internals here.  Do not normally access these!
+							t.assertTrue(store._arrayOfAllItems.length === 0);
+							t.assertTrue(store._loadFinished === false);
+							
+							store._jsonFileUrl = dojo.moduleUrl("dojox", "data/tests/stores/countries_withNull.json").toString()
+							function onItem2 (item){
+								var err;
+								try{
+									t.assertTrue(item !== null);
+									var val = store.getValue(item, "name");
+									t.assertEqual(null, val);
+								}catch(e){
+									err = e;
+								}
+								if(err){
+									d.errback(err);
+								}else{
+									d.callback(true);
+								}
+							}
+							store.fetchItemByIdentity({identity:"ec", onItem:onItem2, onError:onError});
+						}catch (e){
+							error = e;
+						}
+						if (error) {
+							d.errback(error);
+						}
+					}
+					function onError(errData){
+						d.errback(errData);
+					}
+					store.fetchItemByIdentity({identity:"ec", onItem:onItem, onError:onError});
+					return d; // Deferred
+				}
+			}
+		},
+		{
+			name: "Read API: close (clearOnClose: true, reset data.)",
+			runTest: function(t){
+				//	summary: 
+				//		Function to test that clear on close and reset of data works.
+				//	description:
+				//		Function to test that clear on close and reset of data works.
+				var store = new dojox.data.AndOrWriteStore({data: { identifier: "uniqueId", 
+						items: [ {uniqueId: 1, value:"foo*bar"},
+							{uniqueId: 2, value:"bar*foo"}, 
+							{uniqueId: 3, value:"boomBam"},
+							{uniqueId: 4, value:"bit$Bite"},
+							{uniqueId: 5, value:"ouagadogou"},
+							{uniqueId: 6, value:"BaBaMaSaRa***Foo"},
+							{uniqueId: 7, value:"squawl"},
+							{uniqueId: 8, value:"seaweed"},
+							{uniqueId: 9, value:"jfq4@#!$!@Rf14r14i5u"}
+						]
+					}
+				});
+	
+				var d = new doh.Deferred();
+				var firstComplete = function(items, request){
+					t.assertEqual(items.length, 1);
+					var firstItem = items[0];
+	
+					//Set the store clearing options and the new data
+					store.clearOnClose = true;
+					store.data = { identifier: "uniqueId", 
+						items: [ {uniqueId: 1, value:"foo*bar"},
+							{uniqueId: 2, value:"bar*foo"}, 
+							{uniqueId: 3, value:"boomBam"},
+							{uniqueId: 4, value:"bit$Bite"},
+							{uniqueId: 5, value:"ouagadogou"},
+							{uniqueId: 6, value:"BaBaMaSaRa***Foo"},
+							{uniqueId: 7, value:"squawl"},
+							{uniqueId: 8, value:"seaweed"},
+							{uniqueId: 9, value:"jfq4@#!$!@Rf14r14i5u"}
+						]
+					};
+					store.close();
+	
+					//Do the next fetch and verify that the next item you get is not
+					//a reference to the same item (data cleared and reloaded.
+					var secondComplete = function(items, request){
+						try{
+							t.assertEqual(items.length, 1);
+							var secondItem = items[0];
+							t.assertTrue(firstItem != null);
+							t.assertTrue(secondItem != null);
+							t.assertTrue(firstItem != secondItem);
+							d.callback(true);
+						}catch(e){
+							d.errback(e);
+						}
+					}
+					store.fetch({query: {value: "bar\*foo"}, onComplete: secondComplete, onError: error});
+				}
+				function error(error, request){
+					t.assertTrue(false);
+					d.errback(error);
+				}
+				store.fetch({query: {value: "bar\*foo"}, onComplete: firstComplete, onError: error});
 				return d;
 			}
 		},
@@ -3701,6 +4081,117 @@ dojox.data.tests.stores.AndOrWriteStore.getTests = function(){
 				t.assertTrue(store._arrayOfAllItems[itemEntryNum] === null);
 			}
 		},
+		{
+			name: "Write API: newItem, modify revert",
+			runTest: function(){
+				//	summary: 
+				//		Test of a new item, modify it, then revert, to ensure the state remains consistent.  Added due to #9022.
+				//	description:
+				//		Test of a new item, modify it, then revert, to ensure the state remains consistent.  Added due to #9022.
+				var store = new dojox.data.AndOrWriteStore(dojox.data.tests.stores.AndOrWriteStore.getTestData("countries"));
+
+				var deferred = new doh.Deferred();
+				doh.assertTrue(!store.isDirty());
+
+				var onError = function(error, request){
+					deferred.errback(error);
+				};
+
+				var intialFetch = function(items, request){
+					var initialCount = items.length;
+					var canada = store.newItem({name: "Canada", abbr:"ca", capital:"Ottawa"});
+					store.setValue(canada, "someattribute", "modified a new item!");
+					var afterNewFetch = function(items, request){
+						var afterNewCount = items.length;
+						doh.assertEqual(afterNewCount, (initialCount + 1));
+						store.revert();
+						var afterRevertFetch = function(items, request){
+							var afterRevertCount = items.length;
+							doh.assertEqual(afterRevertCount, initialCount);
+							deferred.callback(true);
+						};
+						store.fetch({onComplete: afterRevertFetch, onError: onError});
+					};
+						  store.fetch({onComplete: afterNewFetch, onError: onError});
+				};
+				store.fetch({onComplete: intialFetch, onError: onError});
+				return deferred; //Object
+			}
+		},
+		{
+			name: "Write API: newItem, modify, delete, revert",
+			runTest: function(){
+				//	summary: 
+				//		Test of a new item, modify it, delete it, then revert, to ensure the state remains consistent.  Added due to #9022.
+				//	description:
+				//		Test of a new item, modify it, delete it, then revert, to ensure the state remains consistent.  Added due to #9022.
+				var store = new dojox.data.AndOrWriteStore(dojox.data.tests.stores.AndOrWriteStore.getTestData("countries"));
+				var i;
+				var found = false;
+	
+				var deferred = new doh.Deferred();
+				doh.assertTrue(!store.isDirty());
+	
+				var onError = function(error, request){
+					deferred.errback(error);
+				};
+	
+				var intialFetch = function(items, request){
+					var initialCount = items.length;
+					var canada = store.newItem({name: "Canada", abbr:"ca", capital:"Ottawa"});
+					store.setValue(canada, "someattribute", "modified a new item!");
+					
+					// check that after new and modify, the total items count goes up by one.
+					var afterNewFetch = function(items, request){
+						var afterNewCount = items.length;
+						doh.assertEqual(afterNewCount, (initialCount + 1));
+						store.deleteItem(canada);
+						
+						//Check that after delete, the total items count goes back to initial count.  
+						//Also verify the item with abbr of ca is gone.
+						var afterDeleteFetch = function(items, request){
+							var afterDeleteCount = items.length;
+							doh.assertEqual(initialCount, afterDeleteCount);
+	
+							for(i=0; i < items.length; i++){
+								found = (store.getIdentity(items[i]) === "ca");
+								if(found){ 
+									break;
+								}
+							}
+							if(found){
+								deferred.errback(new Error("Error: Found the supposedly deleted item!"));
+							}else{
+								store.revert();
+								//Check that after revert, we still have the same item count as the 
+								//original fetch.  Also verify the item with abbr of ca is gone.
+								var afterRevertFetch = function(items, request){
+									var afterRevertCount = items.length;
+									doh.assertEqual(afterRevertCount, initialCount);
+									for(i=0; i < items.length; i++){
+										found = (store.getIdentity(items[i]) === "ca");
+										if(found){ 
+											break;
+										}
+									}
+									if(found){
+										deferred.errback(new Error("Error: Found the 'new' item after revert!"));
+									}else{
+										deferred.callback(true);
+									}
+								};
+								store.fetch({onComplete: afterRevertFetch, onError: onError});
+							}
+						};
+						store.fetch({onComplete: afterDeleteFetch, onError: onError});
+					};
+					store.fetch({onComplete: afterNewFetch, onError: onError});
+				};
+				store.fetch({onComplete: intialFetch, onError: onError});
+				return deferred; //Object
+			}
+		},
+
 		{
 			name: "Write API: onSet notification",
 			runTest: function(t){

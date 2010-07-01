@@ -30,6 +30,8 @@ dojo.require("dojox.charting.plot2d.ClusteredBars");
 dojo.require("dojox.charting.plot2d.Grid");
 dojo.require("dojox.charting.plot2d.Pie");
 dojo.require("dojox.charting.plot2d.Bubble");
+dojo.require("dojox.charting.plot2d.Candlesticks");
+dojo.require("dojox.charting.plot2d.OHLC");
 
 (function(){
 	var df = dojox.lang.functional, dc = dojox.charting,
@@ -207,7 +209,7 @@ dojo.require("dojox.charting.plot2d.Bubble");
 					box = width;
 					break;
 				default:
-					box = {w: width, h: height};
+					box = { w: width, h: height };
 					break;
 			}
 			dojo.marginBox(this.node, box);
@@ -262,8 +264,10 @@ dojo.require("dojox.charting.plot2d.Bubble");
 
 			// calculate geometry
 			dojo.forEach(this.stack, function(plot){
-				if(plot.dirty || (plot.hAxis && this.axes[plot.hAxis].dirty) ||
-						(plot.vAxis && this.axes[plot.vAxis].dirty)){
+				if(	plot.dirty ||
+					(plot.hAxis && this.axes[plot.hAxis].dirty) ||
+					(plot.vAxis && this.axes[plot.vAxis].dirty)
+				){
 					plot.calculateAxes(this.plotArea);
 				}
 			}, this);
@@ -310,10 +314,10 @@ dojo.require("dojox.charting.plot2d.Bubble");
 			dim.width  = dojox.gfx.normalizedLength(dim.width);
 			dim.height = dojox.gfx.normalizedLength(dim.height);
 			df.forIn(this.axes, clear);
-			dojo.forEach(this.stack, function(plot){ plot.calculateAxes(dim); });
+			dojo.forEach(this.stack, function(p){ p.calculateAxes(dim); });
 
 			// assumption: we don't have stacked axes yet
-			var offsets = this.offsets = {l: 0, r: 0, t: 0, b: 0};
+			var offsets = this.offsets = { l: 0, r: 0, t: 0, b: 0 };
 			df.forIn(this.axes, function(axis){
 				df.forIn(axis.getOffsets(), function(o, i){ offsets[i] += o; });
 			});
@@ -321,7 +325,10 @@ dojo.require("dojox.charting.plot2d.Bubble");
 			df.forIn(this.margins, function(o, i){ offsets[i] += o; });
 
 			// 2nd pass with realistic dimensions
-			this.plotArea = {width: dim.width - offsets.l - offsets.r, height: dim.height - offsets.t - offsets.b};
+			this.plotArea = {
+				width: dim.width - offsets.l - offsets.r,
+				height: dim.height - offsets.t - offsets.b
+			};
 			df.forIn(this.axes, clear);
 			dojo.forEach(this.stack, function(plot){ plot.calculateAxes(this.plotArea); }, this);
 
@@ -474,7 +481,7 @@ dojo.require("dojox.charting.plot2d.Bubble");
 					axisName = verticalAxis ? "vAxis" : "hAxis";
 				if(plot[axisName]){
 					axis = this.axes[plot[axisName]];
-					if(axis.dependOnData()){
+					if(axis && axis.dependOnData()){
 						axis.dirty = true;
 						// find all plots and mark them dirty
 						dojo.forEach(this.stack, function(p){

@@ -134,7 +134,12 @@ if(!empty($_REQUEST['ns'])){
   
               switch($key2){
                 // most things using dojo.declare() trigger this, eg: dijits
-                case "classlike": $knownClasses[] = $key; break;
+                case "classlike":
+                  $knownClasses[] = $key;
+                  if ($_REQUEST['showall']) {
+                    $print .= "<li>$key2</li>";
+                  }
+                  break;
 
                 // these are partially useless for our "overview" api, but set showall=1 in the
                 // url if you want to see these, too. sortof.
@@ -143,6 +148,8 @@ if(!empty($_REQUEST['ns'])){
                 case "prototype" :
                 case "instance" :
                 case "private" :
+                case "deprecated" :
+                case "protected" :
                 case "attached" :
                   if($_REQUEST['showall']){ $print .= "<li>".$key2." - ".$val2."</li>"; }
                   break;
@@ -155,7 +162,11 @@ if(!empty($_REQUEST['ns'])){
                 case "parameters" : 
                   $print .= "<li><em>parameters:</em> <ul>"; 
                   foreach($val2 as $param => $paramData){
-                    $print .= "<li>".$param.": <em>(typeof ".$paramData['type'].")</em><div>";
+                    $print .= "<li>".$param;
+                    if (!empty($paramData['type'])) {
+                      $print .= ": <em>(typeof ".$paramData['type'].")</em>";
+                    }
+                    $print .= "<div>";
                     if(!empty($paramData['summary'])){
                       $print .= "<pre>".htmlentities($paramData['summary'])."</pre>";
                     }
@@ -175,6 +186,12 @@ if(!empty($_REQUEST['ns'])){
 
                 case "tags":
                   $print .= "<li><em>$key2</em>: " . implode(' ', $val2) . '</li>';
+                  break;
+
+                case "optional":
+                  if ($val2) {
+                    $print .= "<li><em>$key2</em></li>";
+                  }
                   break;
 
                 case "chains" :
@@ -214,7 +231,7 @@ if(!empty($_REQUEST['ns'])){
 }
 
 if(!$ajaxy){ ?>
-<div dojoType="dijit.layout.BorderContainer" style="width:100%; height:100%;">q
+<div dojoType="dijit.layout.BorderContainer" style="width:100%; height:100%;">
 	<div dojoType="dojox.layout.ExpandoPane" easeOut="dojo.fx.easing.backIn" easeIn="dojo.fx.easing.backOut" title="Namespaces" region="left" style="width:250px" splitter="true">
 		<div dojoType="dijit.layout.TabContainer" tabPosition="bottom">
 			<?php

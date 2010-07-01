@@ -1,4 +1,4 @@
-dojo.provide("dojox.lang.tests.array");
+dojo.provide("dojox.math.tests.math");
 
 dojo.require("dojox.math");
 

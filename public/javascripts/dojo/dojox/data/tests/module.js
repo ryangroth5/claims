@@ -12,8 +12,8 @@ try{
 	dojo.requireIf(dojo.isBrowser, "dojox.data.tests.stores.XmlStore");
 	dojo.requireIf(dojo.isBrowser, "dojox.data.tests.stores.FlickrStore");
 	dojo.requireIf(dojo.isBrowser, "dojox.data.tests.stores.FlickrRestStore");
+	dojo.requireIf(dojo.isBrowser, "dojox.data.tests.stores.PicasaStore");
 	dojo.requireIf(dojo.isBrowser, "dojox.data.tests.stores.AtomReadStore");
-	dojo.requireIf(dojo.isBrowser, "dojox.data.tests.stores.jsonPathStore");
 	dojo.requireIf(dojo.isBrowser, "dojox.data.tests.stores.GoogleSearchStore");
 	dojo.requireIf(dojo.isBrowser, "dojox.data.tests.stores.GoogleFeedStore");
 	dojo.requireIf(dojo.isBrowser, "dojox.data.tests.stores.WikipediaStore");

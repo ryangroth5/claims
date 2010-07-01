@@ -86,16 +86,20 @@ dojo.declare("dojox.editor.plugins.GlobalTableHandler", dijit._editor._Plugin,{
 		this.initialized = true;
 		this.editor = editor;
 		
-		this.editorDomNode = this.editor.editNode || this.editor.iframe.document.body.firstChild;
-		
-		// RichText should have a mouseup connection to recognize drag-selections
-		// Example would be selecting multiple table cells
-		dojo.connect(this.editorDomNode , "mouseup", this.editor, "onClick"); 
-		
-		dojo.connect(this.editor, "onDisplayChanged", this, "checkAvailable");
-		
-		this.doMixins();
-		this.connectDraggable();
+		//Editor loads async, can't assume doc is ready yet.  So, use the deferred of the
+		//editor to init at the right time.
+		editor.onLoadDeferred.addCallback(dojo.hitch(this, function(){
+			this.editorDomNode = this.editor.editNode || this.editor.iframe.document.body.firstChild;
+			
+			// RichText should have a mouseup connection to recognize drag-selections
+			// Example would be selecting multiple table cells
+			dojo.connect(this.editorDomNode , "mouseup", this.editor, "onClick"); 
+
+			dojo.connect(this.editor, "onDisplayChanged", this, "checkAvailable");
+
+			this.doMixins();
+			this.connectDraggable();
+		}));
 	},
 	
 	getTableInfo: function(forceNewData){
@@ -311,7 +315,7 @@ dojo.declare("dojox.editor.plugins.GlobalTableHandler", dijit._editor._Plugin,{
 			// type is a number/ms
 			this.availableCurrentlySet = true;
 			setTimeout(dojo.hitch(this, function(){
-				this.availableCurrentlySet = false;											 
+				this.availableCurrentlySet = false;
 			}), type);
 		}
 		
@@ -426,19 +430,21 @@ dojo.declare("dojox.editor.plugins.TablePlugins",
 					break;
 				
 				case "modifyTable":
-					this.buttonClass = dijit.form.DropDownButton;
+					this.buttonClass = dijit.form.Button;
 					this.modTable = this.launchModifyDialog;
 					break;
 				
 				case "insertTable":
 					this.alwaysAvailable = true;
-					this.buttonClass = dijit.form.DropDownButton;
+					this.buttonClass = dijit.form.Button;
 					this.modTable = this.launchInsertDialog;
 					break;
 				
 				case "tableContextMenu":
-					this.connect(this, "setEditor", function(){
-						this._createContextMenu();
+					this.connect(this, "setEditor", function(editor){
+						editor.onLoadDeferred.addCallback(dojo.hitch(this, function() {
+							this._createContextMenu();
+						}));
 						this.button.domNode.style.display = "none";
 					});
 					break;
@@ -471,7 +477,7 @@ dojo.declare("dojox.editor.plugins.TablePlugins",
 			// summary
 			//		Building context menu for right-click shortcuts within a table
 			//
-			var node = dojo.isFF ? this.editor.editNode : this.editorDomNode;
+			var node = dojo.isMoz ? this.editor.editNode : this.editorDomNode;
 			
 			var pMenu = new dijit.Menu({targetNodeIds:[node], id:"progMenu", contextMenuForWindow:dojo.isIE});
 			var _M = dijit.MenuItem;
@@ -851,7 +857,7 @@ dojo.declare("dojox.editor.plugins.EditorTableDialog", [dijit.Dialog], {
 	baseClass:"EditorTableDialog",
 				
 	widgetsInTemplate:true,
-	templatePath: dojo.moduleUrl("dojox.editor.plugins", "resources/insertTable.html"),
+	templateString: dojo.cache("dojox.editor.plugins", "resources/insertTable.html"),
 
 	postMixInProperties: function(){
 		var messages = dojo.i18n.getLocalization("dojox.editor.plugins", "TableDialog", this.lang);
@@ -910,7 +916,7 @@ dojo.declare("dojox.editor.plugins.EditorModifyTableDialog", [dijit.Dialog], {
 	widgetsInTemplate:true,
 	table:null, //html table to be modified
 	tableAtts:{},
-	templatePath: dojo.moduleUrl("dojox.editor.plugins", "resources/modifyTable.html"),
+	templateString: dojo.cache("dojox.editor.plugins", "resources/modifyTable.html"),
 
 	postMixInProperties: function(){
 		var messages = dojo.i18n.getLocalization("dojox.editor.plugins", "TableDialog", this.lang);

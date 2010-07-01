@@ -1,0 +1,4 @@
+<div dojoAttachPoint="table_options" class='widget_selectcontainer' >
+	<div dojoAttachPoint="body_options" class='inside'>
+	</div>
+</div>	

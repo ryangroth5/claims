@@ -9,6 +9,8 @@
 			dojo.require("dijit._Widget");
 			dojo.require("dijit._Templated");
 
+			dojo.require("dijit.layout.LayoutContainer");
+
 			function getOuterHTML(/*DomNode*/ node){
 				var wrapper = dojo.doc.createElement("div");
 				wrapper.appendChild(node);
@@ -76,9 +78,6 @@
 									"</tr></table>"
 				});
 
-				// TODO:
-				// TemplatePath
-
 				var testW;
 				doh.register("dijit.tests._Templated.html",
 					[
@@ -86,7 +85,7 @@
 							var widget=new SimpleTemplate();
 							var wrapper=dojo.byId("simpleWrapper");
 							wrapper.appendChild(widget.domNode);
-							t.is('<button widgetid=\"test1\"><span>hello &lt; world</span></button>', wrapper.innerHTML.toLowerCase());			
+							t.is('<button widgetid=\"test1\"><span>hello &lt; world</span></button>', wrapper.innerHTML.toLowerCase());
 						},
 
 						function variables(t){
@@ -107,7 +106,7 @@
 						},
 						function variablesWithExclamation(t){
 							var widget=new ExclamationVariableTemplate();
-							
+
 							// ExclamationVariableTemplate should create markup like
 							//		<div><span>hello world</span></div>
 							// The <span> comes from the ${!markup} variable.
@@ -155,6 +154,52 @@
 								t.t(widget.focus2Called, "right focused");
 							}), 50);
 							return deferred;
+						},
+
+						function widgetsInTemplateLifecycle(t){
+
+							var result = [], expected = [1,1,0,2,2,3];
+
+							// widgetsInTemplateLifecycle
+							dojo.declare("SubThing", dijit._Widget, {
+								postCreate:function(){
+									this.inherited(arguments);
+									result.push(1);
+								},
+								startup:function(){
+									this.inherited(arguments);
+									result.push(2);
+								}
+							});
+
+							dojo.declare("ParentThing", [dijit._Widget, dijit._Templated], {
+								widgetsInTemplate:true,
+								templateString: "<div>" +
+													"<span dojoType='SubThing'>a</span>" +
+													"<div dojoType='dijit.layout.LayoutContainer'>" +
+														"<span dojoType='SubThing'>b</span>" +
+													"</div>" +
+												"</div>",
+								postCreate:function(){
+									// children postcreate (x2) called before this postCreate
+									this.inherited(arguments);
+									result.push(0);
+								},
+								startup: function(){
+									// then children startup (x2) then our startup
+									// (we can call inherited after push(), and change the order)
+									this.inherited(arguments);
+									result.push(3);
+								}
+							});
+
+							new ParentThing().startup();
+
+							t.is(expected.length, result.length);
+							dojo.forEach(expected, function(r){
+								t.is(r, result.shift());
+							});
+
 						}
 					]
 				);

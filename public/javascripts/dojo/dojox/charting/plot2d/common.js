@@ -36,8 +36,10 @@ dojo.require("dojox.lang.functional");
 			return fill;
 		},
 
-		defaultStats: {hmin: Number.POSITIVE_INFINITY, hmax: Number.NEGATIVE_INFINITY,
-			vmin: Number.POSITIVE_INFINITY, vmax: Number.NEGATIVE_INFINITY},
+		defaultStats: {
+			hmin: Number.POSITIVE_INFINITY, hmax: Number.NEGATIVE_INFINITY,
+			vmin: Number.POSITIVE_INFINITY, vmax: Number.NEGATIVE_INFINITY
+		},
 
 		collectSimpleStats: function(series){
 			var stats = dojo.clone(dc.defaultStats);
@@ -65,7 +67,7 @@ dojo.require("dojox.lang.functional");
 						old_vmin = stats.vmin, old_vmax = stats.vmax;
 					if(!("xmin" in run) || !("xmax" in run) || !("ymin" in run) || !("ymax" in run)){
 						dojo.forEach(run.data, function(val, i){
-							var x = val.x, y = val.y;
+							var x = "x" in val ? val.x : i + 1, y = val.y;
 							if(isNaN(x)){ x = 0; }
 							if(isNaN(y)){ y = 0; }
 							stats.hmin = Math.min(stats.hmin, x);

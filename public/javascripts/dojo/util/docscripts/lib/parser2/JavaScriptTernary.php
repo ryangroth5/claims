@@ -1,6 +1,8 @@
 <?php
 
-class JavaScriptTernary {
+require_once('Destructable.php');
+
+class JavaScriptTernary extends Destructable {
   protected $expression;
   protected $if_true;
   protected $if_false;
@@ -11,10 +13,30 @@ class JavaScriptTernary {
     $this->if_false = $if_false;
   }
 
+  public function __destruct() {
+    $this->mem_flush('expression', 'if_true', 'if_false');
+  }
+
   public function type() {
-    if ($type = $this->if_true->type()) {
-      return $type;
+    $trues = $this->if_true;
+    if (!is_array($trues)) {
+      $trues = array($trues);
     }
-    return $this->if_false->type();
+    foreach ($trues as $true) {
+      if ($type = $true->type()) {
+        return $type;
+      }
+    }
+
+    $falses = $this->if_false;
+    if (!is_array($falses)) {
+      $falses = array($falses);
+    }
+    foreach ($falses as $false) {
+      if ($type = $false->type()) {
+        return $type;
+      }
+    }
+    return '';
   }
 }

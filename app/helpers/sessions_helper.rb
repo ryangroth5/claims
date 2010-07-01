@@ -1,9 +1,10 @@
 module SessionsHelper
     def sign_in(user)
       #user.remember_me! -- generate a random salt with a time ever time the user logs in.
-      cookies[:remember_token] = {:value=>user.ID, :expires=> 20.years.from_now.utc}
+      cookies[:remember_token] = {:value=>user.id, :expires=> 20.years.from_now.utc}
       
       self.current_user = user;
+      redirect_back_or('/main')
     end
     
     
@@ -24,7 +25,7 @@ module SessionsHelper
     
     def user_from_remember_token
       remember_token = cookies[:remember_token]
-      User.find_by_ID(remember_token) unless remember_token.nil?
+      User.find_by_id(remember_token) unless remember_token.nil?
     end
     
   def signed_in?

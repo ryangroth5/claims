@@ -7,17 +7,17 @@
 	<style type="text/css">
 		@import "../../dojo/resources/dojo.css";
 		@import "css/dijitTests.css";
-		
+
 		td { padding: 20px; }
 	</style>
 
 	<!-- required: a default dijit theme: -->
 	<link id="themeStyles" rel="stylesheet" href="../../dijit/themes/tundra/tundra.css">
-	
+
 	<!-- required: dojo.js -->
 	<script type="text/javascript" src="../../dojo/dojo.js"
 		djConfig="parseOnLoad: true, isDebug: true"></script>
-	
+
 	<!-- not needed, for testing alternate themes -->
 	<script type="text/javascript" src="_testCommon.js"></script>
 
@@ -29,11 +29,35 @@
 			console.log("on load func");
 			var tt = new dijit.Tooltip({label:"programmatically created tooltip", connectId:["programmaticTest"]});
 			console.log("created", tt, tt.id);
+
+			dojo.connect(dijit.byId("t_tooltip"),"onShow",function(t, p){
+				console.log("Dynamic target tooltip onShow", t, p);//To check correct order in event call
+				if(!p || !p.length){ p = dijit.Tooltip.defaultPosition; }
+				dojo.byId("t_shown").innerHTML = "Tooltip shown for node " + t.id + " at position " + p;
+			});
+			dojo.connect(dijit.byId("t_tooltip"),"onHide",function(){
+				console.log("Dynamic target tooltip onHide");//To check correct order in event call
+				dojo.byId("t_shown").innerHTML = "Tooltip hidden";
+			});
+			updateDynamicIds();
 		});
+
+		function updateDynamicIds(){
+			dojo.byId("t_connected_id").innerHTML = "Tooltip connected with nodes: " + dijit.byId("t_tooltip").attr("connectId");
+		}
+		function addDynamicTarget(id){
+			dijit.byId("t_tooltip").addTarget(id);
+			updateDynamicIds();
+		}
+		function removeDynamicTarget(id){
+			dijit.byId("t_tooltip").removeTarget(id);
+			updateDynamicIds();
+		}
+
 	</script>
 </head>
 <body class="tundra">
-	
+
 	<h1 class="testTitle">Tooltip test</h1>
 
 	<p>Mouse-over or focus the items below to test tooltips.</p>
@@ -80,7 +104,7 @@
 
 	<button id="four">button w/tooltip</button>
 	<span id="btnTt" dojoType="dijit.Tooltip" connectId="four" id="four_tooltip">tooltip on a button</span>
-	<button onclick="dijit.byId('btnTt').destroy()">Remove</button> tooltip from "button w/tooltip".
+	<button id="removeButton" onclick="dijit.byId('btnTt').destroy()">Remove</button> tooltip from "button w/tooltip".
 
 	<span style="float: right">
 		Test tooltip on right aligned element.  Tooltip should flow to the left --&gt;
@@ -140,6 +164,29 @@
 	<span dojoType="dijit.Tooltip" connectId="multi1,multi2" id="multi1,multi2_tooltip" style="display:none;">multi tooltip</span>
 	<a id="multi1" href="#bogus">multi1</a><br><a id="multi2" href="#bogus">multi2</a>
 
+
+	<h3>Dynamic target tooltip</h3>
+	<div>
+		<button onclick="addDynamicTarget('t1');">Add</button>
+		<button onclick="removeDynamicTarget('t1');">Remove</button>
+		<span id="t1" tabIndex="0">t1 text</span><br>
+		<button onclick="addDynamicTarget('t2');">Add</button>
+		<button onclick="removeDynamicTarget('t2');">Remove</button>
+		<span id="t2" tabIndex="0">t2 text</span><br>
+		<button onclick="addDynamicTarget('t3');">Add</button>
+		<button onclick="removeDynamicTarget('t3');">Remove</button>
+		<span id="t3" tabIndex="0">t3 text</span><br>
+		<button onclick="addDynamicTarget('t4');">Add</button>
+		<button onclick="removeDynamicTarget('t4');">Remove</button>
+		<span id="t4" tabIndex="0">t4 text</span><br>
+		<button onclick="addDynamicTarget('t5');">Add</button>
+		<button onclick="removeDynamicTarget('t5');">Remove</button>
+		<span id="t5" tabIndex="0">t5 text</span><br>
+	</div>
+	<span id="t_connected_id"></span><br>
+	<span id="t_shown">Tooltip hidden (initial)</span>
+
+	<span dojoType="dijit.Tooltip" connectId="t1,t3" id="t_tooltip">Dynamic target tooltip</span>
 </body>
 </html>
 

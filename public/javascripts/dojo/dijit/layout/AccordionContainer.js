@@ -7,7 +7,7 @@ dojo.require("dijit._Templated");
 dojo.require("dijit.layout.StackContainer");
 dojo.require("dijit.layout.ContentPane");
 
-dojo.require("dijit.layout.AccordionPane");	// for back compat
+dojo.require("dijit.layout.AccordionPane");	// for back compat, remove for 2.0
 
 dojo.declare(
 	"dijit.layout.AccordionContainer",
@@ -17,18 +17,21 @@ dojo.declare(
 		//		Holds a set of panes where every pane's title is visible, but only one pane's content is visible at a time,
 		//		and switching between panes is visualized by sliding the other panes up/down.
 		// example:
-		// | 	<div dojoType="dijit.layout.AccordionContainer">
-		// |		<div dojoType="dijit.layout.AccordionPane" title="pane 1">
-		// |			<div dojoType="dijit.layout.ContentPane">...</div>
-		// | 	</div>
-		// |		<div dojoType="dijit.layout.AccordionPane" title="pane 2">
-		// |			<p>This is some text</p>
-		// ||		...
-		// |	</div>
+		//	| 	<div dojoType="dijit.layout.AccordionContainer">
+		//	|		<div dojoType="dijit.layout.ContentPane" title="pane 1">
+		//	|		</div>
+		//	|		<div dojoType="dijit.layout.ContentPane" title="pane 2">
+		//	|			<p>This is some text</p>
+		//	|		</div>
+		//	|	</div>
 
 		// duration: Integer
 		//		Amount of time (in ms) it takes to slide panes
 		duration: dijit.defaultDuration,
+
+		// buttonWidget: [const] String
+		//		The name of the widget used to display the title of each pane
+		buttonWidget: "dijit.layout._AccordionButton",
 
 		// _verticalSpace: Number
 		//		Pixels of space available for the open pane
@@ -36,16 +39,16 @@ dojo.declare(
 		_verticalSpace: 0,
 
 		baseClass: "dijitAccordionContainer",
-		
+
 		postCreate: function(){
 			this.domNode.style.overflow = "hidden";
-			this.inherited(arguments); 
+			this.inherited(arguments);
 			dijit.setWaiRole(this.domNode, "tablist");
 		},
 
 		startup: function(){
 			if(this._started){ return; }
-			this.inherited(arguments);	
+			this.inherited(arguments);
 			if(this.selectedChildWidget){
 				var style = this.selectedChildWidget.containerNode.style;
 				style.display = "";
@@ -53,7 +56,7 @@ dojo.declare(
 				this.selectedChildWidget._buttonWidget._setSelectedState(true);
 			}
 		},
-		
+
 		_getTargetHeight: function(/* Node */ node){
 			// summary:
 			//		For the given node, returns the height that should be
@@ -98,12 +101,26 @@ dojo.declare(
 			// Setup clickable title to sit above the child widget,
 			// and stash pointer to it inside the widget itself.
 
-			child._buttonWidget = new dijit.layout._AccordionButton({
+			var cls = dojo.getObject(this.buttonWidget);
+			var button = (child._buttonWidget = new cls({
 				contentWidget: child,
-				title: child.title,
+				label: child.title,
+				title: child.tooltip,
+				iconClass: child.iconClass,
 				id: child.id + "_button",
 				parent: this
+			}));
+
+			child._accordionConnectHandle = this.connect(child, 'attr', function(name, value){
+				if(arguments.length == 2){
+					switch(name){
+					case 'title':
+					case 'iconClass':
+						button.attr(name, value);
+					}
+				}
 			});
+
 			dojo.place(child._buttonWidget.domNode, child.domNode, "before");
 
 			this.inherited(arguments);
@@ -111,15 +128,20 @@ dojo.declare(
 
 		removeChild: function(child){
 			// Overrides _LayoutWidget.removeChild().
+			this.disconnect(child._accordionConnectHandle);
+			delete child._accordionConnectHandle;
+
 			child._buttonWidget.destroy();
+			delete child._buttonWidget;
+
 			this.inherited(arguments);
 		},
 
 		getChildren: function(){
 			// Overrides _Container.getChildren() to ignore titles and only look at panes.
 			return dojo.filter(this.inherited(arguments), function(child){
-				return child.declaredClass != "dijit.layout._AccordionButton";
-			});
+				return child.declaredClass != this.buttonWidget;
+			}, this);
 		},
 
 		destroy: function(){
@@ -128,7 +150,7 @@ dojo.declare(
 			});
 			this.inherited(arguments);
 		},
-		
+
 		_transition: function(/*Widget?*/newWidget, /*Widget?*/oldWidget){
 			// Overrides StackContainer._transition() to provide sliding of title bars etc.
 
@@ -144,11 +166,11 @@ dojo.declare(
 
 				// Size the new widget, in case this is the first time it's being shown,
 				// or I have been resized since the last time it was shown.
-				// Note that page must be visible for resizing to work. 
+				// Note that page must be visible for resizing to work.
 				if(this.doLayout && newWidget.resize){
 					newWidget.resize(this._containerContentBox);
 				}
-				
+
 				var newContents = newWidget.domNode;
 				dojo.addClass(newContents, "dijitVisible");
 				dojo.removeClass(newContents, "dijitHidden");
@@ -192,7 +214,7 @@ dojo.declare(
 		},
 
 		// note: we are treating the container as controller here
-		_onKeyPress: function(/*Event*/ e, /*Widget*/ fromTitle){
+		_onKeyPress: function(/*Event*/ e, /*dijit._Widget*/ fromTitle){
 			// summary:
 			//		Handle keypress events
 			// description:
@@ -229,9 +251,11 @@ dojo.declare("dijit.layout._AccordionButton",
 	// tags:
 	//		private
 
-	templatePath: dojo.moduleUrl("dijit.layout", "templates/AccordionButton.html"),
+	templateString: dojo.cache("dijit.layout", "templates/AccordionButton.html"),
 	attributeMap: dojo.mixin(dojo.clone(dijit.layout.ContentPane.prototype.attributeMap), {
-		title: {node: "titleTextNode", type: "innerHTML" }
+		label: {node: "titleTextNode", type: "innerHTML" },
+		title: {node: "titleTextNode", type: "attribute", attribute: "title"},
+		iconClass: { node: "iconNode", type: "class" }
 	}),
 
 	baseClass: "dijitAccordionTitle",
@@ -293,10 +317,10 @@ dojo.declare("dijit.layout._AccordionButton",
 		this.focusNode.setAttribute("tabIndex", isSelected ? "0" : "-1");
 	},
 
-	_handleFocus: function(/*Event*/e){
+	_handleFocus: function(/*Event*/ e){
 		// summary:
 		//		Handle the blur and focus state of this widget.
-		dojo[(e.type=="focus" ? "addClass" : "removeClass")](this.focusNode,"dijitAccordionFocused");		
+		dojo.toggleClass(this.titleTextNode, "dijitAccordionFocused", e.type == "focus");
 	},
 
 	setSelected: function(/*Boolean*/ isSelected){

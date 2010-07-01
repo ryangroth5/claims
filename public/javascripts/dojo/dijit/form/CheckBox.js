@@ -22,7 +22,7 @@ dojo.declare(
 		// In case 2, the regular html inputs are invisible but still used by
 		// the user. They are turned quasi-invisible and overlay the background-image.
 
-		templatePath: dojo.moduleUrl("dijit.form", "templates/CheckBox.html"),
+		templateString: dojo.cache("dijit.form", "templates/CheckBox.html"),
 
 		baseClass: "dijitCheckBox",
 
@@ -44,13 +44,30 @@ dojo.declare(
 		//		attr('value', boolean) will change the checked state.
 		value: "on",
 
+		// readOnly: Boolean
+		//		Should this widget respond to user input?
+		//		In markup, this is specified as "readOnly".
+		//		Similar to disabled except readOnly form values are submitted.
+		readOnly: false,
+
+		attributeMap: dojo.delegate(dijit.form.ToggleButton.prototype.attributeMap, {
+			readOnly: "focusNode"
+		}),
+
+		_setReadOnlyAttr: function(/*Boolean*/ value){
+			this.readOnly = value;
+			dojo.attr(this.focusNode, 'readOnly', value);
+			dijit.setWaiState(this.focusNode, "readonly", value);
+			this._setStateClass();
+		},
+
 		_setValueAttr: function(/*String or Boolean*/ newValue){
 			// summary:
 			//		Handler for value= attribute to constructor, and also calls to
 			//		attr('value', val).
 			// description:
 			//		During initialization, just saves as attribute to the <input type=checkbox>.
-			//		
+			//
 			//		After initialization,
 			//		when passed a boolean, controls whether or not the CheckBox is checked.
 			//		If passed a string, changes the value attribute of the CheckBox (the one
@@ -86,7 +103,7 @@ dojo.declare(
 
 			this.inherited(arguments);
 		},
-		
+
 		 _fillContent: function(/*DomNode*/ source){
 			// Override Button::_fillContent() since it doesn't make sense for CheckBox,
 			// since CheckBox doesn't even have a container
@@ -103,7 +120,7 @@ dojo.declare(
 			this.value = this.params.value || "on";
 			dojo.attr(this.focusNode, 'value', this.value);
 		},
-		
+
 		_onFocus: function(){
 			if(this.id){
 				dojo.query("label[for='"+this.id+"']").addClass("dijitFocusedLabel");
@@ -114,6 +131,16 @@ dojo.declare(
 			if(this.id){
 				dojo.query("label[for='"+this.id+"']").removeClass("dijitFocusedLabel");
 			}
+		},
+
+		_onClick: function(/*Event*/ e){
+			// summary:
+			//		Internal function to handle click actions - need to check
+			//		readOnly, since button no longer does that check.
+			if(this.readOnly){
+				return false;
+			}
+			return this.inherited(arguments);
 		}
 	}
 );
@@ -135,7 +162,7 @@ dojo.declare(
 			if(value){
 				var _this = this;
 				// search for radio buttons with the same name that need to be unchecked
-				dojo.query("INPUT[type=radio]", this.focusNode.form||dojo.doc).forEach( // can't use name= since dojo.query doesn't support [] in the name
+				dojo.query("INPUT[type=radio]", this.focusNode.form || dojo.doc).forEach( // can't use name= since dojo.query doesn't support [] in the name
 					function(inputNode){
 						if(inputNode.name == _this.name && inputNode != _this.focusNode && inputNode.form == _this.focusNode.form){
 							var widget = dijit.getEnclosingWidget(inputNode);

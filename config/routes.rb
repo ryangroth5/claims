@@ -1,8 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :payers
 
-  map.resources :patients
-
+  map.resources :patients,  :requirements => {:id => /[0-9]+/},  :has_many => :actions 
+  map.patient_actions 'patient/:id/actions', :controller => 'patients', :action => 'list_actions'
+  map.patient_actions 'patient/:id/claims', :controller => 'patients', :action => 'list_claims'
   map.resources :fault_types
 
   map.resources :contact_types

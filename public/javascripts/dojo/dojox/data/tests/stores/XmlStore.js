@@ -13,12 +13,20 @@ dojox.data.tests.stores.XmlStore.getBooks2Store = function(){
 	return new dojox.data.XmlStore({url: dojo.moduleUrl("dojox.data.tests", "stores/books2.xml").toString(), label: "title"});
 };
 
+dojox.data.tests.stores.XmlStore.getBooks2StorePC = function(){
+	return new dojox.data.XmlStore({url: dojo.moduleUrl("dojox.data.tests", "stores/books2.xml").toString(), label: "title", urlPreventCache: false});
+};
+
 dojox.data.tests.stores.XmlStore.getBooksStore = function(){
 	return new dojox.data.XmlStore({url: dojo.moduleUrl("dojox.data.tests", "stores/books.xml").toString(), label: "title"});
 };
 
 dojox.data.tests.stores.XmlStore.getCDataTestStore = function(){
 	return new dojox.data.XmlStore({url: dojo.moduleUrl("dojox.data.tests", "stores/cdata_test.xml").toString(), label: "title"});
+};
+
+dojox.data.tests.stores.XmlStore.getGeographyStore = function(){
+	return new dojox.data.XmlStore({url: dojo.moduleUrl("dojox.data.tests", "stores/geography2.xml").toString(), label: "text", keyAttribute: "text", attributeMap: {text: '@text'}, rootItem: "geography"});
 };
 
 doh.register("dojox.data.tests.stores.XmlStore", 
@@ -166,6 +174,25 @@ doh.register("dojox.data.tests.stores.XmlStore",
 			store.fetch({query:{isbn:"A9B57?"}, onComplete: onComplete, onError: onError});
 			return d; //Object
 		},
+		function testReadAPI_fetch_pattern1_preventCacheOff(t){
+			//	summary: 
+			//		Simple test of fetching one xml items through an XML element called isbn with ? pattern match
+			//		with preventCache off to test that it doesn't pass it when told not to.
+			//	description:
+			//		Simple test of fetching one xml items through an XML element called isbn with ? pattern match
+			//		with preventCache off to test that it doesn't pass it when told not to.
+			var store = dojox.data.tests.stores.XmlStore.getBooks2StorePC();
+			var d = new doh.Deferred();
+			function onComplete(items, request) {
+				t.assertEqual(4, items.length);
+				d.callback(true);
+			}
+			function onError(error, request) {
+				d.errback(error);
+			}
+			store.fetch({query:{isbn:"A9B57?"}, onComplete: onComplete, onError: onError});
+			return d; //Object
+		},
 		function testReadAPI_fetch_pattern2(t){
 			//	summary: 
 			//		Simple test of fetching one xml items through an XML element called isbn with * pattern match
@@ -181,6 +208,40 @@ doh.register("dojox.data.tests.stores.XmlStore",
 				d.errback(error);
 			}
 			store.fetch({query:{isbn:"A9*"}, onComplete: onComplete, onError: onError});
+			return d; //Object
+		},
+		function testReadAPI_fetch_pattern_multi(t){
+			//	summary: 
+			//		Simple test of fetching one xml items with a pattern of multiple attrs.
+			//	description:
+			//		Simple test of fetching one xml items with a pattern of multiple attrs.
+			var store = dojox.data.tests.stores.XmlStore.getBooks2Store();
+			var d = new doh.Deferred();
+			function onComplete(items, request) {
+				t.assertEqual(1, items.length);
+				d.callback(true);
+			}
+			function onError(error, request) {
+				d.errback(error);
+			}
+			store.fetch({query:{isbn:"A9B57?", title: "?itle of 3"}, onComplete: onComplete, onError: onError});
+			return d; //Object
+		},
+		function testReadAPI_fetch_pattern_multiValuedValue(t){
+			//	summary: 
+			//		Simple test of fetching one xml items with a pattern of multiple attrs.
+			//	description:
+			//		Simple test of fetching one xml items with a pattern of multiple attrs.
+			var store = dojox.data.tests.stores.XmlStore.getBooks2Store();
+			var d = new doh.Deferred();
+			function onComplete(items, request) {
+				t.assertEqual(1, items.length);
+				d.callback(true);
+			}
+			function onError(error, request) {
+				d.errback(error);
+			}
+			store.fetch({query:{author:"Third Author of 5"}, onComplete: onComplete, onError: onError});
 			return d; //Object
 		},
 		function testReadAPI_fetch_pattern_caseInsensitive(t){
@@ -568,6 +629,9 @@ doh.register("dojox.data.tests.stores.XmlStore",
 				var item = items[0];
 				t.assertTrue(store.hasAttribute(item,"isbn"));
 				t.assertTrue(!store.hasAttribute(item,"bob"));
+				//Verify that XML attributes return false in this case.
+				t.assertTrue(store.hasAttribute(item,"@xmlAttribute"));
+				t.assertFalse(store.hasAttribute(item,"@bogus"));
 				d.callback(true);
 			}
 			function onError(error, request) {
@@ -794,7 +858,7 @@ doh.register("dojox.data.tests.stores.XmlStore",
 			function onError(error, request) {
 				d.errback(error);
 			}
-			store.fetch({query:{isbn:"A9B574"}, onComplete: onComplete, onError: onError});
+			store.fetch({query:{isbn:"A9B577"}, onComplete: onComplete, onError: onError});
 			return d; //Object
 		},
 		function testWriteAPI_setValue(t){
@@ -1150,6 +1214,31 @@ doh.register("dojox.data.tests.stores.XmlStore",
 			 store.fetchItemByIdentity({identity: "A9B5CC", onItem: onItem, onError: onError});
 			 return d; //Object
 		},
+
+		function testIdentityAPI_fetchItemByIdentity_usingKeyAttributeIdentity4(t) {
+			 //	summary: 
+			 //		Simple test of the Identity getIdentity API where identity is specified by the keyAttribute param
+			 //	description:
+			 //		Simple test of the Identity getIdentity API where identity is specified by the keyAttribute param
+			 var store = dojox.data.tests.stores.XmlStore.getGeographyStore();
+
+			 var d = new doh.Deferred();
+			 function onItem(item, request) {
+				try{
+					t.assertTrue(item !== null);
+					t.assertEqual("Mexico City", store.getIdentity(item));
+					d.callback(true);
+				}catch(e){
+					d.errback(e);
+				}
+			 }
+			 function onError(error, request) {
+				 d.errback(error);
+			 }
+			 store.fetchItemByIdentity({identity: "Mexico City", onItem: onItem, onError: onError});
+			 return d; //Object
+		},
+
 
 		function testIdentityAPI_fetchItemByIdentity_fails(t) {
 			 //	summary: 

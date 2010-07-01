@@ -21,7 +21,7 @@
 			margin: 4px;
 		}
 	</style>
-	
+
 	<!-- required: the default dijit theme: -->
 	<link id="themeStyles" rel="stylesheet" href="../../../dijit/themes/tundra/tundra.css">
 
@@ -39,27 +39,27 @@
 		dojo.require("dijit.layout.TabContainer");
 		dojo.require("dijit.layout.AccordionContainer");
 	</script>
-	
+
 </head>
 <body class="tundra">
-	
+
 	<h1 class="testTitle">Dijit layout.ContentPane tests</h1>
-	
+
 	<!-- works: -->
 	<div dojoType="dijit.layout.TabContainer" style="height:200px;">
 		<div dojoType="dijit.layout.ContentPane" href="_lorem.html" title="one" refreshOnShow="false"></div>
 		<div dojoType="dijit.layout.ContentPane" href="_lorem.html" title="two" refreshOnShow="false"></div>
-		<div dojoType="dijit.layout.ContentPane" href="_lorem.html" title="three" refreshOnShow="false"></div>		
+		<div dojoType="dijit.layout.ContentPane" href="_lorem.html" title="three" refreshOnShow="false"></div>
 	</div>
 
 	<!-- does not work yet: -->
     <div dojoType="dijit.layout.AccordionContainer" style="height:200px; width:400px;">
-		<div dojoType="dijit.layout.AccordionPane" title="one" refreshOnShow="false" href="_lorem.html"></div>
-		<div dojoType="dijit.layout.AccordionPane" title="two" refreshOnShow="true" href="_lorem.html"></div>
-		<div dojoType="dijit.layout.AccordionPane" title="three" refreshOnShow="false" href="_lorem.html"></div>
+		<div dojoType="dijit.layout.ContentPane" title="one" refreshOnShow="false" href="_lorem.html"></div>
+		<div dojoType="dijit.layout.ContentPane" title="two" refreshOnShow="true" href="_lorem.html"></div>
+		<div dojoType="dijit.layout.ContentPane" title="three" refreshOnShow="false" href="_lorem.html"></div>
 	</div>
-	
 
-	
+
+
 </body>
 </html>

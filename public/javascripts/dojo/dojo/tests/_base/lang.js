@@ -37,6 +37,7 @@ tests.register("tests._base.lang",
 			t.assertTrue(dojo.isFunction(isFunction));
 			if(dojo.isBrowser){ // test the Safari workaround for NodeList
 				t.assertFalse(dojo.isFunction(dojo.doc.getElementsByName("html")));
+				t.assertFalse(dojo.isFunction(dojo.doc.createElement("object")));
 			}
 		},
 
@@ -173,14 +174,21 @@ tests.register("tests._base.lang",
 		},
 		
 		function clone(t) { 
-			var obj1 = {foo: 'bar', answer: 42, jan102007: new Date(2007, 0, 10), 
+			var obj1 = {
+				foo: 'bar',
+				answer: 42,
+				jan102007: new Date(2007, 0, 10), 
 				baz: {
 					a: null, 
-					b: [
-						1, "b", 2.3, true, false
-						//, function(){ return 4; }, /\d+/gm
-					]
-				}
+					b: [1, "b", 2.3, true, false],
+					c: {
+						d: undefined,
+						e: 99,
+						f: function(){ console.log(42); return 42; },
+						g: /\d+/gm
+					}
+				},
+				toString: function(){ return "meow"; }
 			}; 
 			var obj2 = dojo.clone(obj1);
 			t.assertEqual(obj1.foo, obj2.foo);
@@ -190,6 +198,82 @@ tests.register("tests._base.lang",
 			for(var i = 0; i < obj1.baz.b.length; ++i){
 				t.assertEqual(obj1.baz.b[i], obj2.baz.b[i]);
 			}
-		} 
+			t.assertEqual(obj1.baz.c.d, obj2.baz.c.d);
+			t.assertEqual(obj1.baz.c.e, obj2.baz.c.e);
+			t.assertEqual(obj1.baz.c.f, obj2.baz.c.f);
+			t.assertEqual(obj1.baz.c.f(), obj2.baz.c.f());
+			t.assertEqual(obj1.baz.c.g, obj2.baz.c.g);
+			t.assertEqual(obj1.toString, obj2.toString);
+			t.assertEqual(obj1.toString(), obj2.toString());
+		},
+		
+		function delegate(t){
+			var a = {
+				x: 1,
+				y: function(){ return 2; },
+				z1: 99
+			};
+			var b = {
+				x: 11,
+				y: function(){ return 12; },
+				z2: 33,
+				toString: function(){ return "bark!"; },
+				toLocaleString: function(){ return "le bark-s!"; }
+			};
+			t.is(1, a.x);
+			t.is(2, a.y());
+			t.is(99, a.z1);
+			var c = dojo.delegate(a, b);
+			t.is(1, a.x);
+			t.is(2, a.y());
+			t.is(99, a.z1);
+			t.is(11, c.x);
+			t.is(12, c.y());
+			t.is("bark!", c.toString());
+			t.is("le bark-s!", c.toLocaleString());
+			t.is(99, c.z1);
+			t.is(33, c.z2);
+		},
+
+		function replace(t){
+			var s1 = dojo.replace("Hello, {name.first} {name.last} AKA {nick}!",
+				{
+					nick: "Bob",
+					name: {
+						first:  "Robert",
+						middle: "X",
+						last:   "Cringely"
+					}
+				});
+			t.is("Hello, Robert Cringely AKA Bob!", s1);
+
+			var s2 = dojo.replace("Hello, {0} {2}!", ["Robert", "X", "Cringely"]);
+			t.is("Hello, Robert Cringely!", s2);
+
+			function sum(a){
+				var t = 0;
+				dojo.forEach(a, function(x){ t += x; });
+				return t;
+			}
+			var s3 = dojo.replace(
+				"{count} payments averaging {avg} USD per payment.",
+				dojo.hitch(
+					{ payments: [11, 16, 12] },
+					function(_, key){
+						switch(key){
+							case "count": return this.payments.length;
+							case "min":   return Math.min.apply(Math, this.payments);
+							case "max":   return Math.max.apply(Math, this.payments);
+							case "sum":   return sum(this.payments);
+							case "avg":   return sum(this.payments) / this.payments.length;
+						}
+						return "";
+					}
+				));
+			t.is("3 payments averaging 13 USD per payment.", s3);
+
+			var s4 = dojo.replace("Hello, ${0} ${2}!", ["Robert", "X", "Cringely"], /\$\{([^\}]+)\}/g);
+			t.is("Hello, Robert Cringely!", s4);
+		}
 	]
 );

@@ -2,8 +2,6 @@ class SessionsController < ApplicationController
   def new
     @users = User.find(:all);
     @user_id = 1;
-    
-    
   end
   
   def create
@@ -11,9 +9,10 @@ class SessionsController < ApplicationController
     
     if(!params[:session][:user_id].nil?)
       sign_in(User.find(params[:session][:user_id]))
+    else
+      new;
+      render 'new'
     end
-    new;
-    render 'new'
   end
 
 
