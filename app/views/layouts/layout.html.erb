@@ -9,6 +9,7 @@
         @import "/javascripts/dojo/dojo/resources/dojo.css";
         /*@import "/javascripts/dojo/dijit/themes/nihilo/nihilo.css";*/
         @import "/stylesheets/global.css";
+		@import "/stylesheets/scaffold.css";
         @import "/javascripts/dojo/dijit/themes/tundra/tundra.css";
         @import "/javascripts/dojo/dojox/grid/enhanced/resources/tundraEnhancedGrid.css";
     </style>
@@ -21,7 +22,7 @@
         </script>
         
     -->
-    <% if RAILS_ENV == "production" %>
+    <% if RAILS_ENV != "production" %>
         <script type="text/javascript" src="/javascripts/dojo/release/dojo/dojo/dojo.js" djConfig="parseOnLoad: true"></script>
         
     <% else %>
@@ -33,6 +34,9 @@
         dojo.require("dijit.form.FilteringSelect");
         dojo.require("dojo.data.ItemFileReadStore");
         dojo.require('dijit.Dialog');
+		dojo.require('dijit.form.DateTextBox');
+		dojo.require('zstaff.helpers.toast');
+		dojo.require('dijit.layout.TabContainer')
         // Required for all Enhanced features
           dojo.require("drails.common");
     dojo.require("dojox.grid.EnhancedGrid");
@@ -44,11 +48,14 @@
     dojo.require("dojox.grid.enhanced.plugins.NestedSorting");
     // Indirect selection(check box/radio button selection) feature
     dojo.require("dojox.grid.enhanced.plugins.IndirectSelection");
+	dojo.require('zstaff.helpers.dialog');
     </script>
 </head>
 <body class="tundra">
 
 <div id="content">
+<div style='float:right;background:white;'>Logged in as <%= current_user.nil? ? 'noone': current_user.user_name  %> <a href='/signin'>change</a></div>	
+<br style="clear:both;">
 <%= yield %>
 </div>
 

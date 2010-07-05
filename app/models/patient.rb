@@ -1,5 +1,5 @@
 class Patient < ActiveRecord::Base
    has_many :claims
-   has_many :actions, :through=>:claims
+   has_many :tasks, :through=>:claims
   
 end

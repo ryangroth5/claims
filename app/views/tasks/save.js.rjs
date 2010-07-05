@@ -1,0 +1,2 @@
+
+ajax_handle_dialog( page, @task, @controller.action_name)

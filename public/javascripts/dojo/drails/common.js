@@ -98,6 +98,9 @@ dojo.declare("drails.Request", [drails._base], {
 		dojo.mixin(dojoXhrArgs, this._initHandlerAndHeaders());
 		this._transformedMethod = dojoXhrArgs['method'] || 'post';
 		this._transformedArgs = dojoXhrArgs;
+		this._transformedArgs.load = function(data){dojo.eval(data);};
+		this._transformedArgs.error = function(data){alert('error -'+data)};
+		
 		switch(this._transformedMethod){
 			case 'post':
 				dojo.xhrPost(this._transformedArgs);
@@ -144,11 +147,12 @@ dojo.declare("drails.Updater", [drails.Request], {
 		this.xhr(url, xhrArgs);
 	},
 	
-	onSuccess: function(response, ioArgs) {
+	load: function(response, ioArgs) {
+		debugger;
 		this._handle(response.toString(), ioArgs, this._successNode);
 	},
 	
-	onFailure: function(response, ioArgs) {
+	error: function(response, ioArgs) {
 		this._handle(response.responseText, ioArgs, this._failureNode);
 	},
 	
@@ -177,6 +181,7 @@ dojo.declare("drails.Updater", [drails.Request], {
 	},
 	
 	_handle: function(responseText, ioArgs, node){
+		
 		var scripts = null;
 		var doEval = ioArgs.args['evalScripts'];
 		

@@ -1,0 +1,58 @@
+<%= error_messages_for 'task' %>
+<table>
+
+<tr>
+  <td class="tcf">Action</td>
+  <td><%= select 'task', 'action_type_id', ActionType.find(:all, {:order=>'action_name'}).map{|t| [t.action_name,t.id]}  %></td>
+</tr>
+
+<tr>
+  <td class="tcf">Contact Method</td>
+  <td><%= select 'task', 'contact_type_id', ContactType.find(:all, :order=>:contact_type_name).map{|t| [t.contact_type_name,t.id]}  %></td>
+</tr>
+
+<tr>
+  <td class="tcf">Fault</td>
+  <td><%= select 'task', 'fault_type_id', FaultType.find(:all, :order=>:fault_name).map{|t| [t.fault_name,t.id]}  %></td>
+</tr>
+
+<tr>
+  <td class="tcf">Payer</td>
+  <td><%= select 'task', 'payer_id', Payer.find(:all,:order=>:payer_name).map{|t| [t.payer_name,t.id]}  %></td>
+</tr>
+
+
+<tr>
+  <td class="tcf">Contact</td>
+  <td><%= text_field 'task', 'contact_name'  %></td>
+</tr>
+
+<tr>
+  <td class="tcf">Comments</td>
+  <td><%= text_field 'task', 'comments'  %></td>
+</tr>
+
+<tr>
+  <td class="tcf">Pt. Resolution</td>
+  <td><%= text_field 'task', 'patient_resolution'  %></td>
+</tr>
+
+<tr>
+  <td class="tcf">F/U Date</td>
+  <td><%= date_select 'task', 'followup_date'  %></td>
+</tr>
+<% if ( @claims.nil?) %>
+<tr>
+  <td class="tcf">Expected Write Off</td>
+  <td>$<%= text_field 'task', 'expected_writeoff'  %></td>
+</tr>
+
+<tr>
+  <td class="tcf">Expected Payment</td>
+  <td>$<%= text_field 'task', 'expected_payment'  %></td>
+</tr>
+<% end %>
+
+</table>
+
+

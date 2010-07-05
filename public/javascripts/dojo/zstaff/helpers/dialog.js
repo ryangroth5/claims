@@ -4,6 +4,7 @@ dojo.require("zstaff.helpers.refresh");
 
 
 
+
 zstaff.helpers.dialog.dlg = null;
 
 zstaff.helpers.dialog.show = function(name,url,title)

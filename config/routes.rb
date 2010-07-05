@@ -1,8 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :tasks
+
   map.resources :payers
 
   map.resources :patients,  :requirements => {:id => /[0-9]+/},  :has_many => :actions 
-  map.patient_actions 'patient/:id/actions', :controller => 'patients', :action => 'list_actions'
+  map.patient_actions 'patient/:id/tasks', :controller => 'patients', :action => 'list_actions'
   map.patient_actions 'patient/:id/claims', :controller => 'patients', :action => 'list_claims'
   map.resources :fault_types
 
@@ -15,7 +17,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :actions, :requirements => {:id => /[0-9]+/} 
 
   map.resources :users
-  map.main  '/main', :controller=>'actions', :action =>'main'
+  map.main  '/main', :controller=>'tasks', :action =>'main'
   map.signin  '/signin', :controller=>'sessions', :action =>'new'
   map.signout  '/signout', :controller=>'sessions', :action =>'destroy'
 

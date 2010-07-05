@@ -55,7 +55,7 @@ module JsHelper
   # if there are errors, display the error and display the message
   # if there are no errors, then show the success and dismiss the dialog
   def ajax_handle_dialog( page, objecttouse, action )
-    
+   
     error_div = '';
     if(action.nil?)
       error_div = @controller.action_name+"_errors";

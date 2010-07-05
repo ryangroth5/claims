@@ -1,0 +1,42 @@
+
+<div class="post">
+	<%= flash_helper(flash) %>
+	<%= ajax_error_space(@task, @controller.action_name) %>
+	<%= error_messages_for(:task) %>
+  <div class="post-content">
+  <p class="auth"></p>
+	<% form_remote_tag :url=>url_for(:action=> 'create', :id => @task ) do %>
+  	<%= render :partial => 'form' %>
+	
+	<br>
+	<table>
+		<tr>
+			<td>Claim Date</td>
+			<td>Claim Balance</td>
+			<td>Expected Writeoff</td>
+			<td>Expected Payment</td>
+		</tr>
+	<% @claims.each{ |c| %>
+		<tr>
+			<td>
+				<%=c.first_claim_date.strftime('%m/%d/%y')%>
+			</td>
+			<td>
+				$<%=c.balance_due%>
+			</td>
+				$<input type='text' value='<%=c.last_action.nil? ? 0:c.last_action.expected_writeoff%>' name='writeoff[<%=c.id%>]'>
+			<td>
+				$<input type='text' value='<%=c.last_action.nil? ? 0:c.last_action.expected_payment%>' name='payment[<%=c.id%>]'>
+			</td>
+		</tr>
+		
+	<%}%>
+	<input type='hidden' name='claimids' value='<%=@claimids%>'>
+	</table>
+	<p class="meta"><%= submit_tag 'Save' %>
+	<button onclick='zstaff.helpers.dialog.close();return false;'>Cancel</button>
+	
+	<br/>
+	<% end ##_form_tag %>
+</div><!--#post-content-->
+</div><!--#post-->

@@ -1,0 +1,188 @@
+<style>
+    .right .dojoxGridCellContent{text-align:right;}
+</style>
+
+<script>
+
+    var gridstore = null;
+    var action_types = <%=  ActionType.find(:all,:order=>:id).to_json %>;
+    var contact_types = <%= ContactType.find(:all,:order=>:id).to_json %>;
+    var fault_types = <%= FaultType.find(:all,:order=>:id).to_json %>;
+    //var dlg = new dijit.Dialog({id:'dlg'});
+    function findbyid(arr,id,field)
+    {
+        var name = null;
+        (dojo.forEach(arr,function(v){if(v['id']==id){name =v[field];}}));
+        return(name);
+    }
+
+    function findAction(a)
+    {
+        return(findbyid(action_types,a,'action_name'));
+    }
+    function findContact(a)
+    {
+		console.log(a);
+        return(findbyid(contact_types,a,'contact_type_name'));
+    }
+    function findFault(a)
+    {
+        return(findbyid(fault_types,a,'fault_name'));
+    }
+    
+    function formatDolars(n)
+    {
+        if(n)
+        {
+            return('$'+n);
+        }
+        return(null);
+        
+    }
+	function formatStatus(item)
+	{
+		grid = dijit.byId('claimgrid');
+		item = grid.attr('store').getValue(item, "last_action", null);
+		if (item) {
+			return(findAction(item.action_type_id));
+		}
+		
+	}
+	
+    function formatDate(d)
+    {
+		if(d)
+		{
+	        if(typeof(d) == 'string')
+	        {
+				if(d.substr(10,1)==" ")
+				{
+					d = d.substr(0,10)+"T00:00:00Z";
+				}
+	            d = dojo.date.stamp.fromISOString(d);
+	        }
+			if(d instanceof Date )
+			{
+		        return(dojo.date.locale.format(d,{datePattern:'M/d/y', selector:'date'}));
+			}
+			
+		}
+    }
+    function populategrid()
+    {
+        var patientid=dijit.byId('patient_id').attr('value');
+        if(patientid)
+        {
+            dijit.byId('claimgrid').setStore(new dojo.data.ItemFileReadStore({url:"/patient/"+patientid+"/claims"}));
+            dijit.byId('actiongrid').setStore(new dojo.data.ItemFileReadStore({url:"/patient/"+patientid+"/tasks"}));
+        }
+    }
+    
+	dojo.subscribe('task_create',function(){populategrid();});
+
+	
+    function addcontact()
+    {
+        var grid = dijit.byId('claimgrid');
+        var s = grid.selection.getSelected();
+        var claimids = [];
+        dojo.forEach(s,function(x){
+            claimids.push(grid.attr('store').getValue(x, "id", null));
+        });
+		
+		if(claimids.length)
+		{
+	        zstaff.helpers.dialog.show('name','/tasks/new/?claimids='+claimids.join(','),'New Task'); 
+		}
+		else
+		{
+			alert('Please select some claims to continue');
+		}
+        
+    }
+
+    dojo.addOnLoad(
+        function()
+        {
+            dojo.connect(dijit.byId('claimgrid'),'onStyleRow',dijit.byId('claimgrid'),
+                function(row)
+                {
+                    //The row object has 4 parameters, and you can set two others to provide your own styling
+                    //These parameters are :
+                    // -- index : the row index
+                    // -- selected: wether the row is selected
+                    // -- over : wether the mouse is over this row
+                    // -- odd : wether this row index is odd.
+                    var item = this.getItem(row.index);
+                    if (item) {
+                        var type = this.attr('store').getValue(item, "paid", null);
+                        if (type == "Not Paid") {
+                            row.customStyles += "background:pink;";
+                        }
+                    }
+                    this.focus.styleRow(row);
+                    this.edit.styleRow(row);
+                }
+            );
+        }
+    );
+    
+    
+     
+
+</script>
+
+<div style='background:white'>
+<div dojoType="dojo.data.ItemFileReadStore" jsId="stateStore" url="/patients/list">
+</div>
+NAME: <input style='width:30em' dojoType="dijit.form.FilteringSelect" store="stateStore" searchAttr="name" name="id" id="patient_id">
+<button onclick='populategrid();'>Get Patient Information</button>
+	
+</div>
+<br>
+<div style='width:100%; height: 500px'>
+<div dojoType="dijit.layout.TabContainer" style="width: 100%; height: 100%;">
+    <div dojoType="dijit.layout.ContentPane" title="Claims" selected="true">
+		<table id='claimgrid' selectionMode='multiple' plugins="{indirectSelection: true}"
+		    dojoType="dojox.grid.EnhancedGrid" style='width: 100%; height:30em'>
+		  <thead>
+		    <tr>
+		      <th classes='right'   field="id"  width="5em">Claim ID</th>
+		      <th                   field="first_claim_date" formatter='formatDate' width="5em">Date</th>
+		      <th classes='right'   field="paid" width="10em">Paid?</th>
+		      <th classes='right'   field="total_charge" formatter='formatDolars' width="5em">Total $</th>
+		      <th classes='right'   field="balance_due" formatter='formatDolars' width="5em">Balance</th>
+		      <th classes='right'   field="contact_type_id" formatter='findContact' width="5em">Last Status</th>
+		      <th classes='right'   field="followup_date" formatter='formatDate' width="5em">f/u Date</th>
+		    </tr>
+		  </thead>
+		</table>
+		
+		<button onclick='addcontact()'>Add Completed Task</button>
+        
+    </div>
+    <div dojoType="dijit.layout.ContentPane" title="All Tasks">
+		<table  id='actiongrid' selectionMode='single' plugins="{indirectSelection: true}"
+		    dojoType="dojox.grid.EnhancedGrid" style='width: auto; height:15em'>
+		  <thead>
+		    <tr>
+		      <th classes='right'   field="claim_id" width="5em">Claim ID</th>
+		      <th                   field="contact_date" formatter='formatDate' width="5em">Date</th>
+		      <th classes='right'   field="expected_writeoff" formatter='formatDolars' width="5em">WriteOff</th>
+		      <th classes='right'   field="expected_payment" formatter='formatDolars' width="5em">Payment</th>
+		      <th 					field="contact_type_id" formater='findContact' width="10em">Type</th>
+		      <th 					field="contact_name" width="10em">Contact</th>
+		      <th 					field="comments" width="30em">Comments</th>
+		    </tr>
+		  </thead>
+		</table>
+    </div>
+    <div dojoType="dijit.layout.ContentPane" title="Reports" closable="true">
+        No Reports Yet :(
+    </div>
+</div>
+</div>
+
+
+
+

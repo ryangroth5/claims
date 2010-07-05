@@ -12,13 +12,14 @@ class PatientsController < ApplicationController
 
 
   def list_actions
-    actions = Patient.find(params[:id]).actions
+    actions = Patient.find(params[:id]).tasks
     #actions = Action.find(:all, :include=>[:action_types], :conditions=>" patient_id => #{params[:id]}"); #Patient.find(params[:id]).actions
     render :json => {:identifier => "id", :items=>actions};
   end
   
   def list_claims
-     claims = Patient.find(params[:id]).claims
+     claims = Claim.find(:all, :select=>'claims.*, followup_date, contact_type_id, contact_date ', :conditions=>{:patient_id => params[:id]}, :joins=>[:last_action], :include=>[:last_action]);
+     #claims = Patient.find(params[:id]).claims
      render :json => {:identifier => "id", :items=>claims};
   end
 
