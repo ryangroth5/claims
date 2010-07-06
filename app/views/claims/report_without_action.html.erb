@@ -1,0 +1,24 @@
+<table>
+	<tr>
+	<th>Patient Name</th>
+	<th>Claim Date</th>
+	<th>Total Charge</th>
+	<th>Balance</th>
+	<th>Claim ID</th>
+	</tr>
+	<%
+		@claims.each{|c| 
+		
+		dob = c.patient_birth_date.nil? ? nil : DateTime.parse(c.patient_birth_date);
+	%>
+	<tr>
+		<td><%=c.patient_last_name%>, <%=c.patient_first_name%> (<%=dob.nil? ? '': dob.strftime('%m/%d/%Y')%>)</td>
+		<td align='right'><%=c.first_claim_date.nil? ? '' : c.first_claim_date.strftime('%m/%d/%Y')%></td>
+		<td align='right'><%='%.02f' % c.total_charge%></td>
+		<td align='right'><%='%.02f' % c.balance_due%></td>
+		<td align='right'><%=c.claim_id%></td>
+	</tr>
+	<%
+		}
+	%>
+</table>

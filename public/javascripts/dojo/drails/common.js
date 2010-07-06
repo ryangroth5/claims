@@ -148,7 +148,6 @@ dojo.declare("drails.Updater", [drails.Request], {
 	},
 	
 	load: function(response, ioArgs) {
-		debugger;
 		this._handle(response.toString(), ioArgs, this._successNode);
 	},
 	

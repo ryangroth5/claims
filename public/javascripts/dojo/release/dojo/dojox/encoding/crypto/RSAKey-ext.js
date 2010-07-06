@@ -5,52 +5,43 @@
 */
 
 
-if(!dojo._hasResource["dojox.encoding.crypto.RSAKey-ext"]){ //_hasResource checks added by build. Do not use _hasResource directly in your code.
-dojo._hasResource["dojox.encoding.crypto.RSAKey-ext"] = true;
-dojo.provide("dojox.encoding.crypto.RSAKey-ext");
-dojo.experimental("dojox.encoding.crypto.RSAKey-ext");
 
-dojo.require("dojox.encoding.crypto.RSAKey");
-dojo.require("dojox.math.BigInteger-ext");
-
-(function(){
-	var BigInteger = dojox.math.BigInteger;
-
-	// Undo PKCS#1 (type 2, random) padding and, if valid, return the plaintext
-	function pkcs1unpad2(d, n){
-		var b = d.toByteArray();
-		for(var i = 0, len = b.length; i < len && !b[i]; ++i);
-		if(b.length - i !== n - 1 || b[i] !== 2){
-			return null;
-		}
-		for(++i; b[i];){
-			if(++i >= len){
+if (!dojo._hasResource["dojox.encoding.crypto.RSAKey-ext"]) {
+	dojo._hasResource["dojox.encoding.crypto.RSAKey-ext"] = true;
+	dojo.provide("dojox.encoding.crypto.RSAKey-ext");
+	dojo.experimental("dojox.encoding.crypto.RSAKey-ext");
+	dojo.require("dojox.encoding.crypto.RSAKey");
+	dojo.require("dojox.math.BigInteger-ext");
+	(function () {
+		var BigInteger = dojox.math.BigInteger;
+		function pkcs1unpad2(d, n) {
+			var b = d.toByteArray();
+			for (var i = 0, len = b.length; i < len && !b[i]; ++i) {
+			}
+			if (b.length - i !== n - 1 || b[i] !== 2) {
 				return null;
 			}
+			for (++i; b[i]; ) {
+				if (++i >= len) {
+					return null;
+				}
+			}
+			var ret = "";
+			while (++i < len) {
+				ret += String.fromCharCode(b[i]);
+			}
+			return ret;
 		}
-		var ret = "";
-		while(++i < len){
-			ret += String.fromCharCode(b[i]);
-		}
-		return ret;
-	}
-
-	dojo.extend(dojox.encoding.crypto.RSAKey, {
-		setPrivate: function(N, E, D){
-			// summary:
-			//	Set the private key fields N, e, d and CRT params from hex strings
-			if(N && E && N.length && E.length){
+		dojo.extend(dojox.encoding.crypto.RSAKey, {setPrivate:function (N, E, D) {
+			if (N && E && N.length && E.length) {
 				this.n = new BigInteger(N, 16);
 				this.e = parseInt(E, 16);
 				this.d = new BigInteger(D, 16);
-			}else{
+			} else {
 				throw new Error("Invalid RSA private key");
 			}
-		},
-		setPrivateEx: function(N, E, D, P, Q, DP, DQ, C) {
-			// summary:
-			//	Set the private key fields N, e, d and CRT params from hex strings
-			if(N && E && N.length && E.length){
+		}, setPrivateEx:function (N, E, D, P, Q, DP, DQ, C) {
+			if (N && E && N.length && E.length) {
 				this.n = new BigInteger(N, 16);
 				this.e = parseInt(E, 16);
 				this.d = new BigInteger(D, 16);
@@ -59,30 +50,27 @@ dojo.require("dojox.math.BigInteger-ext");
 				this.dmp1 = new BigInteger(DP, 16);
 				this.dmq1 = new BigInteger(DQ, 16);
 				this.coeff = new BigInteger(C, 16);
-			}else{
+			} else {
 				throw new Error("Invalid RSA private key");
 			}
-		},
-		generate: function(B, E){
-			// summary:
-			//	Generate a new random private key B bits long, using public expt E
+		}, generate:function (B, E) {
 			var rng = this.rngf(), qs = B >> 1;
 			this.e = parseInt(E, 16);
 			var ee = new BigInteger(E, 16);
-			for(;;) {
-				for(;;) {
+			for (; ; ) {
+				for (; ; ) {
 					this.p = new BigInteger(B - qs, 1, rng);
-					if(!this.p.subtract(BigInteger.ONE).gcd(ee).compareTo(BigInteger.ONE) && this.p.isProbablePrime(10)){
+					if (!this.p.subtract(BigInteger.ONE).gcd(ee).compareTo(BigInteger.ONE) && this.p.isProbablePrime(10)) {
 						break;
 					}
 				}
-				for(;;) {
+				for (; ; ) {
 					this.q = new BigInteger(qs, 1, rng);
-					if(!this.q.subtract(BigInteger.ONE).gcd(ee).compareTo(BigInteger.ONE) && this.q.isProbablePrime(10)){
+					if (!this.q.subtract(BigInteger.ONE).gcd(ee).compareTo(BigInteger.ONE) && this.q.isProbablePrime(10)) {
 						break;
 					}
 				}
-				if(this.p.compareTo(this.q) <= 0) {
+				if (this.p.compareTo(this.q) <= 0) {
 					var t = this.p;
 					this.p = this.q;
 					this.q = t;
@@ -90,7 +78,7 @@ dojo.require("dojox.math.BigInteger-ext");
 				var p1 = this.p.subtract(BigInteger.ONE);
 				var q1 = this.q.subtract(BigInteger.ONE);
 				var phi = p1.multiply(q1);
-				if(!phi.gcd(ee).compareTo(BigInteger.ONE)) {
+				if (!phi.gcd(ee).compareTo(BigInteger.ONE)) {
 					this.n = this.p.multiply(this.q);
 					this.d = ee.modInverse(phi);
 					this.dmp1 = this.d.mod(p1);
@@ -100,32 +88,22 @@ dojo.require("dojox.math.BigInteger-ext");
 				}
 			}
 			rng.destroy();
-		},
-
-		decrypt: function(ctext){
-			// summary:
-			//	Return the PKCS#1 RSA decryption of "ctext".
-			// ctext: String:
-			//	an even-length hex string
-			// returns: a plain string.
+		}, decrypt:function (ctext) {
 			var c = new BigInteger(ctext, 16), m;
-			if(!this.p || !this.q){
+			if (!this.p || !this.q) {
 				m = c.modPow(this.d, this.n);
-			}else{
-				// TODO: re-calculate any missing CRT params
-				var cp = c.mod(this.p).modPow(this.dmp1, this.p),
-					cq = c.mod(this.q).modPow(this.dmq1, this.q);
-				while(cp.compareTo(cq) < 0){
+			} else {
+				var cp = c.mod(this.p).modPow(this.dmp1, this.p), cq = c.mod(this.q).modPow(this.dmq1, this.q);
+				while (cp.compareTo(cq) < 0) {
 					cp = cp.add(this.p);
 				}
 				m = cp.subtract(cq).multiply(this.coeff).mod(this.p).multiply(this.q).add(cq);
 			}
-			if(!m){
+			if (!m) {
 				return null;
 			}
 			return pkcs1unpad2(m, (this.n.bitLength() + 7) >> 3);
-		}
-	});
-})();
-
+		}});
+	})();
 }
+

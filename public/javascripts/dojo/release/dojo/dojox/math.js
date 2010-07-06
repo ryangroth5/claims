@@ -5,9 +5,10 @@
 */
 
 
-if(!dojo._hasResource["dojox.math"]){ //_hasResource checks added by build. Do not use _hasResource directly in your code.
-dojo._hasResource["dojox.math"] = true;
-dojo.provide("dojox.math");
-dojo.require("dojox.math._base");
 
+if (!dojo._hasResource["dojox.math"]) {
+	dojo._hasResource["dojox.math"] = true;
+	dojo.provide("dojox.math");
+	dojo.require("dojox.math._base");
 }
+

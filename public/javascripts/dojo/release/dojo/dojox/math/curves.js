@@ -5,12 +5,11 @@
 */
 
 
-if(!dojo._hasResource["dojox.math.curves"]){ //_hasResource checks added by build. Do not use _hasResource directly in your code.
-dojo._hasResource["dojox.math.curves"] = true;
-dojo.provide("dojox.math.curves");
 
-dojo.mixin(dojox.math.curves, {
-	Line:function (start, end) {
+if (!dojo._hasResource["dojox.math.curves"]) {
+	dojo._hasResource["dojox.math.curves"] = true;
+	dojo.provide("dojox.math.curves");
+	dojo.mixin(dojox.math.curves, {Line:function (start, end) {
 		this.start = start;
 		this.end = end;
 		this.dimensions = start.length;
@@ -28,8 +27,7 @@ dojo.mixin(dojox.math.curves, {
 			return retVal;
 		};
 		return this;
-	}, 
-	Bezier:function(pnts) {
+	}, Bezier:function (pnts) {
 		this.getValue = function (step) {
 			if (step >= 1) {
 				return this.p[this.p.length - 1];
@@ -56,8 +54,7 @@ dojo.mixin(dojox.math.curves, {
 		};
 		this.p = pnts;
 		return this;
-	}, 
-	CatmullRom:function (pnts, c) {
+	}, CatmullRom:function (pnts, c) {
 		this.getValue = function (step) {
 			var percent = step * (this.p.length - 1);
 			var node = Math.floor(percent);
@@ -95,30 +92,32 @@ dojo.mixin(dojox.math.curves, {
 		}
 		this.p = pnts;
 		return this;
-	}, 
-	Arc:function (start, end, ccw){
-		function translate(a,b){
-			var c=new Array(a.length);
-			for(var i=0; i<a.length; i++){ c[i]=a[i]+b[i]; }
+	}, Arc:function (start, end, ccw) {
+		function translate(a, b) {
+			var c = new Array(a.length);
+			for (var i = 0; i < a.length; i++) {
+				c[i] = a[i] + b[i];
+			}
 			return c;
 		}
-		function invert(a){
+		function invert(a) {
 			var b = new Array(a.length);
-			for(var i=0; i<a.length; i++){ b[i]=-a[i]; }
+			for (var i = 0; i < a.length; i++) {
+				b[i] = -a[i];
+			}
 			return b;
 		}
 		var center = dojox.math.midpoint(start, end);
 		var sides = translate(invert(center), start);
 		var rad = Math.sqrt(Math.pow(sides[0], 2) + Math.pow(sides[1], 2));
 		var theta = dojox.math.radiansToDegrees(Math.atan(sides[1] / sides[0]));
-		if (sides[0] < 0){
+		if (sides[0] < 0) {
 			theta -= 90;
 		} else {
 			theta += 90;
 		}
 		dojox.math.curves.CenteredArc.call(this, center, rad, theta, theta + (ccw ? -180 : 180));
-	}, 
-	CenteredArc:function (center, radius, start, end) {
+	}, CenteredArc:function (center, radius, start, end) {
 		this.center = center;
 		this.radius = radius;
 		this.start = start || 0;
@@ -131,12 +130,10 @@ dojo.mixin(dojox.math.curves, {
 			return retVal;
 		};
 		return this;
-	}, 
-	Circle:function(center, radius){
+	}, Circle:function (center, radius) {
 		dojox.math.curves.CenteredArc.call(this, center, radius, 0, 360);
 		return this;
-	}, 
-	Path:function () {
+	}, Path:function () {
 		var curves = [];
 		var weights = [];
 		var ranges = [];
@@ -194,7 +191,6 @@ dojo.mixin(dojox.math.curves, {
 			}
 		}
 		return this;
-	}
-});
-
+	}});
 }
+

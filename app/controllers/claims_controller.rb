@@ -9,6 +9,22 @@ class ClaimsController < ApplicationController
       format.xml  { render :xml => @claims }
     end
   end
+  
+  def report_without_action
+    @claims = Claim.find_by_sql('Select * from claims_without_action');
+    render :layout=>false;
+  end
+
+  def report_requiring_followup
+    @claims = Claim.find_by_sql('Select * from claims_requiring_followup');
+    render :layout=>false;
+  end
+
+  def report_expected_payments
+    @claims = Claim.find_by_sql('Select * from expected_payments');
+    render :layout=>false;
+  end
+
 
   # GET /claims/1
   # GET /claims/1.xml

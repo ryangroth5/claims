@@ -22,7 +22,6 @@
     }
     function findContact(a)
     {
-		console.log(a);
         return(findbyid(contact_types,a,'contact_type_name'));
     }
     function findFault(a)
@@ -177,8 +176,10 @@ NAME: <input style='width:30em' dojoType="dijit.form.FilteringSelect" store="sta
 		  </thead>
 		</table>
     </div>
-    <div dojoType="dijit.layout.ContentPane" title="Reports" closable="true">
-        No Reports Yet :(
+    <div dojoType="dijit.layout.ContentPane" title="Reports" >
+        <br><a href='/claims/report_expected_payments' target='_blank'>Expected Payments</a>
+		<br><a href='/claims/report_requiring_followup' target='_blank'>Claims Requiring Followup</a>
+		<br><a href='/claims/report_without_action' target='_blank'>Claims w/out Action</a>
     </div>
 </div>
 </div>

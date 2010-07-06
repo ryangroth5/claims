@@ -5,34 +5,25 @@
 */
 
 
-if(!dojo._hasResource["dojox.lang.aspect.counter"]){ //_hasResource checks added by build. Do not use _hasResource directly in your code.
-dojo._hasResource["dojox.lang.aspect.counter"] = true;
-dojo.provide("dojox.lang.aspect.counter");
 
-(function(){
-	var aop = dojox.lang.aspect;
-	
-	var Counter = function(){
-		this.reset();
-	};
-	dojo.extend(Counter, {
-		before: function(/*arguments*/){
+if (!dojo._hasResource["dojox.lang.aspect.counter"]) {
+	dojo._hasResource["dojox.lang.aspect.counter"] = true;
+	dojo.provide("dojox.lang.aspect.counter");
+	(function () {
+		var aop = dojox.lang.aspect;
+		var Counter = function () {
+			this.reset();
+		};
+		dojo.extend(Counter, {before:function () {
 			++this.calls;
-		},
-		afterThrowing: function(/*excp*/){
+		}, afterThrowing:function () {
 			++this.errors;
-		},
-		reset: function(){
+		}, reset:function () {
 			this.calls = this.errors = 0;
-		}
-	});
-	
-	aop.counter = function(){
-		// summary:
-		//		Returns an object, which can be used to count calls to methods.
-	
-		return new Counter;	// Object
-	};
-})();
-
+		}});
+		aop.counter = function () {
+			return new Counter;
+		};
+	})();
 }
+

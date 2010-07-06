@@ -25,9 +25,29 @@ dependencies = {
 				"dijit.form.ComboBox",
 				"dojox.grid.enhanced.plugins.DnD",
 				"dijit.Tooltip",
+				"zstaff.helpers.toast",
+				"drails.monkey",
+				"drails.common",
+				"dojox.grid.enhanced.plugins.NestedSoring",
+				"dojox.grid.enhanced.plugins.Menu",
+				
 				"dijit.Editor",
 				"dijit.Toolbar",
-				"dijit.Dialog"
+				"dijit.Dialog",
+				"dijit.drails.common",
+				"dijit.form.TimeTextBox",
+				"dojo.number",
+				"dijit.form.NumberTextBox",
+				"dojox.grid.enhanced.plugins.IndirectSelection",
+				"dijit.Calendar",
+				"staff.helpers.toast",
+				"dijit.form.DateTextBox",
+				"dijit.form.HorizontalSlider",
+				"zstaff.helpers.dialog",
+				"zstaff.widget.Dialog",
+				"zstaff.helpers.refresh",
+				"dijit.layout.TabContainer",
+				"dojox.widget.Toaster"
 			]
 		},
 		{

@@ -5,47 +5,34 @@
 */
 
 
-if(!dojo._hasResource["dojox.grid.enhanced.dnd._DndMover"]){ //_hasResource checks added by build. Do not use _hasResource directly in your code.
-dojo._hasResource["dojox.grid.enhanced.dnd._DndMover"] = true;
-dojo.provide("dojox.grid.enhanced.dnd._DndMover");
 
-dojo.require("dojo.dnd.move");
-
-dojo.declare("dojox.grid.enhanced.dnd._DndMover", dojo.dnd.Mover, {
-	
-	onMouseMove: function(e){
-		// summary:
-		//		Overwritten, see dojo.dnd.Mover.onMouseMove()
+if (!dojo._hasResource["dojox.grid.enhanced.dnd._DndMover"]) {
+	dojo._hasResource["dojox.grid.enhanced.dnd._DndMover"] = true;
+	dojo.provide("dojox.grid.enhanced.dnd._DndMover");
+	dojo.require("dojo.dnd.move");
+	dojo.declare("dojox.grid.enhanced.dnd._DndMover", dojo.dnd.Mover, {onMouseMove:function (e) {
 		dojo.dnd.autoScroll(e);
 		var m = this.marginBox;
-		this.host.onMove(this, {l: m.l + e.pageX, t: m.t + e.pageY}, {x:e.pageX, y:e.pageY});
+		this.host.onMove(this, {l:m.l + e.pageX, t:m.t + e.pageY}, {x:e.pageX, y:e.pageY});
 		dojo.stopEvent(e);
-	}
-});
-
-dojo.declare("dojox.grid.enhanced.dnd._DndBoxConstrainedMoveable", dojo.dnd.move.boxConstrainedMoveable, {
-	//movingType: String
-	//		Row moving - 'row' or column moving - 'col'
-	movingType: 'row',
-	
-	constructor: function(node, params){
-		if(!params || !params.movingType){ return; }
+	}});
+	dojo.declare("dojox.grid.enhanced.dnd._DndBoxConstrainedMoveable", dojo.dnd.move.boxConstrainedMoveable, {movingType:"row", constructor:function (node, params) {
+		if (!params || !params.movingType) {
+			return;
+		}
 		this.movingType = params.movingType;
-	},
-	
-	onFirstMove: function(/* dojo.dnd.Mover */ mover){
-		// summary:
-		//		Overwritten, see dojo.dnd.move.constrainedMoveable.onFirstMove()
+	}, onFirstMove:function (mover) {
 		this.inherited(arguments);
-		if(this.within){
+		if (this.within) {
 			var c = this.constraintBox, mb = dojo.marginBox(mover.node);
-			if(this.movingType == 'row'){
-				c.r += mb.w;	
-			}else if(this.movingType == 'col'){
-				c.b += mb.h;
+			if (this.movingType == "row") {
+				c.r += mb.w;
+			} else {
+				if (this.movingType == "col") {
+					c.b += mb.h;
+				}
 			}
 		}
-	}
-});
-
+	}});
 }
+

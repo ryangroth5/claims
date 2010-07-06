@@ -5,54 +5,51 @@
 */
 
 
-if(!dojo._hasResource["dojox.charting.Element"]){ //_hasResource checks added by build. Do not use _hasResource directly in your code.
-dojo._hasResource["dojox.charting.Element"] = true;
-dojo.provide("dojox.charting.Element");
 
-dojo.declare("dojox.charting.Element", null, {
-	constructor: function(chart){
+if (!dojo._hasResource["dojox.charting.Element"]) {
+	dojo._hasResource["dojox.charting.Element"] = true;
+	dojo.provide("dojox.charting.Element");
+	dojo.declare("dojox.charting.Element", null, {constructor:function (chart) {
 		this.chart = chart;
 		this.group = null;
 		this.htmlElements = [];
 		this.dirty = true;
-	},
-	createGroup: function(creator){
-		if(!creator){ creator = this.chart.surface; }
-		if(!this.group){
+	}, createGroup:function (creator) {
+		if (!creator) {
+			creator = this.chart.surface;
+		}
+		if (!this.group) {
 			this.group = creator.createGroup();
 		}
 		return this;
-	},
-	purgeGroup: function(){
+	}, purgeGroup:function () {
 		this.destroyHtmlElements();
-		if(this.group){
+		if (this.group) {
 			this.group.clear();
 			this.group.removeShape();
 			this.group = null;
 		}
 		this.dirty = true;
 		return this;
-	},
-	cleanGroup: function(creator){
+	}, cleanGroup:function (creator) {
 		this.destroyHtmlElements();
-		if(!creator){ creator = this.chart.surface; }
-		if(this.group){
+		if (!creator) {
+			creator = this.chart.surface;
+		}
+		if (this.group) {
 			this.group.clear();
-		}else{
+		} else {
 			this.group = creator.createGroup();
 		}
 		this.dirty = true;
 		return this;
-	},
-	destroyHtmlElements: function(){
-		if(this.htmlElements.length){
+	}, destroyHtmlElements:function () {
+		if (this.htmlElements.length) {
 			dojo.forEach(this.htmlElements, dojo.destroy);
 			this.htmlElements = [];
 		}
-	},
-	destroy: function(){
+	}, destroy:function () {
 		this.purgeGroup();
-	}
-});
-
+	}});
 }
+

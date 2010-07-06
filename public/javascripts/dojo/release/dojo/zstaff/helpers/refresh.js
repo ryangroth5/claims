@@ -5,13 +5,11 @@
 */
 
 
-if(!dojo._hasResource['zstaff.helpers.refresh']){ //_hasResource checks added by build. Do not use _hasResource directly in your code.
-dojo._hasResource['zstaff.helpers.refresh'] = true;
-dojo.provide('zstaff.helpers.refresh');
 
-zstaff.helpers.refresh.refreshAll =function()
-	       {
-	       		
-	       };
-
+if (!dojo._hasResource["zstaff.helpers.refresh"]) {
+	dojo._hasResource["zstaff.helpers.refresh"] = true;
+	dojo.provide("zstaff.helpers.refresh");
+	zstaff.helpers.refresh.refreshAll = function () {
+	};
 }
+

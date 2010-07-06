@@ -5,72 +5,44 @@
 */
 
 
-if(!dojo._hasResource["dojox.drawing.tools.Ellipse"]){ //_hasResource checks added by build. Do not use _hasResource directly in your code.
-dojo._hasResource["dojox.drawing.tools.Ellipse"] = true;
-dojo.provide("dojox.drawing.tools.Ellipse");
 
-dojox.drawing.tools.Ellipse = dojox.drawing.util.oo.declare(
-	// summary:
-	//		A drawable Ellipse.
-	//
-	dojox.drawing.stencil.Ellipse,
-	function(){
-		// summary: constructor
-	},
-	{
-		draws:true,
-		onDrag: function(/*EventObject*/obj){
-			// summary: See stencil._Base.onDrag
-			//
-			var s = obj.start, e = obj;
-			var	x = s.x < e.x ? s.x : e.x,
-				y = s.y < e.y ? s.y : e.y,
-				w = s.x < e.x ? e.x-s.x : s.x-e.x,
-				h = s.y < e.y ? e.y-s.y : s.y-e.y;
-			
-			if(this.keys.shift){ w = h = Math.max(w,h); }
-			if(!this.keys.alt){ // ellipse is normally on center
-				x+=w/2; y+=h/2; w/=2; h/=2;
-			} else{
-				if(y - h < 0){ h = y; }
-				if(x - w < 0){ w = x; }
-			}
-			
-			this.points = [
-				{x:x-w, y:y-h}, 	// TL
-				{x:x+w, y:y-h},		// TR
-				{x:x+w, y:y+h},		// BR
-				{x:x-w, y:y+h}		// BL
-			];
-			this.render();
-		},
-		
-		onUp: function(/*EventObject*/obj){
-			// summary: See stencil._Base.onUp
-			//
-			if(this.created || !this.shape){ return; }
-			
-			// if too small, need to reset
-			var o = this.pointsToData();
-			if(o.rx*2<this.minimumSize && o.ry*2 < this.minimumSize){
-				this.remove(this.shape, this.hit);
-				return;
-			}
-			
-			this.onRender(this);
-			
+if (!dojo._hasResource["dojox.drawing.tools.Ellipse"]) {
+	dojo._hasResource["dojox.drawing.tools.Ellipse"] = true;
+	dojo.provide("dojox.drawing.tools.Ellipse");
+	dojox.drawing.tools.Ellipse = dojox.drawing.util.oo.declare(dojox.drawing.stencil.Ellipse, function () {
+	}, {draws:true, onDrag:function (obj) {
+		var s = obj.start, e = obj;
+		var x = s.x < e.x ? s.x : e.x, y = s.y < e.y ? s.y : e.y, w = s.x < e.x ? e.x - s.x : s.x - e.x, h = s.y < e.y ? e.y - s.y : s.y - e.y;
+		if (this.keys.shift) {
+			w = h = Math.max(w, h);
 		}
-	}
-);
-
-dojox.drawing.tools.Ellipse.setup = {
-	// summary: See stencil._Base ToolsSetup
-	//	
-	name:"dojox.drawing.tools.Ellipse",
-	tooltip:"Ellipse Tool",
-	iconClass:"iconEllipse"
-};
-
-dojox.drawing.register(dojox.drawing.tools.Ellipse.setup, "tool");
-
+		if (!this.keys.alt) {
+			x += w / 2;
+			y += h / 2;
+			w /= 2;
+			h /= 2;
+		} else {
+			if (y - h < 0) {
+				h = y;
+			}
+			if (x - w < 0) {
+				w = x;
+			}
+		}
+		this.points = [{x:x - w, y:y - h}, {x:x + w, y:y - h}, {x:x + w, y:y + h}, {x:x - w, y:y + h}];
+		this.render();
+	}, onUp:function (obj) {
+		if (this.created || !this.shape) {
+			return;
+		}
+		var o = this.pointsToData();
+		if (o.rx * 2 < this.minimumSize && o.ry * 2 < this.minimumSize) {
+			this.remove(this.shape, this.hit);
+			return;
+		}
+		this.onRender(this);
+	}});
+	dojox.drawing.tools.Ellipse.setup = {name:"dojox.drawing.tools.Ellipse", tooltip:"Ellipse Tool", iconClass:"iconEllipse"};
+	dojox.drawing.register(dojox.drawing.tools.Ellipse.setup, "tool");
 }
+
