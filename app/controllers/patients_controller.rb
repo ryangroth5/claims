@@ -18,7 +18,7 @@ class PatientsController < ApplicationController
   end
   
   def list_claims
-     claims = Claim.find(:all, :select=>'claims.*, followup_date, contact_type_id, contact_date ', :conditions=>{:patient_id => params[:id]}, :joins=>[:last_action], :include=>[:last_action]);
+     claims = Claim.find(:all, :select=>'claims.*, followup_date, contact_type_id, contact_date ', :conditions=>{:patient_id => params[:id]}, :joins=>'left join tasks on last_action_id = tasks.id', :include=>[:last_action]);
      #claims = Patient.find(params[:id]).claims
      render :json => {:identifier => "id", :items=>claims};
   end
